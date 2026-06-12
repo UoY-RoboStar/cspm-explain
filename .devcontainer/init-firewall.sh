@@ -63,12 +63,53 @@ while read -r cidr; do
     ipset -exist add allowed-domains "$cidr"
 done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
 
+# === NEW: Fetch and Process AWS IP Ranges ===
+echo "Fetching AWS IP ranges..."
+aws_ranges=$(curl -s https://ip-ranges.amazonaws.com/ip-ranges.json)
+if [ -z "$aws_ranges" ]; then
+    echo "ERROR: Failed to fetch AWS IP ranges"
+    exit 1
+fi
+
+if ! echo "$aws_ranges" | jq -e '.prefixes' >/dev/null; then
+    echo "ERROR: AWS IP response missing prefixes field"
+    exit 1
+fi
+
+echo "Processing AWS IPs..."
+while read -r cidr; do
+    if [[ ! "$cidr" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/[0-9]{1,2}$ ]]; then
+        echo "ERROR: Invalid CIDR range from AWS meta: $cidr"
+        exit 1
+    fi
+    echo "Adding AWS range $cidr"
+    ipset -exist add allowed-domains "$cidr"
+done < <(echo "$aws_ranges" | jq -r '.prefixes[].ip_prefix' | grep -v "null" | aggregate -q)
+
+echo "Processing manual IP addresses..."
+for manual_ip in \
+    "10.0.2.3" \
+    "142.250.151.153"; do
+    
+    # Trim whitespace just in case
+    manual_ip=$(echo "$manual_ip" | xargs)
+    
+    # Handle both standalone IPs and manually specified CIDR subnets
+    if [[ "$manual_ip" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}(/[0-9]{1,2})?$ ]]; then
+        echo "Adding manual entry: $manual_ip"
+        ipset -exist add allowed-domains "$manual_ip"
+    else
+        echo "ERROR: Invalid IP or CIDR block format: $manual_ip"
+        exit 1
+    fi
+done
+# ============================================
+
 # Resolve and add other allowed domains
 for domain in \
     "registry.npmjs.org" \
     "api.anthropic.com" \
     "sentry.io" \
-    "statsig.anthropic.com" \
     "statsig.com" \
     "marketplace.visualstudio.com" \
     "vscode.blob.core.windows.net" \
@@ -77,6 +118,13 @@ for domain in \
     "static.rust-lang.org" \
     "crates.io" \
     "cocotec.io" \
+    "dl.cocotec.io" \
+    "security.debian.org" \
+    "security.ubuntu.com" \
+    "fdr-licensing.appspot.com" \
+    "bootstrap.pypa.io" \
+    "files.pythonhosted.org" \
+    "pypi.org" \
     "index.crates.io"; do
     echo "Resolving $domain..."
     ips=$(dig +noall +answer A "$domain" | awk '$4 == "A" {print $5}')

@@ -1,0 +1,11 @@
+-- The Initiator performs the handshake and then terminates (STOP).
+-- The Responder performs the handshake and then expects one more event.
+-- After the handshake, the Initiator is gone and the Responder is stuck.
+channel handshake, continue
+
+Initiator = handshake -> STOP
+Responder = handshake -> continue -> STOP
+
+System = Initiator [| {handshake, continue} |] Responder
+
+assert System :[deadlock free [F]]

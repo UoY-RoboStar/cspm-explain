@@ -1,0 +1,10 @@
+-- Two processes that each wait for a different first event.
+-- They synchronise on both events, so neither can proceed.
+channel a, b
+
+P = a -> b -> P
+Q = b -> a -> Q
+
+System = P [| {a, b} |] Q
+
+assert System :[deadlock free [F]]

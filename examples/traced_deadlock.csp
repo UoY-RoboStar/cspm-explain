@@ -1,0 +1,12 @@
+-- P and Q synchronise on 'a', then independently terminate via b and c.
+-- After a -> b -> c both reach STOP, deadlocking the composition.
+channel a, b, c
+
+P(x) = if x > 0 then b -> c -> P(x-1) else a -> a -> STOP
+Q = a -> c -> STOP
+R = c -> c -> STOP [| {a,c} |] S
+S = a -> c -> STOP
+
+System = P(5) [| {a} |] (Q ||| R)
+
+assert System :[deadlock free [F]]

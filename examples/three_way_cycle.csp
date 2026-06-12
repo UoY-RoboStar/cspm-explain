@@ -1,0 +1,12 @@
+-- Three processes in a cyclic dependency.
+-- A can only proceed after B has gone first; B after C; C after A.
+-- Since each is waiting for a different partner, none can start.
+channel ab, bc, ca
+
+A = ab -> ca -> A
+B = bc -> ab -> B
+C = ca -> bc -> C
+
+System = (A [| {ab, bc, ca} |] B) [| {ab, bc, ca} |] C
+
+assert System :[deadlock free [F]]

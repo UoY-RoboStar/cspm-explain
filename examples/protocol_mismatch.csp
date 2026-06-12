@@ -1,0 +1,11 @@
+-- Client-server protocol where both sides diverge after the request phase.
+-- The server always responds with 'success'; the client always sends 'rollback'.
+-- After connect -> request, they want different next events and deadlock.
+channel connect, request, success, rollback
+
+Server = connect -> request -> success -> Server
+Client = connect -> request -> rollback -> Client
+
+System = Server [| {connect, request, success, rollback} |] Client
+
+assert System :[deadlock free [F]]

@@ -1,0 +1,28 @@
+-- Classic lock-ordering deadlock with two processes and two mutexes.
+-- P acquires mutex A then mutex B.
+-- Q acquires mutex B then mutex A (opposite order).
+-- After each grabs its first lock, each is blocked waiting for the other's lock.
+--
+-- Separate channel names per process let each mutex offer exclusive access
+-- to either P or Q (modelled with external choice []).
+-- Each process only synchronises with its own mutex for each lock/unlock pair.
+channel p_lock_a, p_unlock_a, q_lock_a, q_unlock_a
+channel p_lock_b, p_unlock_b, q_lock_b, q_unlock_b
+
+MutexA = p_lock_a -> p_unlock_a -> MutexA
+       [] q_lock_a -> q_unlock_a -> MutexA
+
+MutexB = p_lock_b -> p_unlock_b -> MutexB
+       [] q_lock_b -> q_unlock_b -> MutexB
+
+P = p_lock_a -> p_lock_b -> p_unlock_b -> p_unlock_a -> P
+Q = q_lock_b -> q_lock_a -> q_unlock_a -> q_unlock_b -> Q
+
+-- P and Q interleave freely; each then synchronises with their respective mutex.
+-- WithMutexA: P and Q each compete for MutexA via their own channel pair.
+WithMutexA = (P ||| Q) [| {p_lock_a, p_unlock_a, q_lock_a, q_unlock_a} |] MutexA
+
+-- System: also brings in MutexB via its own channel pair.
+System = WithMutexA [| {p_lock_b, p_unlock_b, q_lock_b, q_unlock_b} |] MutexB
+
+assert System :[deadlock free [F]]
