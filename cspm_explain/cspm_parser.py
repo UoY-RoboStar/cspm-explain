@@ -510,6 +510,61 @@ def parallel_operand_labels(src: str) -> dict[str, list[str]]:
     return result
 
 
+def _count_prefix_chain(node: Tree | Token) -> tuple[int, str | None]:
+    """Count '->' prefix steps leading to a bare named-process call.
+
+    Returns (count, continuation_name) for a chain of the form
+        e1 -> e2 -> ... -> eN -> P
+    where P is a bare process reference (no call arguments).
+    Returns (0, None) if the expression is not a simple chain of this form.
+    """
+    if not isinstance(node, Tree):
+        return 0, None
+    # Strip transparent 'expression' wrapper
+    if node.data == "expression":
+        if len(node.children) == 1:
+            return _count_prefix_chain(node.children[0])
+        return 0, None
+    if node.data != "prefix_exp" or len(node.children) != 2:
+        return 0, None
+    _, cont = node.children  # first child is the event; only the continuation matters
+    if isinstance(cont, Tree) and cont.data == "pref" and _is_bare_pref(cont):
+        # Terminal: a bare process call P
+        qn = cont.children[0]
+        if isinstance(qn, Tree) and qn.data == "qualified_name":
+            vid = qn.children[0]
+            if isinstance(vid, Tree) and vid.data == "validid":
+                return 1, str(vid.children[0])
+    elif isinstance(cont, Tree) and cont.data == "prefix_exp":
+        sub_count, sub_cont = _count_prefix_chain(cont)
+        if sub_cont is not None:
+            return 1 + sub_count, sub_cont
+    return 0, None
+
+
+def sequential_tail(src: str) -> dict[str, tuple[int, str]]:
+    """For each parameter-free process definition that is a pure sequential
+    prefix chain ending in a bare named-process call, return
+    {process_name: (prefix_event_count, continuation_process_name)}.
+
+    Only considers definitions of the form:
+        P = e1 -> e2 -> ... -> eN -> Q
+    where Q is a bare identifier with no arguments.
+    """
+    t = _get_parser().parse(src)
+    result: dict[str, tuple[int, str]] = {}
+    for child in t.children:
+        if not isinstance(child, Tree) or child.data != "function_def":
+            continue
+        if len(child.children) != 2:  # skip parameterised definitions
+            continue
+        name = str(next(child.children[0].scan_values(lambda _: True)))
+        count, cont = _count_prefix_chain(child.children[1])
+        if cont is not None:
+            result[name] = (count, cont)
+    return result
+
+
 def _find_outermost_parallel(node: Tree) -> Tree | None:
     """Pre-order search: return the first parallel-operator node, or None."""
     if isinstance(node, Tree):

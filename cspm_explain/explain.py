@@ -4,7 +4,7 @@ from __future__ import annotations
 import anthropic
 
 from .model import AssertionResult, Behaviour, Counterexample, FdrOutput
-from .cspm_parser import parallel_operand_labels
+from .cspm_parser import parallel_operand_labels, sequential_tail
 
 # FDR uses event ID 0 to mark steps where one branch of a parallel composition
 # performed an event that the current sub-machine did not participate in.
@@ -182,12 +182,17 @@ def _build_display_names(
         own = b.machine_name
         is_anon = own == "(anonymous)"
         if is_anon and named_ancestor:
-            # Try to find the exact source text for this operand.
             ancestor_ops = ops.get(named_ancestor, [])
             if child_index < len(ancestor_ops):
+                # Named ancestor is a parallel composition — use source-text operand label.
                 leaf_label = f"{ancestor_ops[child_index]} (in {named_ancestor})"
-            else:
+            elif ancestor_ops:
+                # Parallel composition but more anonymous children than operands (shouldn't happen).
                 leaf_label = f"(sub-process of {named_ancestor})"
+            else:
+                # Named ancestor is not a parallel composition (e.g. sequential, hiding).
+                # FDR decomposes it internally; the anonymous child IS the ancestor.
+                leaf_label = named_ancestor
         else:
             leaf_label = own
         # Anonymous nodes keep the current ancestor; named nodes become the new ancestor.
@@ -248,25 +253,71 @@ def _narrate_trace(
     leaves: list[Behaviour],
     display_names: dict[int, str],
     event_map: dict[str, str],
-) -> list[str]:
-    """Return a step-by-step narration using leaf processes.
+    seq_chains: dict[str, tuple[int, str]] | None = None,
+) -> tuple[list[str], dict[int, str]]:
+    """Return (narration_lines, final_process_names) for a step-by-step trace.
 
-    FDR guarantees that every behaviour's trace is globally indexed: leaf.trace[i]
-    is non-INTERLEAVE iff that leaf participated at system-level step i.
+    final_process_names maps id(leaf) → the semantic process name that leaf
+    was acting as at the end of the trace.  Callers use this to show correct
+    names in the "State at deadlock" and "Root cause" sections.
 
-    We track each leaf's DISPLAY LABEL (not the raw state string) so that
-    <unnamed> states show a meaningful "ready to perform 'X'" description
-    and <unchanged> placeholders are never surfaced to the user.
-
-    Keyed by id(leaf) so multiple anonymous leaves don't collide.
+    seq_chains: optional {process_name: (prefix_event_count, continuation)} from the
+    CSP-M parser, used to track Mrk → Yuxjyk → IRGXg style sequential chains.
     """
     lines: list[str] = []
-    current_label: dict[int, str] = {
-        id(leaf): _initial_label(leaf, event_map) for leaf in leaves
+    chains = seq_chains or {}
+
+    # Build threshold tables for sequential-chain leaves.
+    anchor_thresholds: dict[str, list[tuple[int, str | None]]] = {}
+    anchor_counts: dict[str, int] = {}
+    leaf_anchor: dict[int, str | None] = {}
+
+    for leaf in leaves:
+        lbl = display_names.get(id(leaf), leaf.machine_name)
+        if " (in " in lbl or lbl not in chains:
+            leaf_anchor[id(leaf)] = None
+            continue
+        anchor = lbl
+        leaf_anchor[id(leaf)] = anchor
+        if anchor not in anchor_thresholds:
+            thresholds: list[tuple[int, str | None]] = []
+            cur, cumul = anchor, 0
+            while cur in chains:
+                cnt, nxt = chains[cur]
+                cumul += cnt
+                thresholds.append((cumul, nxt))
+                cur = nxt
+            anchor_thresholds[anchor] = thresholds
+            anchor_counts[anchor] = 0
+
+    def _sem_name(anchor: str, count: int) -> str:
+        name = anchor
+        for threshold, nxt in anchor_thresholds.get(anchor, []):
+            if count >= threshold and nxt is not None:
+                name = nxt
+            else:
+                break
+        return name
+
+    # per_leaf_sem tracks each leaf's current semantic process name.
+    # Updated as events are consumed and as FDR transitions to named states.
+    per_leaf_sem: dict[int, str] = {
+        id(leaf): display_names.get(id(leaf), leaf.machine_name) for leaf in leaves
     }
 
     def dn(leaf: Behaviour) -> str:
-        return display_names.get(id(leaf), leaf.machine_name)
+        # Chain leaves: use the shared anchor counter so bystander transitions
+        # and headers reflect the chain's current position even before a leaf
+        # has had its first active step.
+        anchor = leaf_anchor.get(id(leaf))
+        if anchor is not None:
+            return _sem_name(anchor, anchor_counts[anchor])
+        # Non-chain leaves: use per_leaf_sem which tracks FDR named-state transitions.
+        return per_leaf_sem.get(id(leaf), display_names.get(id(leaf), leaf.machine_name))
+
+    current_label: dict[int, str] = {
+        id(leaf): _initial_label(leaf, event_map) for leaf in leaves
+    }
 
     for step, sys_eid in enumerate(system_b.trace):
         sys_event = event_map.get(str(sys_eid), str(sys_eid))
@@ -279,29 +330,54 @@ def _narrate_trace(
         elif participants:
             how = " and ".join(dn(leaf) for leaf in participants) + " synchronise"
         else:
-            how = "all bystanders"  # shouldn't happen in practice
+            how = "all bystanders"
 
         lines.append(f"  Step {step + 1}: '{sys_event}'  ({how})")
 
         for leaf in leaves:
             states = leaf.states or []
+            leaf_participated = step < len(leaf.trace) and leaf.trace[step] != _INTERLEAVE_EVENT
+
+            # Advance the sequential-chain counter for ALL active events — including
+            # steps where the leaf participates but its FDR state doesn't change
+            # (<unchanged>).  Skipping those steps causes an off-by-one in the
+            # threshold crossing and makes the label update one event too late.
+            threshold_crossed: str | None = None
+            anchor = leaf_anchor.get(id(leaf))
+            sem_prefix = dn(leaf)           # name BEFORE this step's update
+            if anchor is not None and leaf_participated:
+                sem_before = _sem_name(anchor, anchor_counts[anchor])
+                anchor_counts[anchor] += 1
+                sem_after  = _sem_name(anchor, anchor_counts[anchor])
+                per_leaf_sem[id(leaf)] = sem_after
+                if sem_after != sem_before:
+                    threshold_crossed = sem_after
+
             if step + 1 >= len(states):
                 continue
             after = states[step + 1]
             if after == "<unchanged>":
                 continue
+
             before_label = current_label[id(leaf)]
-            leaf_participated = step < len(leaf.trace) and leaf.trace[step] != _INTERLEAVE_EVENT
-            if after == "<unnamed>":
+
+            if after == "<unnamed>" and threshold_crossed is not None:
+                after_label = repr(threshold_crossed)
+            elif after == "<unnamed>":
                 after_label = _unnamed_label(leaf, step, event_map)
             elif after == "STOP" and sys_event == _TICK and leaf_participated:
                 after_label = "(terminated)"
             else:
                 after_label = repr(after)
-            lines.append(f"           {dn(leaf)}: {before_label} → {after_label}")
+                # For non-chain leaves, track FDR named-state transitions so the
+                # header ("X acts alone") reflects the current process name.
+                if anchor is None and after not in ("STOP", "SKIP"):
+                    per_leaf_sem[id(leaf)] = after
+
+            lines.append(f"           {sem_prefix}: {before_label} → {after_label}")
             current_label[id(leaf)] = after_label
 
-    return lines
+    return lines, per_leaf_sem
 
 
 def _acceptance_map(
@@ -335,17 +411,24 @@ def explain_deadlock(
     leaves       = _collect_leaves(b)
 
     ops: dict[str, list[str]] | None = None
+    chains: dict[str, tuple[int, str]] | None = None
     if csp_source:
         try:
             ops = parallel_operand_labels(csp_source)
+            chains = sequential_tail(csp_source)
         except Exception:
             pass  # parsing failure is non-fatal; fall back to generic labels
 
     display_names = _build_display_names(b, ops)
     paras: list[str] = []
 
+    # final_proc_names is populated by _narrate_trace; dn() uses it so that
+    # "State at deadlock" and "Root cause" sections show semantic process names
+    # (e.g. Yuxjyk, IRGXg) rather than the static tree-level labels (Mrk × 4).
+    final_proc_names: dict[int, str] = {}
+
     def dn(leaf: Behaviour) -> str:
-        return display_names.get(id(leaf), leaf.machine_name)
+        return final_proc_names.get(id(leaf), display_names.get(id(leaf), leaf.machine_name))
 
     # ── 1. Trace narrative ──────────────────────────────────────────────────
     visible = _translate_trace(b.trace, event_map)
@@ -360,7 +443,9 @@ def explain_deadlock(
         paras.append(f"The system reaches a deadlock after the trace: {trace_str}.")
         paras.append("")
         paras.append("How the trace unfolds:")
-        paras.extend(_narrate_trace(b, leaves, display_names, event_map))
+        trace_lines, fp = _narrate_trace(b, leaves, display_names, event_map, chains)
+        final_proc_names.update(fp)
+        paras.extend(trace_lines)
 
     # ── 2. State at deadlock ────────────────────────────────────────────────
     paras.append("")
