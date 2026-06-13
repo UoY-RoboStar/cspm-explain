@@ -1,38 +1,60 @@
 # cspm-explain
 
-Runs [FDR](https://cocotec.io/fdr/) on a CSP file that contains deadlock-freedom
-assertions and uses Claude to explain any counter-examples it finds.
+Runs [FDR](https://cocotec.io/fdr/) on a CSP-M file that contains
+deadlock-freedom assertions and produces plain-English explanations of any
+counter-examples it finds.
 
 ## Requirements
 
 - FDR 4 installed (`refines` on PATH)
 - Python 3.11+
-- `anthropic` Python package (`pip install anthropic`)
-- `ANTHROPIC_API_KEY` environment variable set
+- `lark` Python package (`pip install lark`)
 
 ## Usage
 
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
 python3 main.py path/to/spec.csp
+```
+
+For each failed deadlock assertion the tool prints:
+
+- the trace that leads to the deadlock,
+- how each component behaves at each step,
+- the state of every component at the point of deadlock, and
+- a root-cause analysis explaining why no further progress is possible.
+
+### Optional: Claude-powered explanations
+
+Passing `--use-claude` replaces the built-in explainer with a call to the
+Claude API. This requires the `anthropic` package and an API key:
+
+```bash
+pip install anthropic
+export ANTHROPIC_API_KEY=sk-ant-...
+python3 main.py --use-claude path/to/spec.csp
+```
+
+## Examples
+
+```bash
+python3 main.py examples/lock_ordering.csp
+python3 main.py examples/traced_deadlock.csp
 ```
 
 ## How it works
 
 1. Invokes `refines --format json --divide --compiler-leaf-compression none <file>`.
    - `--format json` — machine-readable output for parsing.
-   - `--divide` — splits counter-examples per component process so each
-     sub-machine's local trace and state are visible.
-   - `--compiler-leaf-compression none` — disables `sbisim`/`dbisim` compression
-     on leaf machines, keeping the counter-example faithful to the source.
-2. Parses the JSON, translates internal event IDs to names via the `event_map`.
-3. For each failed deadlock assertion, builds a structured description of the
-   counter-example (trace, component states, accepted events) and asks Claude
-   to explain in plain English why the deadlock occurs and how it might be fixed.
-
-## Examples
-
-```bash
-python3 main.py examples/immediate_deadlock.csp
-python3 main.py examples/traced_deadlock.csp
-```
+   - `--divide` — decomposes each counter-example into per-component traces
+     so that each sub-process's local behaviour is visible separately.
+   - `--compiler-leaf-compression none` — disables bisimulation minimisation
+     on leaf machines, keeping counter-examples faithful to the source.
+2. Parses the JSON and translates internal event IDs to names via the
+   event map embedded in FDR's output.
+3. Parses the CSP-M source with a lark Earley parser to resolve anonymous
+   inline sub-expressions (e.g. the operands of a parallel composition) back
+   to their original source text.
+4. For each failed deadlock assertion, generates a structured explanation:
+   traces are rendered step-by-step with before/after states per component,
+   and the root cause is classified (lock-ordering cycle, premature
+   termination, synchronisation mismatch, etc.).
