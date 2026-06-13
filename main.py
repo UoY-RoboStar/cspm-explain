@@ -76,7 +76,7 @@ def main() -> None:
                 )
                 continue
             print()
-            print(explain_deadlock(assertion, ce, fdr_output.event_map))
+            print(explain_deadlock(assertion, ce, fdr_output.event_map, csp_source))
 
 
 if __name__ == "__main__":

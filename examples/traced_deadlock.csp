@@ -1,11 +1,11 @@
 -- P and Q synchronise on 'a', then independently terminate via b and c.
 -- After a -> b -> c both reach STOP, deadlocking the composition.
-channel a, b, c
+channel a, b, c, d
 
 P(x) = if x > 0 then b -> c -> P(x-1) else a -> a -> STOP
-Q = a -> c -> STOP
-R = c -> c -> STOP [| {a,c} |] S
-S = a -> c -> STOP
+Q = a -> c -> Q
+R = c -> d -> STOP [| {a,c} |] S
+S = a -> c -> S
 
 System = P(5) [| {a} |] (Q ||| R)
 

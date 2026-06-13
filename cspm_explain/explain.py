@@ -4,10 +4,14 @@ from __future__ import annotations
 import anthropic
 
 from .model import AssertionResult, Behaviour, Counterexample, FdrOutput
+from .cspm_parser import parallel_operand_labels
 
 # FDR uses event ID 0 to mark steps where one branch of a parallel composition
 # performed an event that the current sub-machine did not participate in.
 _INTERLEAVE_EVENT = 0
+
+# FDR uses ✓ (U+2713) for the CSP termination (tick) event.
+_TICK = "✓"
 
 
 def _event_name(eid: int, event_map: dict[str, str]) -> str | None:
@@ -131,14 +135,16 @@ Be precise and concise. Use CSP terminology where helpful.\
 # ---------------------------------------------------------------------------
 
 def _final_state(b: Behaviour) -> str:
-    """Last effective state of a leaf behaviour, accounting for <unchanged> steps.
+    """Last effective state of a leaf behaviour.
 
-    Returns <unnamed> as-is so callers can render it descriptively.
+    Skips <unchanged> placeholders; if every state is <unchanged> (the
+    leaf was dormant throughout) returns '<unnamed>' so callers can fall
+    back to the acceptance-set description.
     """
     for s in reversed(b.states or []):
         if s != "<unchanged>":
             return s
-    return (b.states or ["unknown"])[-1]
+    return "<unnamed>"
 
 
 def _collect_leaves(b: Behaviour) -> list[Behaviour]:
@@ -151,29 +157,47 @@ def _collect_leaves(b: Behaviour) -> list[Behaviour]:
     return leaves
 
 
-def _build_display_names(root: Behaviour) -> dict[int, str]:
+def _build_display_names(
+    root: Behaviour,
+    operand_labels: dict[str, list[str]] | None = None,
+) -> dict[int, str]:
     """Map each leaf's id() to a human-readable display name.
 
     Named leaves use their own machine_name.
-    Anonymous leaves are attributed to the nearest named ancestor:
-    '(sub-process of <ancestor>)'.  If there is no named ancestor, they
-    are labelled '(anonymous)'.
+    Anonymous leaves are labelled using ``operand_labels`` when available:
+    the parser-derived source text for the corresponding parallel operand.
+    Falls back to '(sub-process of <ancestor>)' when the source text is not
+    available, or '(anonymous)' when there is no named ancestor at all.
+
+    ``operand_labels`` maps process_name → [label_left, label_right] and is
+    produced by ``cspm_parser.parallel_operand_labels``.
+
+    The child index is tracked so that the Nth anonymous child of a named
+    process N is matched to operand_labels[N][child_index].
     """
     result: dict[int, str] = {}
+    ops = operand_labels or {}
 
-    def walk(b: Behaviour, named_ancestor: str | None) -> None:
+    def walk(b: Behaviour, named_ancestor: str | None, child_index: int) -> None:
         own = b.machine_name
         is_anon = own == "(anonymous)"
-        # The label this node would receive if it were a leaf
-        leaf_label = f"(sub-process of {named_ancestor})" if is_anon and named_ancestor else own
-        # Ancestor name passed to children; anonymous nodes keep the current ancestor
+        if is_anon and named_ancestor:
+            # Try to find the exact source text for this operand.
+            ancestor_ops = ops.get(named_ancestor, [])
+            if child_index < len(ancestor_ops):
+                leaf_label = f"{ancestor_ops[child_index]} (in {named_ancestor})"
+            else:
+                leaf_label = f"(sub-process of {named_ancestor})"
+        else:
+            leaf_label = own
+        # Anonymous nodes keep the current ancestor; named nodes become the new ancestor.
         child_ancestor = named_ancestor if is_anon else own
         if not b.child_behaviours:
             result[id(b)] = leaf_label
-        for child in b.child_behaviours:
-            walk(child, child_ancestor)
+        for idx, child in enumerate(b.child_behaviours):
+            walk(child, child_ancestor, idx)
 
-    walk(root, named_ancestor=None)
+    walk(root, named_ancestor=None, child_index=0)
     return result
 
 
@@ -201,11 +225,20 @@ def _unnamed_label(leaf: Behaviour, step: int, event_map: dict[str, str]) -> str
     return "(done)"
 
 
+def _terminated_via_tick(leaf: Behaviour, event_map: dict[str, str]) -> bool:
+    """True if this leaf performed the ✓ termination event at any step."""
+    return any(
+        eid != _INTERLEAVE_EVENT and event_map.get(str(eid)) == _TICK
+        for eid in leaf.trace
+    )
+
+
 def _initial_label(leaf: Behaviour, event_map: dict[str, str]) -> str:
     """Display label for a leaf's initial state (states[0])."""
     initial = (leaf.states or ["?"])[0]
-    # <unnamed> initial state — use look-ahead (step=-1 means scan from index 0)
-    if initial == "<unnamed>":
+    # Both <unnamed> and <unchanged> as the initial state mean FDR has no
+    # concrete name for it; use look-ahead (step=-1 scans from index 0).
+    if initial in ("<unnamed>", "<unchanged>"):
         return _unnamed_label(leaf, -1, event_map)
     return repr(initial)
 
@@ -258,7 +291,13 @@ def _narrate_trace(
             if after == "<unchanged>":
                 continue
             before_label = current_label[id(leaf)]
-            after_label = _unnamed_label(leaf, step, event_map) if after == "<unnamed>" else repr(after)
+            leaf_participated = step < len(leaf.trace) and leaf.trace[step] != _INTERLEAVE_EVENT
+            if after == "<unnamed>":
+                after_label = _unnamed_label(leaf, step, event_map)
+            elif after == "STOP" and sys_event == _TICK and leaf_participated:
+                after_label = "(terminated)"
+            else:
+                after_label = repr(after)
             lines.append(f"           {dn(leaf)}: {before_label} → {after_label}")
             current_label[id(leaf)] = after_label
 
@@ -284,11 +323,25 @@ def explain_deadlock(
     assertion: AssertionResult,
     ce: Counterexample,
     event_map: dict[str, str],
+    csp_source: str | None = None,
 ) -> str:
-    """Produce a structured, rule-based explanation of a deadlock counter-example."""
+    """Produce a structured, rule-based explanation of a deadlock counter-example.
+
+    If *csp_source* is provided the CSP-M source is parsed so that anonymous
+    parallel sub-processes can be labelled with their actual source text rather
+    than the generic '(sub-process of X)'.
+    """
     b            = ce.implementation_behaviour
     leaves       = _collect_leaves(b)
-    display_names = _build_display_names(b)
+
+    ops: dict[str, list[str]] | None = None
+    if csp_source:
+        try:
+            ops = parallel_operand_labels(csp_source)
+        except Exception:
+            pass  # parsing failure is non-fatal; fall back to generic labels
+
+    display_names = _build_display_names(b, ops)
     paras: list[str] = []
 
     def dn(leaf: Behaviour) -> str:
@@ -315,7 +368,10 @@ def explain_deadlock(
     for c in leaves:
         accepted = [event_map.get(str(e), str(e)) for e in c.acceptance]
         final = _final_state(c)
-        if final == "<unnamed>":
+        if final == "STOP" and not accepted and _terminated_via_tick(c, event_map):
+            # Process reached STOP by performing ✓ — it terminated normally.
+            paras.append(f"  • {dn(c)}: terminated normally")
+        elif final == "<unnamed>":
             # Process is in an intermediate unnamed state; describe by what it wants to do.
             if accepted:
                 acc_str = ", ".join(f"'{e}'" for e in accepted)
@@ -332,23 +388,49 @@ def explain_deadlock(
     paras.append("")
     paras.append("Root cause:")
 
-    stopped = [c for c in leaves if not c.acceptance]
-    waiting = [c for c in leaves if     c.acceptance]
+    stopped     = [c for c in leaves if not c.acceptance]
+    waiting     = [c for c in leaves if     c.acceptance]
+    terminated  = [c for c in stopped if _terminated_via_tick(c, event_map)]
+    stuck       = [c for c in stopped if c not in terminated]
 
     if not waiting:
-        # ── Case A: every component is in STOP (termination deadlock) ───────
-        names_str = ", ".join(dn(c) for c in stopped)
-        paras.append(
-            f"  Every component ({names_str}) has reached a state with no outgoing "
-            "events (STOP or equivalent). The composition is permanently stuck "
-            "because there is nothing left for any process to do."
-        )
-        paras.append("")
-        paras.append(
-            "  This is a termination deadlock. If the processes are intended to "
-            "terminate, replace STOP with SKIP and use sequential composition (;) "
-            "or redefine components to loop back to their initial state."
-        )
+        # ── Case A: every component is in STOP ───────────────────────────────
+        if terminated and not stuck:
+            if len(leaves) == 1:
+                name = dn(terminated[0])
+                paras.append(
+                    f"  {name} terminates normally (performed ✓), after which no further "
+                    "events are available. FDR's deadlock-free check requires a process "
+                    "to be able to make progress indefinitely; a process that "
+                    "successfully terminates is still flagged. If the process is "
+                    "intended to repeat, redefine it to loop back to its initial state."
+                )
+            else:
+                names_str = ", ".join(dn(c) for c in terminated)
+                paras.append(
+                    f"  Every component ({names_str}) has terminated normally (performed ✓). "
+                    "The parallel composition has no further events to synchronise on, "
+                    "so the system is stuck."
+                )
+                paras.append("")
+                paras.append(
+                    "  If the components are intended to run repeatedly, redefine them "
+                    "to loop back to their initial state, or sequence them further "
+                    "using sequential composition (;)."
+                )
+        else:
+            names_str = ", ".join(dn(c) for c in stopped)
+            paras.append(
+                f"  Every component ({names_str}) has reached a state with no outgoing "
+                "events (STOP or equivalent). The composition is permanently stuck "
+                "because there is nothing left for any process to do."
+            )
+            paras.append("")
+            paras.append(
+                "  This is a termination deadlock. If the processes are intended to "
+                "terminate, replace STOP with SKIP and use sequential composition (;) "
+                "or redefine components to loop back to their initial state."
+            )
 
     elif not stopped:
         # ── Case B: all components are waiting — classify the conflict ───────
@@ -405,20 +487,32 @@ def explain_deadlock(
                 )
 
     else:
-        # ── Case C: some in STOP, others still waiting ───────────────────────
-        stopped_names = ", ".join(dn(c) for c in stopped)
+        # ── Case C: some done/stuck, others still waiting ────────────────────
+        def _stop_desc(c: Behaviour) -> str:
+            return "terminated" if c in terminated else "reached STOP"
+
         waiting_names = ", ".join(dn(c) for c in waiting)
-        paras.append(
-            f"  {stopped_names} {'has' if len(stopped) == 1 else 'have'} reached "
-            "a state with no outgoing events (STOP), while "
-            f"{waiting_names} {'is' if len(waiting) == 1 else 'are'} still "
-            "waiting to perform events:"
-        )
+
+        # Describe each non-waiting component individually.
+        for c in stopped:
+            verb = "has" if True else "have"   # always singular here
+            paras.append(
+                f"  {dn(c)} {_stop_desc(c)}, while "
+                f"{waiting_names} {'is' if len(waiting) == 1 else 'are'} still "
+                "waiting to perform events:"
+            )
+            break   # opening sentence covers all stopped; rest listed below
         for c in waiting:
             events = ", ".join(f"'{event_map.get(str(e),str(e))}'" for e in c.acceptance)
             paras.append(f"    – {dn(c)} wants to perform {events}.")
+        if len(stopped) > 1:
+            extras = ", ".join(
+                f"{dn(c)} ({_stop_desc(c)})" for c in stopped[1:]
+            )
+            paras.append(f"  Also: {extras}.")
 
         paras.append("")
+        stopped_names = ", ".join(dn(c) for c in stopped)
         paras.append(
             f"  The deadlock arises because "
             f"{stopped_names} can no longer offer any events, so "
