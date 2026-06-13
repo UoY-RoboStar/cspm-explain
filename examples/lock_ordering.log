@@ -1,0 +1,36 @@
+Running FDR on lock_ordering.csp …
+Results: 0/1 assertions passed, 1 failed.
+
+
+======================================================================
+ASSERTION FAILED: System :[deadlock free [F]]
+======================================================================
+
+The system reaches a deadlock after the trace: 'q_lock_b' → 'p_lock_a'.
+
+How the trace unfolds:
+  Step 1: 'q_lock_b'  (Q and MutexB synchronise)
+           Q: 'Q' → (ready to perform 'q_lock_a')
+           MutexB: 'MutexB' → (ready to perform 'q_unlock_b')
+  Step 2: 'p_lock_a'  (P and MutexA synchronise)
+           P: 'P' → (ready to perform 'p_lock_b')
+           MutexA: 'MutexA' → (ready to perform 'p_unlock_a')
+
+State at the point of deadlock:
+  • P: ready to perform: 'p_lock_b'
+  • Q: ready to perform: 'q_lock_a'
+  • MutexA: ready to perform: 'p_unlock_a'
+  • MutexB: ready to perform: 'q_unlock_b'
+
+Root cause:
+  All components are waiting for events that cannot occur in the current state of the composition:
+    – P is ready to perform 'p_lock_b'.
+    – Q is ready to perform 'q_lock_a'.
+    – MutexA is ready to perform 'p_unlock_a'.
+    – MutexB is ready to perform 'q_unlock_b'.
+
+  No two components are offering the same event. Because all events in the synchronisation alphabet must be agreed on jointly, and the processes' ready-sets are disjoint, no event can be selected and the system is stuck.
+    – 'p_lock_b' is only offered by P, not by Q (offering 'q_lock_a'); MutexA (offering 'p_unlock_a'); MutexB (offering 'q_unlock_b').
+    – 'q_lock_a' is only offered by Q, not by P (offering 'p_lock_b'); MutexA (offering 'p_unlock_a'); MutexB (offering 'q_unlock_b').
+    – 'p_unlock_a' is only offered by MutexA, not by P (offering 'p_lock_b'); Q (offering 'q_lock_a'); MutexB (offering 'q_unlock_b').
+    – 'q_unlock_b' is only offered by MutexB, not by P (offering 'p_lock_b'); Q (offering 'q_lock_a'); MutexA (offering 'p_unlock_a').

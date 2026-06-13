@@ -1,0 +1,22 @@
+Running FDR on immediate_deadlock.csp …
+Results: 0/1 assertions passed, 1 failed.
+
+
+======================================================================
+ASSERTION FAILED: System :[deadlock free [F]]
+======================================================================
+
+The system deadlocks immediately — no events need to occur before the system becomes stuck.
+
+State at the point of deadlock:
+  • P: in 'P', ready to perform: 'a'
+  • Q: in 'Q', ready to perform: 'b'
+
+Root cause:
+  All components are waiting for events that cannot occur in the current state of the composition:
+    – P is ready to perform 'a'.
+    – Q is ready to perform 'b'.
+
+  No two components are offering the same event. Because all events in the synchronisation alphabet must be agreed on jointly, and the processes' ready-sets are disjoint, no event can be selected and the system is stuck.
+    – 'a' is only offered by P, not by Q (offering 'b').
+    – 'b' is only offered by Q, not by P (offering 'a').

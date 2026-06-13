@@ -1,0 +1,981 @@
+Running FDR on examples/Zxoyx.csp …
+Results: 0/13 assertions passed, 13 failed.
+
+
+======================================================================
+ASSERTION FAILED: OFXrGAIUfL :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'NB' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'KrJknop' → 'czQMDDFUCyYHwC' → '✓'.
+
+How the trace unfolds:
+  Step 1: 'NB'  (OFXrGAIUfL acts alone)
+           OFXrGAIUfL: 'OFXrGAIUfL' → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 2: 'FrXGZPaCHgRjxsMtCaCEFm'  (OFXrGAIUfL acts alone)
+           OFXrGAIUfL: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → 'nFwFQTC'
+  Step 3: 'SxCinvlLfgzCdVYjXlxOXAF'  (OFXrGAIUfL acts alone)
+           OFXrGAIUfL: 'nFwFQTC' → (ready to perform 'KrJknop')
+  Step 4: 'KrJknop'  (OFXrGAIUfL acts alone)
+           OFXrGAIUfL: (ready to perform 'KrJknop') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 5: 'czQMDDFUCyYHwC'  (OFXrGAIUfL acts alone)
+           OFXrGAIUfL: (ready to perform 'czQMDDFUCyYHwC') → 'SKIP'
+  Step 6: '✓'  (OFXrGAIUfL acts alone)
+           OFXrGAIUfL: 'SKIP' → (terminated)
+
+State at the point of deadlock:
+  • OFXrGAIUfL: terminated normally
+
+Root cause:
+  OFXrGAIUfL terminates normally (performed ✓), after which no further events are available. FDR's deadlock-free check requires a process to be able to make progress indefinitely; a process that successfully terminates is still flagged. If the process is intended to repeat, redefine it to loop back to its initial state.
+
+======================================================================
+ASSERTION FAILED: syCpF :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'mrgVjZJVNqWtqXE' → 'KrJknop'.
+
+How the trace unfolds:
+  Step 1: 'mrgVjZJVNqWtqXE'  ((mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF) acts alone)
+           (mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF): (ready to perform 'mrgVjZJVNqWtqXE') → (ready to perform 'KrJknop')
+  Step 2: 'KrJknop'  ((mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF) acts alone)
+           (mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF): (ready to perform 'KrJknop') → 'OFXrGAIUfL'
+
+State at the point of deadlock:
+  • (mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF): in 'OFXrGAIUfL', ready to perform: 'NB'
+  • (mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF): ready to perform: 'czQMDDFUCyYHwC'
+  • (sub-process of WlQRDX): no events available
+
+Root cause:
+  (sub-process of WlQRDX) reached STOP, while (mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF), (mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF) are still waiting to perform events:
+    – (mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF) wants to perform 'NB'.
+    – (mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF) wants to perform 'czQMDDFUCyYHwC'.
+
+  The deadlock arises because (sub-process of WlQRDX) can no longer offer any events, so the events that (mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF), (mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF) need from it as synchronisation partners will never be available.
+
+======================================================================
+ASSERTION FAILED: WlQRDX :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'czQMDDFUCyYHwC' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'zlFJmQCqOTIxLaawCMcxJcU' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'mrgVjZJVNqWtqXE' → 'zlFJmQCqOTIxLaawCMcxJcU' → 'zlFJmQCqOTIxLaawCMcxJcU' → '✓'.
+
+How the trace unfolds:
+  Step 1: 'czQMDDFUCyYHwC'  ((sub-process of WlQRDX) acts alone)
+           (sub-process of WlQRDX): (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 2: 'SxCinvlLfgzCdVYjXlxOXAF'  ((sub-process of WlQRDX) acts alone)
+           (sub-process of WlQRDX): (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (ready to perform 'NB')
+  Step 3: 'zlFJmQCqOTIxLaawCMcxJcU'  ((sub-process of WlQRDX) acts alone)
+           (sub-process of WlQRDX): (ready to perform 'NB') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 4: 'FrXGZPaCHgRjxsMtCaCEFm'  ((sub-process of WlQRDX) acts alone)
+           (sub-process of WlQRDX): (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → 'zudxLRaUxwG'
+  Step 5: 'mrgVjZJVNqWtqXE'  ((sub-process of WlQRDX) acts alone)
+           (sub-process of WlQRDX): 'zudxLRaUxwG' → (ready to perform 'zlFJmQCqOTIxLaawCMcxJcU')
+  Step 6: 'zlFJmQCqOTIxLaawCMcxJcU'  ((sub-process of WlQRDX) acts alone)
+           (sub-process of WlQRDX): (ready to perform 'zlFJmQCqOTIxLaawCMcxJcU') → 'jznAJvlT'
+  Step 7: 'zlFJmQCqOTIxLaawCMcxJcU'  ((sub-process of WlQRDX) acts alone)
+           (sub-process of WlQRDX): 'jznAJvlT' → 'SKIP'
+  Step 8: '✓'  ((sub-process of WlQRDX) acts alone)
+           (sub-process of WlQRDX): 'SKIP' → (terminated)
+
+State at the point of deadlock:
+  • (sub-process of WlQRDX): terminated normally
+
+Root cause:
+  (sub-process of WlQRDX) terminates normally (performed ✓), after which no further events are available. FDR's deadlock-free check requires a process to be able to make progress indefinitely; a process that successfully terminates is still flagged. If the process is intended to repeat, redefine it to loop back to its initial state.
+
+======================================================================
+ASSERTION FAILED: zudxLRaUxwG :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'KrJknop' → 'zlFJmQCqOTIxLaawCMcxJcU' → 'NB' → '✓'.
+
+How the trace unfolds:
+  Step 1: 'KrJknop'  (zudxLRaUxwG acts alone)
+           zudxLRaUxwG: 'zudxLRaUxwG' → (ready to perform 'zlFJmQCqOTIxLaawCMcxJcU')
+  Step 2: 'zlFJmQCqOTIxLaawCMcxJcU'  (zudxLRaUxwG acts alone)
+           zudxLRaUxwG: (ready to perform 'zlFJmQCqOTIxLaawCMcxJcU') → 'jznAJvlT'
+  Step 3: 'NB'  (zudxLRaUxwG acts alone)
+           zudxLRaUxwG: 'jznAJvlT' → 'SKIP'
+  Step 4: '✓'  (zudxLRaUxwG acts alone)
+           zudxLRaUxwG: 'SKIP' → (terminated)
+
+State at the point of deadlock:
+  • zudxLRaUxwG: terminated normally
+
+Root cause:
+  zudxLRaUxwG terminates normally (performed ✓), after which no further events are available. FDR's deadlock-free check requires a process to be able to make progress indefinitely; a process that successfully terminates is still flagged. If the process is intended to repeat, redefine it to loop back to its initial state.
+
+======================================================================
+ASSERTION FAILED: jznAJvlT :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'NB' → '✓'.
+
+How the trace unfolds:
+  Step 1: 'NB'  (jznAJvlT acts alone)
+           jznAJvlT: 'jznAJvlT' → 'SKIP'
+  Step 2: '✓'  (jznAJvlT acts alone)
+           jznAJvlT: 'SKIP' → (terminated)
+
+State at the point of deadlock:
+  • jznAJvlT: terminated normally
+
+Root cause:
+  jznAJvlT terminates normally (performed ✓), after which no further events are available. FDR's deadlock-free check requires a process to be able to make progress indefinitely; a process that successfully terminates is still flagged. If the process is intended to repeat, redefine it to loop back to its initial state.
+
+======================================================================
+ASSERTION FAILED: fOPDsgQJmSZ :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'EUybzNgv' → 'ZH' → 'wbxMsOHAdFiruEJBUUEL' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'FcBgUwi.140' → 'lLPrcWUdx' → 'KrJknop' → 'cNfw' → 'onoCl' → 'czQMDDFUCyYHwC' → 'tW' → 'HZLSvfprPMuEk' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'lLPrcWUdx' → 'FcBgUwi.140' → 'wyEkoyKlaHcdRIFFj.true'.
+
+How the trace unfolds:
+  Step 1: 'EUybzNgv'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'EUybzNgv') → (ready to perform 'ZH')
+  Step 2: 'ZH'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'ZH') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 3: 'wbxMsOHAdFiruEJBUUEL'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 4: 'FrXGZPaCHgRjxsMtCaCEFm'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'FcBgUwi.140')
+  Step 5: 'FcBgUwi.140'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'FcBgUwi.140') → (ready to perform 'lLPrcWUdx')
+  Step 6: 'lLPrcWUdx'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'lLPrcWUdx') → (ready to perform 'KrJknop')
+  Step 7: 'KrJknop'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'KrJknop') → (ready to perform 'cNfw')
+  Step 8: 'cNfw'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'cNfw') → (ready to perform 'onoCl')
+  Step 9: 'onoCl'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'onoCl') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 10: 'czQMDDFUCyYHwC'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'tW')
+  Step 11: 'tW'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'tW') → (ready to perform 'HZLSvfprPMuEk')
+  Step 12: 'HZLSvfprPMuEk'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 13: 'SxCinvlLfgzCdVYjXlxOXAF'  ((EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) acts alone)
+           (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → 'SKIP'
+  Step 14: 'lLPrcWUdx'  ((lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ) acts alone)
+           (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ): (ready to perform 'lLPrcWUdx') → (ready to perform 'FcBgUwi.140')
+  Step 15: 'FcBgUwi.140'  ((lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ) acts alone)
+           (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ): (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 16: 'wyEkoyKlaHcdRIFFj.true'  ((lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ) acts alone)
+           (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ): (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+
+State at the point of deadlock:
+  • (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ): no events available
+  • (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ): ready to perform: 'VjVyxmAqUDoRgNErtZqX'
+  • (sub-process of WlQRDX): no events available
+  • (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ): in 'SKIP', ready to perform: '✓'
+
+Root cause:
+  (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ) reached STOP, while (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ), (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) are still waiting to perform events:
+    – (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ) wants to perform 'VjVyxmAqUDoRgNErtZqX'.
+    – (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) wants to perform '✓'.
+  Also: (sub-process of WlQRDX) (reached STOP).
+
+  The deadlock arises because (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ), (sub-process of WlQRDX) can no longer offer any events, so the events that (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ), (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) need from them as synchronisation partners will never be available.
+
+======================================================================
+ASSERTION FAILED: Mrk :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'MXBXWtsCiwQzQfnghn' → 'ZH' → 'VjVyxmAqUDoRgNErtZqX' → 'cNfw' → 'NB' → 'UUKf' → 'EUybzNgv' → 'FcBgUwi.140' → 'czQMDDFUCyYHwC' → 'tW' → 'xBtbNFaeMVWGlmZerO' → 'SbuPawVdlKXag' → 'KGJKhThCzWtcPx' → 'jtidMrzxqwWOKU' → 'wyEkoyKlaHcdRIFFj.true' → 'HZLSvfprPMuEk' → 'lLPrcWUdx' → 'XTrHkbTtMRvjN' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'KrJknop' → 'wbxMsOHAdFiruEJBUUEL' → 'SgbLkiTvSAWPtzKVbAVjcYCY' → 'FcBgUwi.140' → 'VjVyxmAqUDoRgNErtZqX' → 'MXBXWtsCiwQzQfnghn' → 'NB' → 'IhjwGYOXMIcHgdhHOLlJLJ' → 'wyEkoyKlaHcdRIFFj.true' → 'czQMDDFUCyYHwC' → 'KrJknop' → 'jtidMrzxqwWOKU' → 'HZLSvfprPMuEk' → 'xBtbNFaeMVWGlmZerO' → 'onoCl' → 'wbxMsOHAdFiruEJBUUEL' → 'ZH' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'sNvFiKtvjYizLtT' → 'KGJKhThCzWtcPx' → 'jEuWZRpgnAAlmzxM.'H'' → 'SgbLkiTvSAWPtzKVbAVjcYCY' → 'EUybzNgv' → 'SbuPawVdlKXag' → 'cNfw' → 'cNfw' → 'onoCl' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'SgbLkiTvSAWPtzKVbAVjcYCY' → 'VjVyxmAqUDoRgNErtZqX' → 'MXBXWtsCiwQzQfnghn' → 'KGJKhThCzWtcPx' → 'wyEkoyKlaHcdRIFFj.true' → 'KrJknop' → 'IhjwGYOXMIcHgdhHOLlJLJ' → 'sNvFiKtvjYizLtT' → 'HZLSvfprPMuEk' → 'SbuPawVdlKXag' → 'ZH' → 'jEuWZRpgnAAlmzxM.'H'' → 'lLPrcWUdx' → 'NB' → 'czQMDDFUCyYHwC' → 'FcBgUwi.140' → 'tW' → 'EUybzNgv' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'xBtbNFaeMVWGlmZerO' → 'jtidMrzxqwWOKU' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'FcBgUwi.140' → 'cNfw' → 'SbuPawVdlKXag' → 'XTrHkbTtMRvjN' → 'τ' → 'IhjwGYOXMIcHgdhHOLlJLJ' → 'jEuWZRpgnAAlmzxM.'H'' → 'HZLSvfprPMuEk' → 'lLPrcWUdx' → 'τ' → 'wbxMsOHAdFiruEJBUUEL' → 'KrJknop' → 'VjVyxmAqUDoRgNErtZqX' → 'FcBgUwi.140' → 'czQMDDFUCyYHwC' → 'VjVyxmAqUDoRgNErtZqX' → 'lLPrcWUdx' → 'SgbLkiTvSAWPtzKVbAVjcYCY' → 'cNfw' → 'sNvFiKtvjYizLtT' → 'wbxMsOHAdFiruEJBUUEL' → 'EUybzNgv' → 'jtidMrzxqwWOKU' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'KrJknop' → 'EUybzNgv' → 'τ' → 'wbxMsOHAdFiruEJBUUEL' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'FcBgUwi.140' → 'lLPrcWUdx' → 'KrJknop' → 'cNfw' → 'τ' → 'lLPrcWUdx' → 'czQMDDFUCyYHwC' → 'FcBgUwi.140' → 'wyEkoyKlaHcdRIFFj.true' → 'tW' → 'HZLSvfprPMuEk' → 'SxCinvlLfgzCdVYjXlxOXAF'.
+
+How the trace unfolds:
+  Step 1: 'MXBXWtsCiwQzQfnghn'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'MXBXWtsCiwQzQfnghn') → (ready to perform 'ZH')
+  Step 2: 'ZH'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'ZH') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 3: 'VjVyxmAqUDoRgNErtZqX'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'cNfw')
+  Step 4: 'cNfw'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'cNfw') → (ready to perform 'NB')
+  Step 5: 'NB'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'NB') → (ready to perform 'UUKf')
+  Step 6: 'UUKf'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'UUKf') → (ready to perform 'EUybzNgv')
+  Step 7: 'EUybzNgv'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'EUybzNgv') → (ready to perform 'FcBgUwi.140')
+  Step 8: 'FcBgUwi.140'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'FcBgUwi.140') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 9: 'czQMDDFUCyYHwC'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'tW')
+  Step 10: 'tW'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'tW') → (ready to perform 'xBtbNFaeMVWGlmZerO')
+  Step 11: 'xBtbNFaeMVWGlmZerO'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'xBtbNFaeMVWGlmZerO') → (ready to perform 'SbuPawVdlKXag')
+  Step 12: 'SbuPawVdlKXag'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'SbuPawVdlKXag') → (ready to perform 'KGJKhThCzWtcPx')
+  Step 13: 'KGJKhThCzWtcPx'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'KGJKhThCzWtcPx') → (ready to perform 'jtidMrzxqwWOKU')
+  Step 14: 'jtidMrzxqwWOKU'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 15: 'wyEkoyKlaHcdRIFFj.true'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'HZLSvfprPMuEk')
+  Step 16: 'HZLSvfprPMuEk'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'lLPrcWUdx')
+  Step 17: 'lLPrcWUdx'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'lLPrcWUdx') → (ready to perform 'XTrHkbTtMRvjN')
+  Step 18: 'XTrHkbTtMRvjN'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'XTrHkbTtMRvjN') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 19: 'FrXGZPaCHgRjxsMtCaCEFm'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'KrJknop')
+  Step 20: 'KrJknop'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'KrJknop') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 21: 'wbxMsOHAdFiruEJBUUEL'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY')
+  Step 22: 'SgbLkiTvSAWPtzKVbAVjcYCY'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY') → (ready to perform 'FcBgUwi.140')
+  Step 23: 'FcBgUwi.140'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'FcBgUwi.140') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 24: 'VjVyxmAqUDoRgNErtZqX'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'MXBXWtsCiwQzQfnghn')
+  Step 25: 'MXBXWtsCiwQzQfnghn'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'MXBXWtsCiwQzQfnghn') → (ready to perform 'NB')
+  Step 26: 'NB'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'NB') → (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ')
+  Step 27: 'IhjwGYOXMIcHgdhHOLlJLJ'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 28: 'wyEkoyKlaHcdRIFFj.true'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 29: 'czQMDDFUCyYHwC'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'KrJknop')
+  Step 30: 'KrJknop'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'KrJknop') → (ready to perform 'jtidMrzxqwWOKU')
+  Step 31: 'jtidMrzxqwWOKU'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'jtidMrzxqwWOKU') → (ready to perform 'HZLSvfprPMuEk')
+  Step 32: 'HZLSvfprPMuEk'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'xBtbNFaeMVWGlmZerO')
+  Step 33: 'xBtbNFaeMVWGlmZerO'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'xBtbNFaeMVWGlmZerO') → (ready to perform 'onoCl')
+  Step 34: 'onoCl'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'onoCl') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 35: 'wbxMsOHAdFiruEJBUUEL'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'ZH')
+  Step 36: 'ZH'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'ZH') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 37: 'FrXGZPaCHgRjxsMtCaCEFm'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 38: 'SxCinvlLfgzCdVYjXlxOXAF'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (ready to perform 'sNvFiKtvjYizLtT')
+  Step 39: 'sNvFiKtvjYizLtT'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'sNvFiKtvjYizLtT') → (ready to perform 'KGJKhThCzWtcPx')
+  Step 40: 'KGJKhThCzWtcPx'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'KGJKhThCzWtcPx') → (ready to perform 'jEuWZRpgnAAlmzxM.'H'')
+  Step 41: 'jEuWZRpgnAAlmzxM.'H''  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'jEuWZRpgnAAlmzxM.'H'') → (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY')
+  Step 42: 'SgbLkiTvSAWPtzKVbAVjcYCY'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY') → (ready to perform 'EUybzNgv')
+  Step 43: 'EUybzNgv'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'EUybzNgv') → (ready to perform 'SbuPawVdlKXag')
+  Step 44: 'SbuPawVdlKXag'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'SbuPawVdlKXag') → (ready to perform 'cNfw')
+  Step 45: 'cNfw'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'cNfw') → (ready to perform 'cNfw')
+  Step 46: 'cNfw'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'cNfw') → (ready to perform 'onoCl')
+  Step 47: 'onoCl'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'onoCl') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 48: 'SxCinvlLfgzCdVYjXlxOXAF'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY')
+  Step 49: 'SgbLkiTvSAWPtzKVbAVjcYCY'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 50: 'VjVyxmAqUDoRgNErtZqX'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'MXBXWtsCiwQzQfnghn')
+  Step 51: 'MXBXWtsCiwQzQfnghn'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'MXBXWtsCiwQzQfnghn') → (ready to perform 'KGJKhThCzWtcPx')
+  Step 52: 'KGJKhThCzWtcPx'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 53: 'wyEkoyKlaHcdRIFFj.true'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'KrJknop')
+  Step 54: 'KrJknop'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'KrJknop') → (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ')
+  Step 55: 'IhjwGYOXMIcHgdhHOLlJLJ'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ') → (ready to perform 'sNvFiKtvjYizLtT')
+  Step 56: 'sNvFiKtvjYizLtT'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'sNvFiKtvjYizLtT') → (ready to perform 'HZLSvfprPMuEk')
+  Step 57: 'HZLSvfprPMuEk'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'SbuPawVdlKXag')
+  Step 58: 'SbuPawVdlKXag'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'SbuPawVdlKXag') → (ready to perform 'ZH')
+  Step 59: 'ZH'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'ZH') → (ready to perform 'jEuWZRpgnAAlmzxM.'H'')
+  Step 60: 'jEuWZRpgnAAlmzxM.'H''  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'jEuWZRpgnAAlmzxM.'H'') → (ready to perform 'lLPrcWUdx')
+  Step 61: 'lLPrcWUdx'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'lLPrcWUdx') → (ready to perform 'NB')
+  Step 62: 'NB'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'NB') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 63: 'czQMDDFUCyYHwC'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'FcBgUwi.140')
+  Step 64: 'FcBgUwi.140'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'FcBgUwi.140') → (ready to perform 'tW')
+  Step 65: 'tW'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'tW') → (ready to perform 'EUybzNgv')
+  Step 66: 'EUybzNgv'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'EUybzNgv') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 67: 'FrXGZPaCHgRjxsMtCaCEFm'  ((sub-process of Mrk) acts alone)
+           (sub-process of Mrk): (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'xBtbNFaeMVWGlmZerO')
+  Step 68: 'xBtbNFaeMVWGlmZerO'  ((sub-process of Mrk) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'jtidMrzxqwWOKU') → (ready to perform 'jtidMrzxqwWOKU')
+  Step 69: 'jtidMrzxqwWOKU'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'jtidMrzxqwWOKU') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 70: 'FrXGZPaCHgRjxsMtCaCEFm'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 71: 'SxCinvlLfgzCdVYjXlxOXAF'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (ready to perform 'FcBgUwi.140')
+  Step 72: 'FcBgUwi.140'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FcBgUwi.140') → (ready to perform 'cNfw')
+  Step 73: 'cNfw'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'cNfw') → (ready to perform 'SbuPawVdlKXag')
+  Step 74: 'SbuPawVdlKXag'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'SbuPawVdlKXag') → (ready to perform 'XTrHkbTtMRvjN')
+  Step 75: 'XTrHkbTtMRvjN'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'XTrHkbTtMRvjN') → (ready to perform 'onoCl')
+  Step 76: 'τ'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'onoCl') → (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ')
+  Step 77: 'IhjwGYOXMIcHgdhHOLlJLJ'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ') → (ready to perform 'jEuWZRpgnAAlmzxM.'H'')
+  Step 78: 'jEuWZRpgnAAlmzxM.'H''  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'jEuWZRpgnAAlmzxM.'H'') → (ready to perform 'HZLSvfprPMuEk')
+  Step 79: 'HZLSvfprPMuEk'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'lLPrcWUdx')
+  Step 80: 'lLPrcWUdx'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'lLPrcWUdx') → (ready to perform 'ZH')
+  Step 81: 'τ'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'ZH') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 82: 'wbxMsOHAdFiruEJBUUEL'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'KrJknop')
+  Step 83: 'KrJknop'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'KrJknop') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 84: 'VjVyxmAqUDoRgNErtZqX'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'VjVyxmAqUDoRgNErtZqX') → 'Zxoyx'
+  Step 85: 'FcBgUwi.140'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): 'Zxoyx' → (ready to perform 'czQMDDFUCyYHwC')
+  Step 86: 'czQMDDFUCyYHwC'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 87: 'VjVyxmAqUDoRgNErtZqX'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'lLPrcWUdx')
+  Step 88: 'lLPrcWUdx'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'lLPrcWUdx') → (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY')
+  Step 89: 'SgbLkiTvSAWPtzKVbAVjcYCY'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY') → (ready to perform 'cNfw')
+  Step 90: 'cNfw'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'cNfw') → (ready to perform 'sNvFiKtvjYizLtT')
+  Step 91: 'sNvFiKtvjYizLtT'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'sNvFiKtvjYizLtT') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 92: 'wbxMsOHAdFiruEJBUUEL'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'EUybzNgv')
+  Step 93: 'EUybzNgv'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'EUybzNgv') → (ready to perform 'jtidMrzxqwWOKU')
+  Step 94: 'jtidMrzxqwWOKU'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'jtidMrzxqwWOKU') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 95: 'FrXGZPaCHgRjxsMtCaCEFm'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'KrJknop')
+  Step 96: 'KrJknop'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'KrJknop') → 'fOPDsgQJmSZ'
+  Step 97: 'EUybzNgv'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): 'fOPDsgQJmSZ' → (ready to perform 'ZH')
+  Step 98: 'τ'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'ZH') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 99: 'wbxMsOHAdFiruEJBUUEL'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 100: 'FrXGZPaCHgRjxsMtCaCEFm'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'FcBgUwi.140')
+  Step 101: 'FcBgUwi.140'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FcBgUwi.140') → (ready to perform 'lLPrcWUdx')
+  Step 102: 'lLPrcWUdx'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'lLPrcWUdx') → (ready to perform 'KrJknop')
+  Step 103: 'KrJknop'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'KrJknop') → (ready to perform 'cNfw')
+  Step 104: 'cNfw'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'cNfw') → (ready to perform 'onoCl')
+  Step 105: 'τ'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'onoCl') → (ready to perform 'lLPrcWUdx')
+  Step 106: 'lLPrcWUdx'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'lLPrcWUdx') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 107: 'czQMDDFUCyYHwC'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'FcBgUwi.140')
+  Step 108: 'FcBgUwi.140'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FcBgUwi.140') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 109: 'wyEkoyKlaHcdRIFFj.true'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'tW')
+  Step 110: 'tW'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'tW') → (ready to perform 'HZLSvfprPMuEk')
+  Step 111: 'HZLSvfprPMuEk'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 112: 'SxCinvlLfgzCdVYjXlxOXAF'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (done)
+
+State at the point of deadlock:
+  • (sub-process of Mrk): no events available
+  • (sub-process of Mrk): no events available
+  • (sub-process of Mrk): no events available
+  • (sub-process of Mrk): no events available
+  • (sub-process of dFxaTm): no events available
+
+Root cause:
+  Every component ((sub-process of Mrk), (sub-process of Mrk), (sub-process of Mrk), (sub-process of Mrk), (sub-process of dFxaTm)) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock. If the processes are intended to terminate, replace STOP with SKIP and use sequential composition (;) or redefine components to loop back to their initial state.
+
+======================================================================
+ASSERTION FAILED: Yuxjyk :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'FcBgUwi.140' → 'VjVyxmAqUDoRgNErtZqX' → 'MXBXWtsCiwQzQfnghn' → 'NB' → 'IhjwGYOXMIcHgdhHOLlJLJ' → 'wyEkoyKlaHcdRIFFj.true' → 'czQMDDFUCyYHwC' → 'KrJknop' → 'jtidMrzxqwWOKU' → 'HZLSvfprPMuEk' → 'xBtbNFaeMVWGlmZerO' → 'onoCl' → 'wbxMsOHAdFiruEJBUUEL' → 'ZH' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'sNvFiKtvjYizLtT' → 'KGJKhThCzWtcPx' → 'jEuWZRpgnAAlmzxM.'H'' → 'SgbLkiTvSAWPtzKVbAVjcYCY' → 'EUybzNgv' → 'SbuPawVdlKXag' → 'cNfw' → 'cNfw' → 'onoCl' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'SgbLkiTvSAWPtzKVbAVjcYCY' → 'VjVyxmAqUDoRgNErtZqX' → 'MXBXWtsCiwQzQfnghn' → 'KGJKhThCzWtcPx' → 'wyEkoyKlaHcdRIFFj.true' → 'KrJknop' → 'IhjwGYOXMIcHgdhHOLlJLJ' → 'sNvFiKtvjYizLtT' → 'HZLSvfprPMuEk' → 'SbuPawVdlKXag' → 'ZH' → 'jEuWZRpgnAAlmzxM.'H'' → 'lLPrcWUdx' → 'NB' → 'czQMDDFUCyYHwC' → 'FcBgUwi.140' → 'tW' → 'EUybzNgv' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'xBtbNFaeMVWGlmZerO' → 'jtidMrzxqwWOKU' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'FcBgUwi.140' → 'cNfw' → 'SbuPawVdlKXag' → 'XTrHkbTtMRvjN' → 'IhjwGYOXMIcHgdhHOLlJLJ' → 'jEuWZRpgnAAlmzxM.'H'' → 'HZLSvfprPMuEk' → 'lLPrcWUdx' → 'wbxMsOHAdFiruEJBUUEL' → 'KrJknop' → 'VjVyxmAqUDoRgNErtZqX' → 'FcBgUwi.140' → 'czQMDDFUCyYHwC' → 'VjVyxmAqUDoRgNErtZqX' → 'lLPrcWUdx' → 'SgbLkiTvSAWPtzKVbAVjcYCY' → 'cNfw' → 'sNvFiKtvjYizLtT' → 'wbxMsOHAdFiruEJBUUEL' → 'EUybzNgv' → 'jtidMrzxqwWOKU' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'KrJknop' → 'lLPrcWUdx' → 'EUybzNgv' → 'FcBgUwi.140' → 'wyEkoyKlaHcdRIFFj.true' → 'wbxMsOHAdFiruEJBUUEL' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'FcBgUwi.140' → 'lLPrcWUdx' → 'KrJknop' → 'cNfw' → 'czQMDDFUCyYHwC' → 'tW' → 'HZLSvfprPMuEk' → 'SxCinvlLfgzCdVYjXlxOXAF'.
+
+How the trace unfolds:
+  Step 1: 'FcBgUwi.140'  (Yuxjyk acts alone)
+           Yuxjyk: 'Yuxjyk' → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 2: 'VjVyxmAqUDoRgNErtZqX'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'MXBXWtsCiwQzQfnghn')
+  Step 3: 'MXBXWtsCiwQzQfnghn'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'MXBXWtsCiwQzQfnghn') → (ready to perform 'NB')
+  Step 4: 'NB'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'NB') → (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ')
+  Step 5: 'IhjwGYOXMIcHgdhHOLlJLJ'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 6: 'wyEkoyKlaHcdRIFFj.true'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 7: 'czQMDDFUCyYHwC'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'KrJknop')
+  Step 8: 'KrJknop'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'KrJknop') → (ready to perform 'jtidMrzxqwWOKU')
+  Step 9: 'jtidMrzxqwWOKU'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'jtidMrzxqwWOKU') → (ready to perform 'HZLSvfprPMuEk')
+  Step 10: 'HZLSvfprPMuEk'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'xBtbNFaeMVWGlmZerO')
+  Step 11: 'xBtbNFaeMVWGlmZerO'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'xBtbNFaeMVWGlmZerO') → (ready to perform 'onoCl')
+  Step 12: 'onoCl'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'onoCl') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 13: 'wbxMsOHAdFiruEJBUUEL'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'ZH')
+  Step 14: 'ZH'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'ZH') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 15: 'FrXGZPaCHgRjxsMtCaCEFm'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 16: 'SxCinvlLfgzCdVYjXlxOXAF'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (ready to perform 'sNvFiKtvjYizLtT')
+  Step 17: 'sNvFiKtvjYizLtT'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'sNvFiKtvjYizLtT') → (ready to perform 'KGJKhThCzWtcPx')
+  Step 18: 'KGJKhThCzWtcPx'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'KGJKhThCzWtcPx') → (ready to perform 'jEuWZRpgnAAlmzxM.'H'')
+  Step 19: 'jEuWZRpgnAAlmzxM.'H''  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'jEuWZRpgnAAlmzxM.'H'') → (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY')
+  Step 20: 'SgbLkiTvSAWPtzKVbAVjcYCY'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY') → (ready to perform 'EUybzNgv')
+  Step 21: 'EUybzNgv'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'EUybzNgv') → (ready to perform 'SbuPawVdlKXag')
+  Step 22: 'SbuPawVdlKXag'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'SbuPawVdlKXag') → (ready to perform 'cNfw')
+  Step 23: 'cNfw'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'cNfw') → 'IRGXg'
+  Step 24: 'cNfw'  (Yuxjyk acts alone)
+           Yuxjyk: 'IRGXg' → (ready to perform 'onoCl')
+  Step 25: 'onoCl'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'onoCl') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 26: 'SxCinvlLfgzCdVYjXlxOXAF'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY')
+  Step 27: 'SgbLkiTvSAWPtzKVbAVjcYCY'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 28: 'VjVyxmAqUDoRgNErtZqX'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'MXBXWtsCiwQzQfnghn')
+  Step 29: 'MXBXWtsCiwQzQfnghn'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'MXBXWtsCiwQzQfnghn') → (ready to perform 'KGJKhThCzWtcPx')
+  Step 30: 'KGJKhThCzWtcPx'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'KGJKhThCzWtcPx') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 31: 'wyEkoyKlaHcdRIFFj.true'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'KrJknop')
+  Step 32: 'KrJknop'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'KrJknop') → (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ')
+  Step 33: 'IhjwGYOXMIcHgdhHOLlJLJ'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ') → (ready to perform 'sNvFiKtvjYizLtT')
+  Step 34: 'sNvFiKtvjYizLtT'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'sNvFiKtvjYizLtT') → (ready to perform 'HZLSvfprPMuEk')
+  Step 35: 'HZLSvfprPMuEk'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'SbuPawVdlKXag')
+  Step 36: 'SbuPawVdlKXag'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'SbuPawVdlKXag') → (ready to perform 'ZH')
+  Step 37: 'ZH'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'ZH') → (ready to perform 'jEuWZRpgnAAlmzxM.'H'')
+  Step 38: 'jEuWZRpgnAAlmzxM.'H''  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'jEuWZRpgnAAlmzxM.'H'') → (ready to perform 'lLPrcWUdx')
+  Step 39: 'lLPrcWUdx'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'lLPrcWUdx') → (ready to perform 'NB')
+  Step 40: 'NB'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'NB') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 41: 'czQMDDFUCyYHwC'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'FcBgUwi.140')
+  Step 42: 'FcBgUwi.140'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'FcBgUwi.140') → (ready to perform 'tW')
+  Step 43: 'tW'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'tW') → (ready to perform 'EUybzNgv')
+  Step 44: 'EUybzNgv'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'EUybzNgv') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 45: 'FrXGZPaCHgRjxsMtCaCEFm'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'xBtbNFaeMVWGlmZerO')
+  Step 46: 'xBtbNFaeMVWGlmZerO'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'xBtbNFaeMVWGlmZerO') → 'dFxaTm'
+  Step 47: 'jtidMrzxqwWOKU'  (Yuxjyk acts alone)
+           Yuxjyk: 'dFxaTm' → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 48: 'FrXGZPaCHgRjxsMtCaCEFm'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 49: 'SxCinvlLfgzCdVYjXlxOXAF'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (ready to perform 'FcBgUwi.140')
+  Step 50: 'FcBgUwi.140'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'FcBgUwi.140') → (ready to perform 'cNfw')
+  Step 51: 'cNfw'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'cNfw') → (ready to perform 'SbuPawVdlKXag')
+  Step 52: 'SbuPawVdlKXag'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'SbuPawVdlKXag') → (ready to perform 'XTrHkbTtMRvjN')
+  Step 53: 'XTrHkbTtMRvjN'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'XTrHkbTtMRvjN') → (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ')
+  Step 54: 'IhjwGYOXMIcHgdhHOLlJLJ'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ') → (ready to perform 'jEuWZRpgnAAlmzxM.'H'')
+  Step 55: 'jEuWZRpgnAAlmzxM.'H''  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'jEuWZRpgnAAlmzxM.'H'') → (ready to perform 'HZLSvfprPMuEk')
+  Step 56: 'HZLSvfprPMuEk'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'lLPrcWUdx')
+  Step 57: 'lLPrcWUdx'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'lLPrcWUdx') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 58: 'wbxMsOHAdFiruEJBUUEL'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'KrJknop')
+  Step 59: 'KrJknop'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'KrJknop') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 60: 'VjVyxmAqUDoRgNErtZqX'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'FcBgUwi.140')
+  Step 61: 'FcBgUwi.140'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'FcBgUwi.140') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 62: 'czQMDDFUCyYHwC'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 63: 'VjVyxmAqUDoRgNErtZqX'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'lLPrcWUdx')
+  Step 64: 'lLPrcWUdx'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'lLPrcWUdx') → (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY')
+  Step 65: 'SgbLkiTvSAWPtzKVbAVjcYCY'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY') → (ready to perform 'cNfw')
+  Step 66: 'cNfw'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'cNfw') → (ready to perform 'sNvFiKtvjYizLtT')
+  Step 67: 'sNvFiKtvjYizLtT'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'sNvFiKtvjYizLtT') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 68: 'wbxMsOHAdFiruEJBUUEL'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'EUybzNgv')
+  Step 69: 'EUybzNgv'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'EUybzNgv') → (ready to perform 'jtidMrzxqwWOKU')
+  Step 70: 'jtidMrzxqwWOKU'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'jtidMrzxqwWOKU') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 71: 'FrXGZPaCHgRjxsMtCaCEFm'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'KrJknop')
+  Step 72: 'KrJknop'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'KrJknop') → (ready to perform 'lLPrcWUdx')
+  Step 73: 'lLPrcWUdx'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'lLPrcWUdx') → (ready to perform 'EUybzNgv')
+  Step 74: 'EUybzNgv'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'EUybzNgv') → (ready to perform 'FcBgUwi.140')
+  Step 75: 'FcBgUwi.140'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'FcBgUwi.140') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 76: 'wyEkoyKlaHcdRIFFj.true'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 77: 'wbxMsOHAdFiruEJBUUEL'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 78: 'FrXGZPaCHgRjxsMtCaCEFm'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'FcBgUwi.140')
+  Step 79: 'FcBgUwi.140'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'FcBgUwi.140') → (ready to perform 'lLPrcWUdx')
+  Step 80: 'lLPrcWUdx'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'lLPrcWUdx') → (ready to perform 'KrJknop')
+  Step 81: 'KrJknop'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'KrJknop') → (ready to perform 'cNfw')
+  Step 82: 'cNfw'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'cNfw') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 83: 'czQMDDFUCyYHwC'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'tW')
+  Step 84: 'tW'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'tW') → (ready to perform 'HZLSvfprPMuEk')
+  Step 85: 'HZLSvfprPMuEk'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 86: 'SxCinvlLfgzCdVYjXlxOXAF'  (Yuxjyk acts alone)
+           Yuxjyk: (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (done)
+
+State at the point of deadlock:
+  • Yuxjyk: no events available
+
+Root cause:
+  Every component (Yuxjyk) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock. If the processes are intended to terminate, replace STOP with SKIP and use sequential composition (;) or redefine components to loop back to their initial state.
+
+======================================================================
+ASSERTION FAILED: IRGXg :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'cNfw' → 'onoCl' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'SgbLkiTvSAWPtzKVbAVjcYCY' → 'VjVyxmAqUDoRgNErtZqX' → 'MXBXWtsCiwQzQfnghn' → 'KGJKhThCzWtcPx' → 'wyEkoyKlaHcdRIFFj.true' → 'KrJknop' → 'IhjwGYOXMIcHgdhHOLlJLJ' → 'sNvFiKtvjYizLtT' → 'HZLSvfprPMuEk' → 'SbuPawVdlKXag' → 'ZH' → 'jEuWZRpgnAAlmzxM.'H'' → 'lLPrcWUdx' → 'NB' → 'czQMDDFUCyYHwC' → 'FcBgUwi.140' → 'tW' → 'EUybzNgv' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'xBtbNFaeMVWGlmZerO' → 'jtidMrzxqwWOKU' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'FcBgUwi.140' → 'cNfw' → 'SbuPawVdlKXag' → 'XTrHkbTtMRvjN' → 'IhjwGYOXMIcHgdhHOLlJLJ' → 'jEuWZRpgnAAlmzxM.'H'' → 'HZLSvfprPMuEk' → 'lLPrcWUdx' → 'wbxMsOHAdFiruEJBUUEL' → 'KrJknop' → 'VjVyxmAqUDoRgNErtZqX' → 'FcBgUwi.140' → 'czQMDDFUCyYHwC' → 'VjVyxmAqUDoRgNErtZqX' → 'lLPrcWUdx' → 'SgbLkiTvSAWPtzKVbAVjcYCY' → 'cNfw' → 'sNvFiKtvjYizLtT' → 'wbxMsOHAdFiruEJBUUEL' → 'EUybzNgv' → 'jtidMrzxqwWOKU' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'KrJknop' → 'EUybzNgv' → 'lLPrcWUdx' → 'FcBgUwi.140' → 'wyEkoyKlaHcdRIFFj.true' → 'wbxMsOHAdFiruEJBUUEL' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'FcBgUwi.140' → 'lLPrcWUdx' → 'KrJknop' → 'cNfw' → 'czQMDDFUCyYHwC' → 'tW' → 'HZLSvfprPMuEk' → 'SxCinvlLfgzCdVYjXlxOXAF'.
+
+How the trace unfolds:
+  Step 1: 'cNfw'  (IRGXg acts alone)
+           IRGXg: 'IRGXg' → (ready to perform 'onoCl')
+  Step 2: 'onoCl'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'onoCl') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 3: 'SxCinvlLfgzCdVYjXlxOXAF'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY')
+  Step 4: 'SgbLkiTvSAWPtzKVbAVjcYCY'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 5: 'VjVyxmAqUDoRgNErtZqX'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'MXBXWtsCiwQzQfnghn')
+  Step 6: 'MXBXWtsCiwQzQfnghn'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'MXBXWtsCiwQzQfnghn') → (ready to perform 'KGJKhThCzWtcPx')
+  Step 7: 'KGJKhThCzWtcPx'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'KGJKhThCzWtcPx') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 8: 'wyEkoyKlaHcdRIFFj.true'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'KrJknop')
+  Step 9: 'KrJknop'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'KrJknop') → (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ')
+  Step 10: 'IhjwGYOXMIcHgdhHOLlJLJ'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ') → (ready to perform 'sNvFiKtvjYizLtT')
+  Step 11: 'sNvFiKtvjYizLtT'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'sNvFiKtvjYizLtT') → (ready to perform 'HZLSvfprPMuEk')
+  Step 12: 'HZLSvfprPMuEk'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'SbuPawVdlKXag')
+  Step 13: 'SbuPawVdlKXag'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'SbuPawVdlKXag') → (ready to perform 'ZH')
+  Step 14: 'ZH'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'ZH') → (ready to perform 'jEuWZRpgnAAlmzxM.'H'')
+  Step 15: 'jEuWZRpgnAAlmzxM.'H''  (IRGXg acts alone)
+           IRGXg: (ready to perform 'jEuWZRpgnAAlmzxM.'H'') → (ready to perform 'lLPrcWUdx')
+  Step 16: 'lLPrcWUdx'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'lLPrcWUdx') → (ready to perform 'NB')
+  Step 17: 'NB'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'NB') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 18: 'czQMDDFUCyYHwC'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'FcBgUwi.140')
+  Step 19: 'FcBgUwi.140'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'FcBgUwi.140') → (ready to perform 'tW')
+  Step 20: 'tW'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'tW') → (ready to perform 'EUybzNgv')
+  Step 21: 'EUybzNgv'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'EUybzNgv') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 22: 'FrXGZPaCHgRjxsMtCaCEFm'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'xBtbNFaeMVWGlmZerO')
+  Step 23: 'xBtbNFaeMVWGlmZerO'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'xBtbNFaeMVWGlmZerO') → 'dFxaTm'
+  Step 24: 'jtidMrzxqwWOKU'  (IRGXg acts alone)
+           IRGXg: 'dFxaTm' → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 25: 'FrXGZPaCHgRjxsMtCaCEFm'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 26: 'SxCinvlLfgzCdVYjXlxOXAF'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (ready to perform 'FcBgUwi.140')
+  Step 27: 'FcBgUwi.140'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'FcBgUwi.140') → (ready to perform 'cNfw')
+  Step 28: 'cNfw'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'cNfw') → (ready to perform 'SbuPawVdlKXag')
+  Step 29: 'SbuPawVdlKXag'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'SbuPawVdlKXag') → (ready to perform 'XTrHkbTtMRvjN')
+  Step 30: 'XTrHkbTtMRvjN'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'XTrHkbTtMRvjN') → (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ')
+  Step 31: 'IhjwGYOXMIcHgdhHOLlJLJ'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ') → (ready to perform 'jEuWZRpgnAAlmzxM.'H'')
+  Step 32: 'jEuWZRpgnAAlmzxM.'H''  (IRGXg acts alone)
+           IRGXg: (ready to perform 'jEuWZRpgnAAlmzxM.'H'') → (ready to perform 'HZLSvfprPMuEk')
+  Step 33: 'HZLSvfprPMuEk'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'lLPrcWUdx')
+  Step 34: 'lLPrcWUdx'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'lLPrcWUdx') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 35: 'wbxMsOHAdFiruEJBUUEL'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'KrJknop')
+  Step 36: 'KrJknop'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'KrJknop') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 37: 'VjVyxmAqUDoRgNErtZqX'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'FcBgUwi.140')
+  Step 38: 'FcBgUwi.140'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'FcBgUwi.140') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 39: 'czQMDDFUCyYHwC'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 40: 'VjVyxmAqUDoRgNErtZqX'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'lLPrcWUdx')
+  Step 41: 'lLPrcWUdx'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'lLPrcWUdx') → (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY')
+  Step 42: 'SgbLkiTvSAWPtzKVbAVjcYCY'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY') → (ready to perform 'cNfw')
+  Step 43: 'cNfw'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'cNfw') → (ready to perform 'sNvFiKtvjYizLtT')
+  Step 44: 'sNvFiKtvjYizLtT'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'sNvFiKtvjYizLtT') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 45: 'wbxMsOHAdFiruEJBUUEL'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'EUybzNgv')
+  Step 46: 'EUybzNgv'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'EUybzNgv') → (ready to perform 'jtidMrzxqwWOKU')
+  Step 47: 'jtidMrzxqwWOKU'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'jtidMrzxqwWOKU') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 48: 'FrXGZPaCHgRjxsMtCaCEFm'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'KrJknop')
+  Step 49: 'KrJknop'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'KrJknop') → (ready to perform 'EUybzNgv')
+  Step 50: 'EUybzNgv'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'EUybzNgv') → (ready to perform 'lLPrcWUdx')
+  Step 51: 'lLPrcWUdx'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'lLPrcWUdx') → (ready to perform 'FcBgUwi.140')
+  Step 52: 'FcBgUwi.140'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'FcBgUwi.140') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 53: 'wyEkoyKlaHcdRIFFj.true'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 54: 'wbxMsOHAdFiruEJBUUEL'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 55: 'FrXGZPaCHgRjxsMtCaCEFm'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'FcBgUwi.140')
+  Step 56: 'FcBgUwi.140'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'FcBgUwi.140') → (ready to perform 'lLPrcWUdx')
+  Step 57: 'lLPrcWUdx'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'lLPrcWUdx') → (ready to perform 'KrJknop')
+  Step 58: 'KrJknop'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'KrJknop') → (ready to perform 'cNfw')
+  Step 59: 'cNfw'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'cNfw') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 60: 'czQMDDFUCyYHwC'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'tW')
+  Step 61: 'tW'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'tW') → (ready to perform 'HZLSvfprPMuEk')
+  Step 62: 'HZLSvfprPMuEk'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 63: 'SxCinvlLfgzCdVYjXlxOXAF'  (IRGXg acts alone)
+           IRGXg: (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (done)
+
+State at the point of deadlock:
+  • IRGXg: no events available
+
+Root cause:
+  Every component (IRGXg) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock. If the processes are intended to terminate, replace STOP with SKIP and use sequential composition (;) or redefine components to loop back to their initial state.
+
+======================================================================
+ASSERTION FAILED: dFxaTm :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'jtidMrzxqwWOKU' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'FcBgUwi.140' → 'cNfw' → 'SbuPawVdlKXag' → 'XTrHkbTtMRvjN' → 'τ' → 'IhjwGYOXMIcHgdhHOLlJLJ' → 'jEuWZRpgnAAlmzxM.'H'' → 'HZLSvfprPMuEk' → 'lLPrcWUdx' → 'τ' → 'wbxMsOHAdFiruEJBUUEL' → 'KrJknop' → 'VjVyxmAqUDoRgNErtZqX' → 'FcBgUwi.140' → 'czQMDDFUCyYHwC' → 'VjVyxmAqUDoRgNErtZqX' → 'lLPrcWUdx' → 'SgbLkiTvSAWPtzKVbAVjcYCY' → 'cNfw' → 'sNvFiKtvjYizLtT' → 'wbxMsOHAdFiruEJBUUEL' → 'EUybzNgv' → 'jtidMrzxqwWOKU' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'KrJknop' → 'EUybzNgv' → 'τ' → 'wbxMsOHAdFiruEJBUUEL' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'FcBgUwi.140' → 'lLPrcWUdx' → 'KrJknop' → 'cNfw' → 'τ' → 'czQMDDFUCyYHwC' → 'tW' → 'HZLSvfprPMuEk' → 'lLPrcWUdx' → 'SxCinvlLfgzCdVYjXlxOXAF' → 'FcBgUwi.140' → 'wyEkoyKlaHcdRIFFj.true'.
+
+How the trace unfolds:
+  Step 1: 'jtidMrzxqwWOKU'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'jtidMrzxqwWOKU') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 2: 'FrXGZPaCHgRjxsMtCaCEFm'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 3: 'SxCinvlLfgzCdVYjXlxOXAF'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (ready to perform 'FcBgUwi.140')
+  Step 4: 'FcBgUwi.140'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FcBgUwi.140') → (ready to perform 'cNfw')
+  Step 5: 'cNfw'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'cNfw') → (ready to perform 'SbuPawVdlKXag')
+  Step 6: 'SbuPawVdlKXag'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'SbuPawVdlKXag') → (ready to perform 'XTrHkbTtMRvjN')
+  Step 7: 'XTrHkbTtMRvjN'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'XTrHkbTtMRvjN') → (ready to perform 'onoCl')
+  Step 8: 'τ'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'onoCl') → (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ')
+  Step 9: 'IhjwGYOXMIcHgdhHOLlJLJ'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'IhjwGYOXMIcHgdhHOLlJLJ') → (ready to perform 'jEuWZRpgnAAlmzxM.'H'')
+  Step 10: 'jEuWZRpgnAAlmzxM.'H''  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'jEuWZRpgnAAlmzxM.'H'') → (ready to perform 'HZLSvfprPMuEk')
+  Step 11: 'HZLSvfprPMuEk'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'lLPrcWUdx')
+  Step 12: 'lLPrcWUdx'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'lLPrcWUdx') → (ready to perform 'ZH')
+  Step 13: 'τ'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'ZH') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 14: 'wbxMsOHAdFiruEJBUUEL'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'KrJknop')
+  Step 15: 'KrJknop'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'KrJknop') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 16: 'VjVyxmAqUDoRgNErtZqX'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'VjVyxmAqUDoRgNErtZqX') → 'Zxoyx'
+  Step 17: 'FcBgUwi.140'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): 'Zxoyx' → (ready to perform 'czQMDDFUCyYHwC')
+  Step 18: 'czQMDDFUCyYHwC'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 19: 'VjVyxmAqUDoRgNErtZqX'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'lLPrcWUdx')
+  Step 20: 'lLPrcWUdx'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'lLPrcWUdx') → (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY')
+  Step 21: 'SgbLkiTvSAWPtzKVbAVjcYCY'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY') → (ready to perform 'cNfw')
+  Step 22: 'cNfw'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'cNfw') → (ready to perform 'sNvFiKtvjYizLtT')
+  Step 23: 'sNvFiKtvjYizLtT'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'sNvFiKtvjYizLtT') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 24: 'wbxMsOHAdFiruEJBUUEL'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'EUybzNgv')
+  Step 25: 'EUybzNgv'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'EUybzNgv') → (ready to perform 'jtidMrzxqwWOKU')
+  Step 26: 'jtidMrzxqwWOKU'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'jtidMrzxqwWOKU') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 27: 'FrXGZPaCHgRjxsMtCaCEFm'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'KrJknop')
+  Step 28: 'KrJknop'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'KrJknop') → 'fOPDsgQJmSZ'
+  Step 29: 'EUybzNgv'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): 'fOPDsgQJmSZ' → (ready to perform 'ZH')
+  Step 30: 'τ'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'ZH') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 31: 'wbxMsOHAdFiruEJBUUEL'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 32: 'FrXGZPaCHgRjxsMtCaCEFm'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'FcBgUwi.140')
+  Step 33: 'FcBgUwi.140'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FcBgUwi.140') → (ready to perform 'lLPrcWUdx')
+  Step 34: 'lLPrcWUdx'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'lLPrcWUdx') → (ready to perform 'KrJknop')
+  Step 35: 'KrJknop'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'KrJknop') → (ready to perform 'cNfw')
+  Step 36: 'cNfw'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'cNfw') → (ready to perform 'onoCl')
+  Step 37: 'τ'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'onoCl') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 38: 'czQMDDFUCyYHwC'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'tW')
+  Step 39: 'tW'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'tW') → (ready to perform 'HZLSvfprPMuEk')
+  Step 40: 'HZLSvfprPMuEk'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'lLPrcWUdx')
+  Step 41: 'lLPrcWUdx'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'lLPrcWUdx') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 42: 'SxCinvlLfgzCdVYjXlxOXAF'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (ready to perform 'FcBgUwi.140')
+  Step 43: 'FcBgUwi.140'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'FcBgUwi.140') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 44: 'wyEkoyKlaHcdRIFFj.true'  ((sub-process of dFxaTm) acts alone)
+           (sub-process of dFxaTm): (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (done)
+
+State at the point of deadlock:
+  • (sub-process of dFxaTm): no events available
+
+Root cause:
+  Every component ((sub-process of dFxaTm)) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock. If the processes are intended to terminate, replace STOP with SKIP and use sequential composition (;) or redefine components to loop back to their initial state.
+
+======================================================================
+ASSERTION FAILED: Zxoyx :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'FcBgUwi.140' → 'czQMDDFUCyYHwC' → 'VjVyxmAqUDoRgNErtZqX' → 'lLPrcWUdx' → 'SgbLkiTvSAWPtzKVbAVjcYCY' → 'cNfw' → 'sNvFiKtvjYizLtT' → 'wbxMsOHAdFiruEJBUUEL' → 'EUybzNgv' → 'jtidMrzxqwWOKU' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'KrJknop' → 'EUybzNgv' → 'ZH' → 'wbxMsOHAdFiruEJBUUEL' → 'FrXGZPaCHgRjxsMtCaCEFm' → 'FcBgUwi.140' → 'lLPrcWUdx' → 'KrJknop' → 'cNfw' → 'onoCl' → 'lLPrcWUdx' → 'czQMDDFUCyYHwC' → 'FcBgUwi.140' → 'wyEkoyKlaHcdRIFFj.true' → 'tW' → 'HZLSvfprPMuEk' → 'SxCinvlLfgzCdVYjXlxOXAF'.
+
+How the trace unfolds:
+  Step 1: 'FcBgUwi.140'  (Zxoyx acts alone)
+           Zxoyx: 'Zxoyx' → (ready to perform 'czQMDDFUCyYHwC')
+  Step 2: 'czQMDDFUCyYHwC'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'VjVyxmAqUDoRgNErtZqX')
+  Step 3: 'VjVyxmAqUDoRgNErtZqX'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'VjVyxmAqUDoRgNErtZqX') → (ready to perform 'lLPrcWUdx')
+  Step 4: 'lLPrcWUdx'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'lLPrcWUdx') → (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY')
+  Step 5: 'SgbLkiTvSAWPtzKVbAVjcYCY'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'SgbLkiTvSAWPtzKVbAVjcYCY') → (ready to perform 'cNfw')
+  Step 6: 'cNfw'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'cNfw') → (ready to perform 'sNvFiKtvjYizLtT')
+  Step 7: 'sNvFiKtvjYizLtT'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'sNvFiKtvjYizLtT') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 8: 'wbxMsOHAdFiruEJBUUEL'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'EUybzNgv')
+  Step 9: 'EUybzNgv'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'EUybzNgv') → (ready to perform 'jtidMrzxqwWOKU')
+  Step 10: 'jtidMrzxqwWOKU'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'jtidMrzxqwWOKU') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 11: 'FrXGZPaCHgRjxsMtCaCEFm'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'KrJknop')
+  Step 12: 'KrJknop'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'KrJknop') → 'fOPDsgQJmSZ'
+  Step 13: 'EUybzNgv'  (Zxoyx acts alone)
+           Zxoyx: 'fOPDsgQJmSZ' → (ready to perform 'ZH')
+  Step 14: 'ZH'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'ZH') → (ready to perform 'wbxMsOHAdFiruEJBUUEL')
+  Step 15: 'wbxMsOHAdFiruEJBUUEL'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'wbxMsOHAdFiruEJBUUEL') → (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm')
+  Step 16: 'FrXGZPaCHgRjxsMtCaCEFm'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'FrXGZPaCHgRjxsMtCaCEFm') → (ready to perform 'FcBgUwi.140')
+  Step 17: 'FcBgUwi.140'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'FcBgUwi.140') → (ready to perform 'lLPrcWUdx')
+  Step 18: 'lLPrcWUdx'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'lLPrcWUdx') → (ready to perform 'KrJknop')
+  Step 19: 'KrJknop'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'KrJknop') → (ready to perform 'cNfw')
+  Step 20: 'cNfw'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'cNfw') → (ready to perform 'onoCl')
+  Step 21: 'onoCl'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'onoCl') → (ready to perform 'lLPrcWUdx')
+  Step 22: 'lLPrcWUdx'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'lLPrcWUdx') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 23: 'czQMDDFUCyYHwC'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'FcBgUwi.140')
+  Step 24: 'FcBgUwi.140'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'FcBgUwi.140') → (ready to perform 'wyEkoyKlaHcdRIFFj.true')
+  Step 25: 'wyEkoyKlaHcdRIFFj.true'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'wyEkoyKlaHcdRIFFj.true') → (ready to perform 'tW')
+  Step 26: 'tW'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'tW') → (ready to perform 'HZLSvfprPMuEk')
+  Step 27: 'HZLSvfprPMuEk'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'HZLSvfprPMuEk') → (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF')
+  Step 28: 'SxCinvlLfgzCdVYjXlxOXAF'  (Zxoyx acts alone)
+           Zxoyx: (ready to perform 'SxCinvlLfgzCdVYjXlxOXAF') → (done)
+
+State at the point of deadlock:
+  • Zxoyx: no events available
+
+Root cause:
+  Every component (Zxoyx) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock. If the processes are intended to terminate, replace STOP with SKIP and use sequential composition (;) or redefine components to loop back to their initial state.
+
+======================================================================
+ASSERTION FAILED: ugVLau :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'uLepi' → 'czQMDDFUCyYHwC' → 'eAQrnGoDxNxjYJzQajY' → 'uLepi' → 'qwgxyKc' → 'vGbGaszLrbHMhgXeRIosn' → 'LmrdOHS'.
+
+How the trace unfolds:
+  Step 1: 'uLepi'  ((uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau) acts alone)
+           (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau): (ready to perform 'uLepi') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 2: 'czQMDDFUCyYHwC'  ((uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau) acts alone)
+           (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau): (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'eAQrnGoDxNxjYJzQajY')
+  Step 3: 'eAQrnGoDxNxjYJzQajY'  ((uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau) acts alone)
+           (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau): (ready to perform 'eAQrnGoDxNxjYJzQajY') → 'STOP'
+  Step 4: 'uLepi'  ((uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) acts alone)
+           (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau): (ready to perform 'uLepi') → (ready to perform 'qwgxyKc')
+  Step 5: 'qwgxyKc'  ((uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) acts alone)
+           (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau): (ready to perform 'qwgxyKc') → (ready to perform 'vGbGaszLrbHMhgXeRIosn')
+  Step 6: 'vGbGaszLrbHMhgXeRIosn'  ((uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) acts alone)
+           (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau): (ready to perform 'vGbGaszLrbHMhgXeRIosn') → (ready to perform 'LmrdOHS')
+  Step 7: 'LmrdOHS'  ((uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) acts alone)
+           (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau): (ready to perform 'LmrdOHS') → (ready to perform 'nwaJDmoecpTOCQOqCIVPK')
+
+State at the point of deadlock:
+  • (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau): ready to perform: 'nwaJDmoecpTOCQOqCIVPK'
+  • (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau): in 'STOP', no events available
+
+Root cause:
+  (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau) reached STOP, while (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) is still waiting to perform events:
+    – (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) wants to perform 'nwaJDmoecpTOCQOqCIVPK'.
+
+  The deadlock arises because (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau) can no longer offer any events, so any event that (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) needs from it as synchronisation partners will never be available.
+
+======================================================================
+ASSERTION FAILED: nFwFQTC :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'SxCinvlLfgzCdVYjXlxOXAF' → 'KrJknop' → 'czQMDDFUCyYHwC' → '✓'.
+
+How the trace unfolds:
+  Step 1: 'SxCinvlLfgzCdVYjXlxOXAF'  (nFwFQTC acts alone)
+           nFwFQTC: 'nFwFQTC' → (ready to perform 'KrJknop')
+  Step 2: 'KrJknop'  (nFwFQTC acts alone)
+           nFwFQTC: (ready to perform 'KrJknop') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 3: 'czQMDDFUCyYHwC'  (nFwFQTC acts alone)
+           nFwFQTC: (ready to perform 'czQMDDFUCyYHwC') → 'SKIP'
+  Step 4: '✓'  (nFwFQTC acts alone)
+           nFwFQTC: 'SKIP' → (terminated)
+
+State at the point of deadlock:
+  • nFwFQTC: terminated normally
+
+Root cause:
+  nFwFQTC terminates normally (performed ✓), after which no further events are available. FDR's deadlock-free check requires a process to be able to make progress indefinitely; a process that successfully terminates is still flagged. If the process is intended to repeat, redefine it to loop back to its initial state.

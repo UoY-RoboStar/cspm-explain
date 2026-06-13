@@ -1,0 +1,25 @@
+Running FDR on three_way_cycle.csp …
+Results: 0/1 assertions passed, 1 failed.
+
+
+======================================================================
+ASSERTION FAILED: System :[deadlock free [F]]
+======================================================================
+
+The system deadlocks immediately — no events need to occur before the system becomes stuck.
+
+State at the point of deadlock:
+  • A: in 'A', ready to perform: 'ab'
+  • B: in 'B', ready to perform: 'bc'
+  • C: in 'C', ready to perform: 'ca'
+
+Root cause:
+  All components are waiting for events that cannot occur in the current state of the composition:
+    – A is ready to perform 'ab'.
+    – B is ready to perform 'bc'.
+    – C is ready to perform 'ca'.
+
+  No two components are offering the same event. Because all events in the synchronisation alphabet must be agreed on jointly, and the processes' ready-sets are disjoint, no event can be selected and the system is stuck.
+    – 'ab' is only offered by A, not by B (offering 'bc'); C (offering 'ca').
+    – 'bc' is only offered by B, not by A (offering 'ab'); C (offering 'ca').
+    – 'ca' is only offered by C, not by A (offering 'ab'); B (offering 'bc').

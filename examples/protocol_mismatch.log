@@ -1,0 +1,30 @@
+Running FDR on protocol_mismatch.csp …
+Results: 0/1 assertions passed, 1 failed.
+
+
+======================================================================
+ASSERTION FAILED: System :[deadlock free [F]]
+======================================================================
+
+The system reaches a deadlock after the trace: 'connect' → 'request'.
+
+How the trace unfolds:
+  Step 1: 'connect'  (Server and Client synchronise)
+           Server: 'Server' → (ready to perform 'request')
+           Client: 'Client' → (ready to perform 'request')
+  Step 2: 'request'  (Server and Client synchronise)
+           Server: (ready to perform 'request') → (ready to perform 'success')
+           Client: (ready to perform 'request') → (ready to perform 'rollback')
+
+State at the point of deadlock:
+  • Server: ready to perform: 'success'
+  • Client: ready to perform: 'rollback'
+
+Root cause:
+  All components are waiting for events that cannot occur in the current state of the composition:
+    – Server is ready to perform 'success'.
+    – Client is ready to perform 'rollback'.
+
+  No two components are offering the same event. Because all events in the synchronisation alphabet must be agreed on jointly, and the processes' ready-sets are disjoint, no event can be selected and the system is stuck.
+    – 'success' is only offered by Server, not by Client (offering 'rollback').
+    – 'rollback' is only offered by Client, not by Server (offering 'success').

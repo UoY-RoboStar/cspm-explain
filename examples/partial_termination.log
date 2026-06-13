@@ -1,0 +1,24 @@
+Running FDR on partial_termination.csp …
+Results: 0/1 assertions passed, 1 failed.
+
+
+======================================================================
+ASSERTION FAILED: System :[deadlock free [F]]
+======================================================================
+
+The system reaches a deadlock after the trace: 'handshake'.
+
+How the trace unfolds:
+  Step 1: 'handshake'  (Initiator and Responder synchronise)
+           Initiator: 'Initiator' → 'STOP'
+           Responder: 'Responder' → (ready to perform 'continue')
+
+State at the point of deadlock:
+  • Initiator: in 'STOP', no events available
+  • Responder: ready to perform: 'continue'
+
+Root cause:
+  Initiator reached STOP, while Responder is still waiting to perform events:
+    – Responder wants to perform 'continue'.
+
+  The deadlock arises because Initiator can no longer offer any events, so any event that Responder needs from it as synchronisation partners will never be available.
