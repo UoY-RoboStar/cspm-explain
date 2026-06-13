@@ -282,10 +282,14 @@ def _narrate_trace(
         if anchor not in anchor_thresholds:
             thresholds: list[tuple[int, str | None]] = []
             cur, cumul = anchor, 0
+            visited: set[str] = {anchor}
             while cur in chains:
                 cnt, nxt = chains[cur]
                 cumul += cnt
                 thresholds.append((cumul, nxt))
+                if nxt is None or nxt in visited:
+                    break
+                visited.add(nxt)
                 cur = nxt
             anchor_thresholds[anchor] = thresholds
             anchor_counts[anchor] = 0
