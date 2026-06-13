@@ -13,43 +13,43 @@ How the trace unfolds:
            P(5): 'P(5)' → (ready to perform 'c')
   Step 2: 'c'  (P(5) acts alone)
            P(5): (ready to perform 'c') → 'P(4)'
-  Step 3: 'b'  (P(5) acts alone)
-           P(5): 'P(4)' → (ready to perform 'c')
-  Step 4: 'c'  (P(5) acts alone)
-           P(5): (ready to perform 'c') → 'P(3)'
-  Step 5: 'b'  (P(5) acts alone)
-           P(5): 'P(3)' → (ready to perform 'c')
-  Step 6: 'c'  (P(5) acts alone)
-           P(5): (ready to perform 'c') → 'P(2)'
-  Step 7: 'b'  (P(5) acts alone)
-           P(5): 'P(2)' → (ready to perform 'c')
-  Step 8: 'c'  (P(5) acts alone)
-           P(5): (ready to perform 'c') → 'P(1)'
-  Step 9: 'b'  (P(5) acts alone)
-           P(5): 'P(1)' → (ready to perform 'c')
-  Step 10: 'c'  (P(5) acts alone)
-           P(5): (ready to perform 'c') → 'P(0)'
-  Step 11: 'a'  (P(5) and Q synchronise)
-           P(5): 'P(0)' → (ready to perform 'a')
+  Step 3: 'b'  (P(4) acts alone)
+           P(4): 'P(4)' → (ready to perform 'c')
+  Step 4: 'c'  (P(4) acts alone)
+           P(4): (ready to perform 'c') → 'P(3)'
+  Step 5: 'b'  (P(3) acts alone)
+           P(3): 'P(3)' → (ready to perform 'c')
+  Step 6: 'c'  (P(3) acts alone)
+           P(3): (ready to perform 'c') → 'P(2)'
+  Step 7: 'b'  (P(2) acts alone)
+           P(2): 'P(2)' → (ready to perform 'c')
+  Step 8: 'c'  (P(2) acts alone)
+           P(2): (ready to perform 'c') → 'P(1)'
+  Step 9: 'b'  (P(1) acts alone)
+           P(1): 'P(1)' → (ready to perform 'c')
+  Step 10: 'c'  (P(1) acts alone)
+           P(1): (ready to perform 'c') → 'P(0)'
+  Step 11: 'a'  (P(0) and Q synchronise)
+           P(0): 'P(0)' → (ready to perform 'a')
            Q: 'Q' → (ready to perform 'c')
   Step 12: 'c'  (Q acts alone)
            Q: (ready to perform 'c') → 'Q'
-  Step 13: 'a'  (P(5) and Q synchronise)
-           P(5): (ready to perform 'a') → 'STOP'
+  Step 13: 'a'  (P(0) and Q synchronise)
+           P(0): (ready to perform 'a') → 'STOP'
            Q: 'Q' → (ready to perform 'c')
   Step 14: 'c'  (Q acts alone)
            Q: (ready to perform 'c') → 'Q'
 
 State at the point of deadlock:
-  • P(5): in 'STOP', no events available
+  • P(0): in 'STOP', no events available
   • Q: in 'Q', ready to perform: 'a'
   • c -> d -> STOP (in R): ready to perform: 'c'
   • S: in 'S', ready to perform: 'a'
 
 Root cause:
-  P(5) reached STOP, while Q, c -> d -> STOP (in R), S are still waiting to perform events:
+  P(0) reached STOP, while Q, c -> d -> STOP (in R), S are still waiting to perform events:
     – Q wants to perform 'a'.
     – c -> d -> STOP (in R) wants to perform 'c'.
     – S wants to perform 'a'.
 
-  The deadlock arises because P(5) can no longer offer any events, so the events that Q, c -> d -> STOP (in R), S need from it as synchronisation partners will never be available.
+  The deadlock arises because P(0) can no longer offer any events, so the events that Q, c -> d -> STOP (in R), S need from it as synchronisation partners will never be available.
