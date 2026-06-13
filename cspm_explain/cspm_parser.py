@@ -565,6 +565,88 @@ def sequential_tail(src: str) -> dict[str, tuple[int, str]]:
     return result
 
 
+def _collect_prefix_event_positions(
+    src: str,
+    node: "Tree | Token",
+    out: list[dict],
+) -> None:
+    """Append source spans of each prefix event found in *node*."""
+    if not isinstance(node, Tree):
+        return
+    # Transparent expression wrapper
+    if node.data == "expression" and len(node.children) == 1:
+        _collect_prefix_event_positions(src, node.children[0], out)
+        return
+    # Hide operator P\S — recurse into the inner expression (first Tree child)
+    if node.data == "hide_exp" and node.children:
+        tree_ch = [c for c in node.children if isinstance(c, Tree)]
+        if tree_ch:
+            _collect_prefix_event_positions(src, tree_ch[0], out)
+        return
+    # Parentheses
+    if node.data == "paren_exp" and node.children:
+        _collect_prefix_event_positions(src, node.children[0], out)
+        return
+    # Prefix event: e -> continuation
+    if node.data == "prefix_exp" and len(node.children) == 2:
+        event_node, cont = node.children
+        if isinstance(event_node, Tree):
+            line, col, end_line, end_col = span_of(event_node)
+            text = source_text(src, event_node).strip()
+        else:
+            line = event_node.line
+            col = event_node.column
+            end_line = event_node.end_line
+            end_col = event_node.end_column
+            text = str(event_node)
+        out.append({"line": line, "col": col, "end_line": end_line, "end_col": end_col, "text": text})
+        _collect_prefix_event_positions(src, cont, out)
+
+
+def prefix_chain_event_positions(src: str) -> dict[str, list[dict]]:
+    """Return per-event source spans for all prefix-chain process definitions.
+
+    For each parameter-free definition whose RHS is a sequential prefix chain
+    (possibly wrapped in hiding or parentheses) returns a list of position dicts:
+        {process_name: [{line, col, end_line, end_col, text}, ...]}
+    where each entry covers one event expression, in definition order.
+    Definitions that are not prefix chains (parallel, choice, etc.) are omitted.
+    """
+    t = _get_parser().parse(src)
+    result: dict[str, list[dict]] = {}
+    for child in t.children:
+        if not (isinstance(child, Tree) and child.data == "function_def"):
+            continue
+        if len(child.children) != 2:
+            continue
+        name = str(next(child.children[0].scan_values(lambda _: True)))
+        positions: list[dict] = []
+        _collect_prefix_event_positions(src, child.children[1], positions)
+        if positions:
+            result[name] = positions
+    return result
+
+
+def all_definition_positions(src: str) -> dict[str, dict]:
+    """Return {process_name: {line, col, end_line, end_col}} for the RHS of
+    each parameter-free process definition.  Used as a fallback source range
+    when per-event positions are unavailable.
+    """
+    t = _get_parser().parse(src)
+    result: dict[str, dict] = {}
+    for child in t.children:
+        if not (isinstance(child, Tree) and child.data == "function_def"):
+            continue
+        if len(child.children) != 2:
+            continue
+        name = str(next(child.children[0].scan_values(lambda _: True)))
+        rhs = child.children[-1]
+        if isinstance(rhs, Tree):
+            line, col, end_line, end_col = span_of(rhs)
+            result[name] = {"line": line, "col": col, "end_line": end_line, "end_col": end_col}
+    return result
+
+
 def _find_outermost_parallel(node: Tree) -> Tree | None:
     """Pre-order search: return the first parallel-operator node, or None."""
     if isinstance(node, Tree):

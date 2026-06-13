@@ -2,7 +2,9 @@
 """cspm-explain: run FDR on a CSP file and explain any deadlock counter-examples."""
 
 import argparse
+import json
 import os
+import pathlib
 import sys
 
 from cspm_explain.explain import explain_deadlock, explain_fdr_output
@@ -26,6 +28,11 @@ def main() -> None:
         "--use-claude",
         action="store_true",
         help="Use Claude (requires ANTHROPIC_API_KEY) instead of the built-in explainer",
+    )
+    parser.add_argument(
+        "--replay",
+        action="store_true",
+        help="Write a <file>.replay.json alongside the explanation for interactive step-through",
     )
     args = parser.parse_args()
 
@@ -66,7 +73,9 @@ def main() -> None:
         return
 
     # ── Rule-based explanation (default) ────────────────────────────────────
-    for assertion in failed_results:
+    total_ces = sum(len(r.counterexamples) for r in failed_results)
+
+    for a_idx, assertion in enumerate(failed_results):
         for idx, ce in enumerate(assertion.counterexamples, start=1):
             _print_header(assertion.assertion_string, idx, len(assertion.counterexamples))
             if ce.type != "deadlock":
@@ -77,6 +86,18 @@ def main() -> None:
                 continue
             print()
             print(explain_deadlock(assertion, ce, fdr_output.event_map, csp_source))
+
+            if args.replay:
+                from cspm_explain.trace_replay import generate_replay
+                replay_data = generate_replay(
+                    assertion, ce, fdr_output.event_map, csp_source, args.csp_file
+                )
+                base = pathlib.Path(args.csp_file).with_suffix("")
+                suffix = f".{a_idx}.{idx - 1}" if total_ces > 1 else ""
+                replay_path = pathlib.Path(f"{base}{suffix}.replay.json")
+                with open(replay_path, "w") as f:
+                    json.dump(replay_data, f, indent=2)
+                print(f"\nReplay written to: {replay_path}")
 
 
 if __name__ == "__main__":
