@@ -1,0 +1,74 @@
+Running FDR on hidden_deadlock.csp …
+Results: 0/1 assertions passed, 1 failed.
+
+
+======================================================================
+ASSERTION FAILED: System :[deadlock free [F]]
+======================================================================
+
+The system reaches a deadlock after the trace: 'a' → 'b' → 'c' → 'a' → 'b' → 'c' → 'b' → 'a' → 'c' → 'a' → 'b' → 'c' → 'a' → 'b' → 'c' → 'a' → 'a' → 'τ' → 'd' → 'a'.
+
+How the trace unfolds:
+  Step 1: 'a'  (Q acts alone)
+           Q: 'Q' → (ready to perform 'c')
+  Step 2: 'b'  (P(5) acts alone)
+           P(5): 'P(5)' → (ready to perform 'c')
+  Step 3: 'c'  (P(5) and Q synchronise)
+           P(5): (ready to perform 'c') → 'P(4)'
+           Q: (ready to perform 'c') → 'Q'
+  Step 4: 'a'  (Q acts alone)
+           Q: 'Q' → (ready to perform 'c')
+  Step 5: 'b'  (P(4) acts alone)
+           P(4): 'P(4)' → (ready to perform 'c')
+  Step 6: 'c'  (P(4) and Q synchronise)
+           P(4): (ready to perform 'c') → 'P(3)'
+           Q: (ready to perform 'c') → 'Q'
+  Step 7: 'b'  (P(3) acts alone)
+           P(3): 'P(3)' → (ready to perform 'c')
+  Step 8: 'a'  (Q acts alone)
+           Q: 'Q' → (ready to perform 'c')
+  Step 9: 'c'  (P(3) and Q synchronise)
+           P(3): (ready to perform 'c') → 'P(2)'
+           Q: (ready to perform 'c') → 'Q'
+  Step 10: 'a'  (Q acts alone)
+           Q: 'Q' → (ready to perform 'c')
+  Step 11: 'b'  (P(2) acts alone)
+           P(2): 'P(2)' → (ready to perform 'c')
+  Step 12: 'c'  (P(2) and Q synchronise)
+           P(2): (ready to perform 'c') → 'P(1)'
+           Q: (ready to perform 'c') → 'Q'
+  Step 13: 'a'  (Q acts alone)
+           Q: 'Q' → (ready to perform 'c')
+  Step 14: 'b'  (P(1) acts alone)
+           P(1): 'P(1)' → (ready to perform 'c')
+  Step 15: 'c'  (P(1) and Q synchronise)
+           P(1): (ready to perform 'c') → 'P(0)'
+           Q: (ready to perform 'c') → 'Q'
+  Step 16: 'a'  (P(0) acts alone)
+           P(0): 'P(0)' → (ready to perform 'a')
+  Step 17: 'a'  (P(0) acts alone)
+           P(0): (ready to perform 'a') → 'STOP'
+  Step 18: 'τ'  (c -> d -> STOP (in R) and S synchronise)
+           c -> d -> STOP (in R): (ready to perform 'c') → (ready to perform 'd')
+           S: 'S' → (ready to perform 'a')
+  Step 19: 'd'  (c -> d -> STOP (in R) acts alone)
+           c -> d -> STOP (in R): (ready to perform 'd') → 'STOP'
+  Step 20: 'a'  (Q acts alone)
+           Q: 'Q' → (ready to perform 'c')
+
+State at the point of deadlock:
+  • P(0): in 'STOP', no events available
+  • Q: ready to perform: 'c'
+  • c -> d -> STOP (in R): in 'STOP', no events available
+  • S: ready to perform: 'a'
+
+Root cause:
+  P(0) reached STOP, while Q, S are still waiting to perform events:
+    – Q wants to perform 'c'.
+    – S wants to perform 'a'.
+  Also: c -> d -> STOP (in R) (reached STOP).
+
+  The deadlock arises because P(0), c -> d -> STOP (in R) can no longer offer any events, so the events that Q, S need from them as synchronisation partners will never be available.
+
+Replay written to: hidden_deadlock.replay.json
+Viewer  written to: hidden_deadlock.replay.html

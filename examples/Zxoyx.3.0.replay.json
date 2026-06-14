@@ -1,0 +1,88 @@
+{
+  "csp_file": "/workspaces/cspm-explain/examples/Zxoyx.csp",
+  "assertion": "zudxLRaUxwG :[deadlock free]",
+  "components": [
+    {
+      "id": 0,
+      "name": "zudxLRaUxwG"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "event": "SxCinvlLfgzCdVYjXlxOXAF",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "zudxLRaUxwG",
+          "role": "participant",
+          "line": 53,
+          "col": 15,
+          "end_line": 53,
+          "end_col": 22,
+          "text": "KrJknop"
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "event": "KrJknop",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "zudxLRaUxwG",
+          "role": "participant",
+          "line": 53,
+          "col": 26,
+          "end_line": 53,
+          "end_col": 49,
+          "text": "zlFJmQCqOTIxLaawCMcxJcU"
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "event": "czQMDDFUCyYHwC",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "jznAJvlT",
+          "role": "participant",
+          "line": 54,
+          "col": 12,
+          "end_line": 54,
+          "end_col": 14,
+          "text": "NB"
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "event": "\u2713",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "jznAJvlT",
+          "role": "participant",
+          "line": 54,
+          "col": 18,
+          "end_line": 54,
+          "end_col": 22,
+          "text": "SKIP"
+        }
+      ]
+    }
+  ],
+  "deadlock": [
+    {
+      "id": 0,
+      "name": "jznAJvlT",
+      "acceptance": [],
+      "line": 54,
+      "col": 12,
+      "end_line": 54,
+      "end_col": 14,
+      "text": "NB"
+    }
+  ]
+}

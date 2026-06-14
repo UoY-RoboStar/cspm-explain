@@ -10,6 +10,9 @@ from .cspm_parser import parallel_operand_labels, sequential_tail
 # performed an event that the current sub-machine did not participate in.
 _INTERLEAVE_EVENT = 0
 
+# FDR event ID 1 is the internal τ (tau) event.
+_TAU_EVENT = 1
+
 # FDR uses ✓ (U+2713) for the CSP termination (tick) event.
 _TICK = "✓"
 
@@ -21,9 +24,44 @@ def _event_name(eid: int, event_map: dict[str, str]) -> str | None:
     return event_map.get(str(eid), str(eid))
 
 
-def _translate_trace(trace: list[int], event_map: dict[str, str]) -> list[str]:
-    """Return only the visible (non-interleave) events in *trace*, by name."""
-    return [n for eid in trace if (n := _event_name(eid, event_map)) is not None]
+def _display_event(
+    step: int,
+    raw_eid: int,
+    event_map: dict[str, str],
+    revealed_trace: list[int] | None,
+) -> str:
+    """Human-readable event label for *step*, using revealed_trace when available.
+
+    For τ steps whose hidden event is known, returns 'hidden(<event>)'.
+    For other τ (non-determinism), returns 'τ'.
+    For normal events, returns the event name.
+    """
+    if raw_eid == _TAU_EVENT and revealed_trace and step < len(revealed_trace):
+        rev = revealed_trace[step]
+        if rev != _TAU_EVENT:
+            name = event_map.get(str(rev), str(rev))
+            return f"hidden('{name}')"
+        return "τ"
+    name = event_map.get(str(raw_eid), str(raw_eid))
+    return name
+
+
+def _translate_trace(
+    trace: list[int],
+    event_map: dict[str, str],
+    revealed_trace: list[int] | None = None,
+) -> list[str]:
+    """Return only the visible (non-interleave) events in *trace*, by name.
+
+    When *revealed_trace* is provided, τ events are replaced by their actual
+    hidden-event names so the trace reads as a sequence of meaningful events.
+    """
+    result = []
+    for i, eid in enumerate(trace):
+        if eid == _INTERLEAVE_EVENT:
+            continue
+        result.append(_display_event(i, eid, event_map, revealed_trace))
+    return result
 
 
 def _local_trace_with_markers(trace: list[int], event_map: dict[str, str]) -> list[str]:
@@ -324,7 +362,7 @@ def _narrate_trace(
     }
 
     for step, sys_eid in enumerate(system_b.trace):
-        sys_event = event_map.get(str(sys_eid), str(sys_eid))
+        sys_event = _display_event(step, sys_eid, event_map, system_b.revealed_trace)
 
         participants = [leaf for leaf in leaves
                         if step < len(leaf.trace) and leaf.trace[step] != _INTERLEAVE_EVENT]
@@ -435,7 +473,8 @@ def explain_deadlock(
         return final_proc_names.get(id(leaf), display_names.get(id(leaf), leaf.machine_name))
 
     # ── 1. Trace narrative ──────────────────────────────────────────────────
-    visible = _translate_trace(b.trace, event_map)
+    # Use revealed_trace so τ steps are shown as their actual hidden event.
+    visible = _translate_trace(b.trace, event_map, b.revealed_trace)
 
     if not visible:
         paras.append(

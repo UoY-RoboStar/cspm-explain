@@ -520,11 +520,14 @@ def _count_prefix_chain(node: Tree | Token) -> tuple[int, str | None]:
     """
     if not isinstance(node, Tree):
         return 0, None
-    # Strip transparent 'expression' wrapper
+    # Strip transparent wrappers
     if node.data == "expression":
         if len(node.children) == 1:
             return _count_prefix_chain(node.children[0])
         return 0, None
+    if node.data == "paren_exp":
+        inner = [c for c in node.children if isinstance(c, Tree)]
+        return _count_prefix_chain(inner[0]) if inner else (0, None)
     if node.data != "prefix_exp" or len(node.children) != 2:
         return 0, None
     _, cont = node.children  # first child is the event; only the continuation matters
@@ -559,37 +562,98 @@ def sequential_tail(src: str) -> dict[str, tuple[int, str]]:
         if len(child.children) != 2:  # skip parameterised definitions
             continue
         name = str(next(child.children[0].scan_values(lambda _: True)))
-        count, cont = _count_prefix_chain(child.children[1])
-        if cont is not None:
+        rhs = child.children[1]
+        count, cont = _count_prefix_chain(rhs)
+        if cont is None:
+            # Also handle P = (chain) \ {set}: look through a hide_exp wrapper.
+            # The visible event count is len(event_positions for rhs), and the
+            # continuation is the inner chain's bare-process tail.
+            core = rhs
+            if isinstance(core, Tree) and core.data == "expression" and len(core.children) == 1:
+                core = core.children[0]
+            if isinstance(core, Tree) and core.data == "hide_exp":
+                tree_ch = [c for c in core.children if isinstance(c, Tree)]
+                if tree_ch:
+                    _, cont = _count_prefix_chain(tree_ch[0])
+                    if cont is not None:
+                        visible: list[dict] = []
+                        _collect_prefix_event_positions(src, rhs, visible)
+                        count = len(visible)
+        if cont is not None and count > 0:
             result[name] = (count, cont)
     return result
+
+
+def _normalize_event_text(text: str) -> str:
+    """Normalise prefix-event notation to dot notation for hide-set comparison.
+
+    'a!b' -> 'a.b', 'a?x' -> 'a.x' — matching CSP-M set literal form.
+    """
+    return text.replace("!", ".").replace("?", ".")
+
+
+def _extract_hide_set(src: str, hide_exp_node: "Tree") -> "frozenset[str]":
+    """Return the literal event names from a hide_exp node's set expression.
+
+    Only handles simple brace-enclosed comma-separated lists ({a, b, c}).
+    Set comprehensions ({| ch |}) and range expressions are returned as empty.
+    """
+    tree_ch = [c for c in hide_exp_node.children if isinstance(c, Tree)]
+    if len(tree_ch) < 2:
+        return frozenset()
+    set_text = source_text(src, tree_ch[1]).strip()
+    if not (set_text.startswith("{") and set_text.endswith("}")):
+        return frozenset()
+    inner = set_text[1:-1].strip()
+    if inner.startswith("|"):  # set comprehension {| ... |}
+        return frozenset()
+    return frozenset(item.strip() for item in inner.split(",") if item.strip())
 
 
 def _collect_prefix_event_positions(
     src: str,
     node: "Tree | Token",
     out: list[dict],
+    hidden: "frozenset[str]" = frozenset(),
+    filter_hidden: bool = True,
 ) -> None:
-    """Append source spans of each prefix event found in *node*."""
+    """Append source spans of each prefix event found in *node*.
+
+    When *filter_hidden* is True (default), events whose normalised text appears
+    in *hidden* are omitted — they become tau at the system level and do not
+    appear in FDR's trace for containing-process assertions.
+
+    When *filter_hidden* is False, hidden events are included in the output so
+    the list stays aligned with FDR's b.trace (which includes τ for direct
+    assertions on processes with hiding).
+    """
     if not isinstance(node, Tree):
         return
     # Transparent expression wrapper
     if node.data == "expression" and len(node.children) == 1:
-        _collect_prefix_event_positions(src, node.children[0], out)
+        _collect_prefix_event_positions(src, node.children[0], out, hidden, filter_hidden)
         return
-    # Hide operator P\S — recurse into the inner expression (first Tree child)
+    # Hide operator P\S — extract the hidden set and merge it before recursing
     if node.data == "hide_exp" and node.children:
         tree_ch = [c for c in node.children if isinstance(c, Tree)]
+        new_hidden = (hidden | _extract_hide_set(src, node)) if filter_hidden else hidden
         if tree_ch:
-            _collect_prefix_event_positions(src, tree_ch[0], out)
+            _collect_prefix_event_positions(src, tree_ch[0], out, new_hidden, filter_hidden)
         return
     # Parentheses
     if node.data == "paren_exp" and node.children:
-        _collect_prefix_event_positions(src, node.children[0], out)
+        _collect_prefix_event_positions(src, node.children[0], out, hidden, filter_hidden)
         return
     # Prefix event: e -> continuation
     if node.data == "prefix_exp" and len(node.children) == 2:
         event_node, cont = node.children
+        if isinstance(event_node, Tree) and event_node.data == "if_then_else":
+            # (if cond then A else B) -> C: recurse into both branches, skip condition
+            for branch in event_node.children[1:]:
+                if isinstance(branch, Tree):
+                    _collect_prefix_event_positions(src, branch, out, hidden, filter_hidden)
+            _collect_prefix_event_positions(src, cont, out, hidden, filter_hidden)
+            return
         if isinstance(event_node, Tree):
             line, col, end_line, end_col = span_of(event_node)
             text = source_text(src, event_node).strip()
@@ -599,8 +663,14 @@ def _collect_prefix_event_positions(
             end_line = event_node.end_line
             end_col = event_node.end_column
             text = str(event_node)
-        out.append({"line": line, "col": col, "end_line": end_line, "end_col": end_col, "text": text})
-        _collect_prefix_event_positions(src, cont, out)
+        if _normalize_event_text(text) not in hidden:
+            out.append({"line": line, "col": col, "end_line": end_line, "end_col": end_col, "text": text})
+        _collect_prefix_event_positions(src, cont, out, hidden, filter_hidden)
+        return
+    # SKIP terminal — the ✓ event is performed from this state
+    if node.data == "skip_exp":
+        line, col, end_line, end_col = span_of(node)
+        out.append({"line": line, "col": col, "end_line": end_line, "end_col": end_col, "text": "SKIP"})
 
 
 def prefix_chain_event_positions(src: str) -> dict[str, list[dict]]:
@@ -617,11 +687,34 @@ def prefix_chain_event_positions(src: str) -> dict[str, list[dict]]:
     for child in t.children:
         if not (isinstance(child, Tree) and child.data == "function_def"):
             continue
-        if len(child.children) != 2:
+        if len(child.children) < 2:
             continue
         name = str(next(child.children[0].scan_values(lambda _: True)))
         positions: list[dict] = []
-        _collect_prefix_event_positions(src, child.children[1], positions)
+        _collect_prefix_event_positions(src, child.children[-1], positions)
+        if positions:
+            result[name] = positions
+    return result
+
+
+def all_prefix_chain_event_positions(src: str) -> dict[str, list[dict]]:
+    """Return per-event source spans for all prefix-chain definitions, including hidden events.
+
+    Like ``prefix_chain_event_positions`` but does *not* filter out events that
+    appear in a ``hide_exp`` set.  The resulting lists stay aligned with FDR's
+    b.trace for direct assertions on processes with hiding (where τ events are
+    included in the trace).
+    """
+    t = _get_parser().parse(src)
+    result: dict[str, list[dict]] = {}
+    for child in t.children:
+        if not (isinstance(child, Tree) and child.data == "function_def"):
+            continue
+        if len(child.children) < 2:
+            continue
+        name = str(next(child.children[0].scan_values(lambda _: True)))
+        positions: list[dict] = []
+        _collect_prefix_event_positions(src, child.children[-1], positions, filter_hidden=False)
         if positions:
             result[name] = positions
     return result
@@ -637,13 +730,54 @@ def all_definition_positions(src: str) -> dict[str, dict]:
     for child in t.children:
         if not (isinstance(child, Tree) and child.data == "function_def"):
             continue
-        if len(child.children) != 2:
+        if len(child.children) < 2:
             continue
         name = str(next(child.children[0].scan_values(lambda _: True)))
         rhs = child.children[-1]
         if isinstance(rhs, Tree):
             line, col, end_line, end_col = span_of(rhs)
             result[name] = {"line": line, "col": col, "end_line": end_line, "end_col": end_col}
+    return result
+
+
+def parallel_operand_positions(src: str) -> dict[str, list[dict]]:
+    """Return per-operand source spans and per-event positions for each top-level
+    definition whose RHS contains a parallel composition.
+
+    Returns {process_name: [
+        {
+          "label": str,        # same as parallel_operand_labels()
+          "line": int, "col": int, "end_line": int, "end_col": int,
+          "events": [{line, col, end_line, end_col, text}, ...],
+        },
+        ...
+    ]}
+    """
+    t = _get_parser().parse(src)
+    result: dict[str, list[dict]] = {}
+    for child in t.children:
+        if not (isinstance(child, Tree) and child.data == "function_def"):
+            continue
+        if len(child.children) != 2:
+            continue
+        name = str(next(child.children[0].scan_values(lambda _: True)))
+        outer_par = _find_outermost_parallel(child.children[-1])
+        if outer_par is None:
+            continue
+        operands_list = []
+        for op_node in _parallel_operands(outer_par):
+            label = _operand_label(src, op_node)
+            line, col, end_line, end_col = span_of(op_node)
+            events: list[dict] = []
+            _collect_prefix_event_positions(src, op_node, events)
+            operands_list.append({
+                "label": label,
+                "line": line, "col": col,
+                "end_line": end_line, "end_col": end_col,
+                "events": events,
+            })
+        if operands_list:
+            result[name] = operands_list
     return result
 
 

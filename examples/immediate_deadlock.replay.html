@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Replay — System :[deadlock free [F]]</title>
+<style>
+/* ── Reset & base ─────────────────────────────────────────────────────────── */
+*  { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: ui-monospace, "Cascadia Code", "Fira Mono", monospace;
+    font-size: 13px;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ── Top bar ─────────────────────────────────────────────────────────────── */
+#topbar {
+    background: #252526;
+    border-bottom: 1px solid #3c3c3c;
+    padding: 6px 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-shrink: 0;
+}
+#topbar .label { color: #858585; font-size: 11px; }
+#topbar .assertion { color: #9cdcfe; }
+#topbar .filepath { color: #555; font-size: 11px; margin-left: auto; overflow: hidden;
+                     text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── Main split ──────────────────────────────────────────────────────────── */
+#main {
+    display: flex;
+    flex: 1;
+    min-height: 0;   /* allow flex children to shrink */
+}
+
+/* ── Left panel (step list + info) ──────────────────────────────────────── */
+#left {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #3c3c3c;
+}
+#steps {
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px 0;
+}
+.step, #deadlock-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 4px 12px;
+    cursor: pointer;
+    user-select: none;
+    border-left: 3px solid transparent;
+}
+.step:hover, #deadlock-row:hover { background: #2a2d2e; }
+.step.active { background: #094771; border-left-color: #0e7fd1; }
+#deadlock-row { border-top: 1px solid #3c3c3c; background: #2d0000; }
+#deadlock-row:hover { background: #3a0000; }
+#deadlock-row.active { background: #5a1000; border-left-color: #cc3300; }
+.step-num { color: #606060; min-width: 32px; font-size: 11px; text-align: right; }
+.step-body { min-width: 0; }
+.step-event { color: #9cdcfe; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.step-who { color: #6a9955; font-size: 10px; margin-top: 1px; }
+#deadlock-row .step-event { color: #f48771; }
+
+/* ── Info panel ─────────────────────────────────────────────────────────── */
+#info {
+    padding: 8px 12px;
+    background: #252526;
+    border-top: 1px solid #3c3c3c;
+    font-size: 11px;
+    color: #888;
+    min-height: 80px;
+    flex-shrink: 0;
+}
+#info .info-title { color: #cccccc; font-weight: bold; margin-bottom: 4px; }
+.comp-participant { color: #dcdcaa; }
+.comp-bystander   { color: #9cdcfe; }
+.comp-dormant     { color: #484848; }
+
+/* ── Right panel (source) ───────────────────────────────────────────────── */
+#right {
+    flex: 1;
+    overflow: auto;
+    padding: 0;
+}
+#source-pre {
+    margin: 0;
+    padding: 8px 0;
+    line-height: 1.55;
+    white-space: pre;
+    tab-size: 4;
+    font-family: inherit;
+    font-size: inherit;
+}
+.src-line { display: flex; }
+.src-line:hover { background: #ffffff08; }
+.ln { color: #4a4a4a; min-width: 44px; text-align: right; padding: 0 10px 0 0;
+       user-select: none; flex-shrink: 0; border-right: 1px solid #333;
+       margin-right: 8px; }
+.lb { flex: 1; }
+/* Highlight spans are injected dynamically */
+.hl-p { background: rgba(255,165,0,0.35); outline: 1px solid rgba(255,165,0,0.8);
+         border-radius: 2px; }
+.hl-b { background: rgba(255,255,100,0.10); outline: 1px solid rgba(200,200,60,0.4);
+         border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <span class="label">TRACE REPLAY</span>
+  <span class="assertion">System :[deadlock free [F]]</span>
+  <span class="filepath">/workspaces/cspm-explain/examples/immediate_deadlock.csp</span>
+</div>
+
+<div id="main">
+  <div id="left">
+    <div id="steps"></div>
+    <div id="deadlock-row">
+      <span class="step-num">✕</span>
+      <div class="step-body">
+        <div class="step-event">Deadlock</div>
+        <div class="step-who" id="deadlock-who"></div>
+      </div>
+    </div>
+    <div id="info"><em>Click a step or use ↑ / ↓ keys</em></div>
+  </div>
+  <div id="right">
+    <pre id="source-pre"></pre>
+  </div>
+</div>
+
+<script>
+/* ── Data ─────────────────────────────────────────────────────────────────── */
+const REPLAY  = {"csp_file": "/workspaces/cspm-explain/examples/immediate_deadlock.csp", "assertion": "System :[deadlock free [F]]", "components": [{"id": 0, "name": "P"}, {"id": 1, "name": "Q"}], "steps": [], "deadlock": [{"id": 0, "name": "P", "acceptance": ["a"], "line": 5, "col": 5, "end_line": 5, "end_col": 6, "text": "a"}, {"id": 1, "name": "Q", "acceptance": ["b"], "line": 6, "col": 5, "end_line": 6, "end_col": 6, "text": "b"}]};
+const SOURCE  = "-- Two processes that each wait for a different first event.\n-- They synchronise on both events, so neither can proceed.\nchannel a, b\n\nP = a -> b -> P\nQ = b -> a -> Q\n\nSystem = P [| {a, b} |] Q\n\nassert System :[deadlock free [F]]\n";
+
+/* ── Pre-compute line start offsets ─────────────────────────────────────── */
+const SRC_LINES   = SOURCE.split('\n');
+const LINE_STARTS = [0];
+for (const ln of SRC_LINES) LINE_STARTS.push(LINE_STARTS[LINE_STARTS.length - 1] + ln.length + 1);
+
+function charOff(line, col) {
+  return LINE_STARTS[line - 1] + (col - 1);
+}
+
+/* ── Escape HTML ─────────────────────────────────────────────────────────── */
+function esc(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/* ── Build step list ─────────────────────────────────────────────────────── */
+(function buildStepList() {
+  const container = document.getElementById('steps');
+  REPLAY.steps.forEach((step, idx) => {
+    const participants = step.highlights
+      .filter(h => h.role === 'participant')
+      .map(h => h.name);
+    const uniq = [...new Set(participants)];
+    const div = document.createElement('div');
+    div.className = 'step';
+    div.dataset.idx = idx;
+    div.innerHTML =
+      `<span class="step-num">${step.step}</span>` +
+      `<div class="step-body">` +
+        `<div class="step-event">${esc(step.event)}</div>` +
+        (uniq.length ? `<div class="step-who">${esc(uniq.join(' + '))}</div>` : '') +
+      `</div>`;
+    div.addEventListener('click', () => selectStep(idx));
+    container.appendChild(div);
+  });
+
+  // Deadlock row subtitle
+  const names = REPLAY.deadlock
+    .filter(d => d.acceptance && d.acceptance.length > 0)
+    .map(d => d.name);
+  document.getElementById('deadlock-who').textContent =
+    names.length ? names.join(', ') + ' waiting' : 'all stuck';
+
+  document.getElementById('deadlock-row').addEventListener('click', () => selectStep(-1));
+})();
+
+/* ── Render highlighted source ──────────────────────────────────────────── */
+function renderSource(highlights) {
+  // 0 = none, 1 = bystander, 2 = participant
+  const ann = new Uint8Array(SOURCE.length);
+
+  for (const h of highlights) {
+    if (h.line === undefined || h.role === 'dormant') continue;
+    const code = h.role === 'participant' ? 2 : 1;
+    const start = charOff(h.line, h.col);
+    const end   = charOff(h.end_line, h.end_col);
+    for (let i = Math.max(0, start); i < Math.min(end, SOURCE.length); i++) {
+      if (ann[i] < code) ann[i] = code;
+    }
+  }
+
+  const cls = ['', 'hl-b', 'hl-p'];
+  let html = '';
+  let lineNum = 1;
+  let lineBody = '';
+  let curCode = -1;
+
+  function push(ch, code) {
+    if (code !== curCode) {
+      if (curCode > 0) lineBody += '</span>';
+      curCode = code;
+      if (code > 0) lineBody += `<span class="${cls[code]}">`;
+    }
+    lineBody += esc(ch);
+  }
+
+  function flushLine() {
+    if (curCode > 0) lineBody += '</span>';
+    curCode = -1;
+    html += `<div class="src-line"><span class="ln">${lineNum++}</span>` +
+            `<span class="lb">${lineBody || ' '}</span></div>`;
+    lineBody = '';
+  }
+
+  for (let i = 0; i < SOURCE.length; i++) {
+    const ch = SOURCE[i];
+    if (ch === '\n') { flushLine(); } else { push(ch, ann[i]); }
+  }
+  if (lineBody || lineNum <= SRC_LINES.length) flushLine();
+
+  document.getElementById('source-pre').innerHTML = html;
+}
+
+/* ── Update info panel ─────────────────────────────────────────────────── */
+function renderInfo(idx) {
+  const infoEl = document.getElementById('info');
+  let highlights, title;
+
+  if (idx === -1) {
+    highlights = REPLAY.deadlock.map(d => ({...d, role: d.acceptance.length ? 'participant' : 'dormant'}));
+    title = '✕ Deadlock reached';
+  } else {
+    const step = REPLAY.steps[idx];
+    highlights = step.highlights;
+    title = `Step ${step.step} / ${REPLAY.steps.length}: '${step.event}'`;
+  }
+
+  const roleClass = { participant: 'comp-participant', bystander: 'comp-bystander', dormant: 'comp-dormant' };
+  const rows = highlights.map(h => {
+    const loc = h.line ? ` <span style="color:#555">L${h.line}:${h.col}</span>` : '';
+    return `<div class="${roleClass[h.role] || ''}">  ${esc(h.role[0].toUpperCase())} ${esc(h.name)}${loc}</div>`;
+  }).join('');
+
+  infoEl.innerHTML = `<div class="info-title">${esc(title)}</div>${rows}`;
+}
+
+/* ── Scroll source to first participant ─────────────────────────────────── */
+function scrollToHighlight(highlights) {
+  const first = highlights.find(h => h.role === 'participant' && h.line !== undefined);
+  if (!first) return;
+  const pre = document.getElementById('source-pre');
+  // Each child of source-pre is a .src-line div; index = line - 1
+  const lineEl = pre.children[first.line - 1];
+  if (lineEl) lineEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+
+/* ── Select a step ─────────────────────────────────────────────────────── */
+let currentIdx = null;
+
+function selectStep(idx) {
+  currentIdx = idx;
+
+  // Update step list active state
+  document.querySelectorAll('.step').forEach((el, i) => {
+    el.classList.toggle('active', i === idx);
+  });
+  document.getElementById('deadlock-row').classList.toggle('active', idx === -1);
+
+  // Scroll the step into view in the left panel
+  if (idx >= 0) {
+    const stepEls = document.querySelectorAll('.step');
+    if (stepEls[idx]) stepEls[idx].scrollIntoView({ block: 'nearest' });
+  }
+
+  let highlights;
+  if (idx === -1) {
+    highlights = REPLAY.deadlock.map(d => ({...d, role: d.acceptance.length ? 'participant' : 'dormant'}));
+  } else {
+    highlights = REPLAY.steps[idx].highlights;
+  }
+
+  renderSource(highlights);
+  scrollToHighlight(highlights);
+  renderInfo(idx);
+}
+
+/* ── Keyboard navigation ────────────────────────────────────────────────── */
+document.addEventListener('keydown', e => {
+  const total = REPLAY.steps.length;
+  const first = total > 0 ? 0 : -1;
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+    e.preventDefault();
+    if (currentIdx === null)        selectStep(first);
+    else if (currentIdx < total - 1) selectStep(currentIdx + 1);
+    else if (currentIdx !== -1)     selectStep(-1);
+  } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    if (currentIdx === null || currentIdx === -1) selectStep(total > 0 ? total - 1 : -1);
+    else if (currentIdx > 0) selectStep(currentIdx - 1);
+    else selectStep(-1);
+  } else if (e.key === 'Home') {
+    e.preventDefault();
+    selectStep(first);
+  } else if (e.key === 'End') {
+    e.preventDefault();
+    selectStep(-1);
+  }
+});
+
+/* ── Initial render ─────────────────────────────────────────────────────── */
+renderSource([]);
+selectStep(REPLAY.steps.length > 0 ? 0 : -1);
+</script>
+</body>
+</html>

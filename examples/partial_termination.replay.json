@@ -1,0 +1,65 @@
+{
+  "csp_file": "/workspaces/cspm-explain/examples/partial_termination.csp",
+  "assertion": "System :[deadlock free [F]]",
+  "components": [
+    {
+      "id": 0,
+      "name": "Initiator"
+    },
+    {
+      "id": 1,
+      "name": "Responder"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "event": "handshake",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "Initiator",
+          "role": "participant",
+          "line": 6,
+          "col": 13,
+          "end_line": 6,
+          "end_col": 22,
+          "text": "handshake"
+        },
+        {
+          "id": 1,
+          "name": "Responder",
+          "role": "participant",
+          "line": 7,
+          "col": 13,
+          "end_line": 7,
+          "end_col": 22,
+          "text": "handshake"
+        }
+      ]
+    }
+  ],
+  "deadlock": [
+    {
+      "id": 0,
+      "name": "Initiator",
+      "acceptance": [],
+      "line": 6,
+      "col": 13,
+      "end_line": 6,
+      "end_col": 30
+    },
+    {
+      "id": 1,
+      "name": "Responder",
+      "acceptance": [
+        "continue"
+      ],
+      "line": 7,
+      "col": 26,
+      "end_line": 7,
+      "end_col": 34,
+      "text": "continue"
+    }
+  ]
+}

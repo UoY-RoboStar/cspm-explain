@@ -1,0 +1,41 @@
+{
+  "csp_file": "/workspaces/cspm-explain/examples/immediate_deadlock.csp",
+  "assertion": "System :[deadlock free [F]]",
+  "components": [
+    {
+      "id": 0,
+      "name": "P"
+    },
+    {
+      "id": 1,
+      "name": "Q"
+    }
+  ],
+  "steps": [],
+  "deadlock": [
+    {
+      "id": 0,
+      "name": "P",
+      "acceptance": [
+        "a"
+      ],
+      "line": 5,
+      "col": 5,
+      "end_line": 5,
+      "end_col": 6,
+      "text": "a"
+    },
+    {
+      "id": 1,
+      "name": "Q",
+      "acceptance": [
+        "b"
+      ],
+      "line": 6,
+      "col": 5,
+      "end_line": 6,
+      "end_col": 6,
+      "text": "b"
+    }
+  ]
+}

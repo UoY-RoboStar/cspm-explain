@@ -1,0 +1,160 @@
+{
+  "csp_file": "/workspaces/cspm-explain/examples/lock_ordering.csp",
+  "assertion": "System :[deadlock free [F]]",
+  "components": [
+    {
+      "id": 0,
+      "name": "P"
+    },
+    {
+      "id": 1,
+      "name": "Q"
+    },
+    {
+      "id": 2,
+      "name": "MutexA"
+    },
+    {
+      "id": 3,
+      "name": "MutexB"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "event": "q_lock_b",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P",
+          "role": "bystander",
+          "line": 18,
+          "col": 5,
+          "end_line": 18,
+          "end_col": 13,
+          "text": "p_lock_a"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 19,
+          "col": 5,
+          "end_line": 19,
+          "end_col": 13,
+          "text": "q_lock_b"
+        },
+        {
+          "id": 2,
+          "name": "MutexA",
+          "role": "bystander",
+          "line": 12,
+          "col": 10,
+          "end_line": 13,
+          "end_col": 43
+        },
+        {
+          "id": 3,
+          "name": "MutexB",
+          "role": "participant",
+          "line": 15,
+          "col": 10,
+          "end_line": 16,
+          "end_col": 43
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "event": "p_lock_a",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P",
+          "role": "participant",
+          "line": 18,
+          "col": 5,
+          "end_line": 18,
+          "end_col": 13,
+          "text": "p_lock_a"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "bystander",
+          "line": 19,
+          "col": 17,
+          "end_line": 19,
+          "end_col": 25,
+          "text": "q_lock_a"
+        },
+        {
+          "id": 2,
+          "name": "MutexA",
+          "role": "participant",
+          "line": 12,
+          "col": 10,
+          "end_line": 13,
+          "end_col": 43
+        },
+        {
+          "id": 3,
+          "name": "MutexB",
+          "role": "bystander",
+          "line": 15,
+          "col": 10,
+          "end_line": 16,
+          "end_col": 43
+        }
+      ]
+    }
+  ],
+  "deadlock": [
+    {
+      "id": 0,
+      "name": "P",
+      "acceptance": [
+        "p_lock_b"
+      ],
+      "line": 18,
+      "col": 17,
+      "end_line": 18,
+      "end_col": 25,
+      "text": "p_lock_b"
+    },
+    {
+      "id": 1,
+      "name": "Q",
+      "acceptance": [
+        "q_lock_a"
+      ],
+      "line": 19,
+      "col": 17,
+      "end_line": 19,
+      "end_col": 25,
+      "text": "q_lock_a"
+    },
+    {
+      "id": 2,
+      "name": "MutexA",
+      "acceptance": [
+        "p_unlock_a"
+      ],
+      "line": 12,
+      "col": 10,
+      "end_line": 13,
+      "end_col": 43
+    },
+    {
+      "id": 3,
+      "name": "MutexB",
+      "acceptance": [
+        "q_unlock_b"
+      ],
+      "line": 15,
+      "col": 10,
+      "end_line": 16,
+      "end_col": 43
+    }
+  ]
+}

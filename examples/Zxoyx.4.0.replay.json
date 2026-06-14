@@ -1,0 +1,55 @@
+{
+  "csp_file": "/workspaces/cspm-explain/examples/Zxoyx.csp",
+  "assertion": "jznAJvlT :[deadlock free]",
+  "components": [
+    {
+      "id": 0,
+      "name": "jznAJvlT"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "event": "SxCinvlLfgzCdVYjXlxOXAF",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "jznAJvlT",
+          "role": "participant",
+          "line": 54,
+          "col": 12,
+          "end_line": 54,
+          "end_col": 14,
+          "text": "NB"
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "event": "\u2713",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "jznAJvlT",
+          "role": "participant",
+          "line": 54,
+          "col": 18,
+          "end_line": 54,
+          "end_col": 22,
+          "text": "SKIP"
+        }
+      ]
+    }
+  ],
+  "deadlock": [
+    {
+      "id": 0,
+      "name": "jznAJvlT",
+      "acceptance": [],
+      "line": 54,
+      "col": 12,
+      "end_line": 54,
+      "end_col": 22
+    }
+  ]
+}

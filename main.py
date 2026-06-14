@@ -89,15 +89,20 @@ def main() -> None:
 
             if args.replay:
                 from cspm_explain.trace_replay import generate_replay
+                from cspm_explain.trace_replay_html import generate_replay_html
                 replay_data = generate_replay(
                     assertion, ce, fdr_output.event_map, csp_source, args.csp_file
                 )
                 base = pathlib.Path(args.csp_file).with_suffix("")
                 suffix = f".{a_idx}.{idx - 1}" if total_ces > 1 else ""
                 replay_path = pathlib.Path(f"{base}{suffix}.replay.json")
+                html_path   = pathlib.Path(f"{base}{suffix}.replay.html")
                 with open(replay_path, "w") as f:
                     json.dump(replay_data, f, indent=2)
+                with open(html_path, "w") as f:
+                    f.write(generate_replay_html(replay_data, csp_source))
                 print(f"\nReplay written to: {replay_path}")
+                print(f"Viewer  written to: {html_path}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,975 @@
+{
+  "csp_file": "/workspaces/cspm-explain/examples/hidden_deadlock.csp",
+  "assertion": "System :[deadlock free [F]]",
+  "components": [
+    {
+      "id": 0,
+      "name": "P(5)"
+    },
+    {
+      "id": 1,
+      "name": "Q"
+    },
+    {
+      "id": 2,
+      "name": "c -> d -> STOP (in R)"
+    },
+    {
+      "id": 3,
+      "name": "S"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "event": "a",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(5)",
+          "role": "bystander",
+          "line": 5,
+          "col": 8,
+          "end_line": 5,
+          "end_col": 58
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 6,
+          "col": 5,
+          "end_line": 6,
+          "end_col": 6,
+          "text": "a"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "event": "b",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(5)",
+          "role": "participant",
+          "line": 5,
+          "col": 22,
+          "end_line": 5,
+          "end_col": 23,
+          "text": "b"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "bystander",
+          "line": 6,
+          "col": 10,
+          "end_line": 6,
+          "end_col": 11,
+          "text": "c"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "event": "c",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(5)",
+          "role": "participant",
+          "line": 5,
+          "col": 27,
+          "end_line": 5,
+          "end_col": 28,
+          "text": "c"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 6,
+          "col": 10,
+          "end_line": 6,
+          "end_col": 11,
+          "text": "c"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "event": "a",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(4)",
+          "role": "bystander",
+          "line": 5,
+          "col": 8,
+          "end_line": 5,
+          "end_col": 58
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 6,
+          "col": 5,
+          "end_line": 6,
+          "end_col": 6,
+          "text": "a"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 5,
+      "event": "b",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(4)",
+          "role": "participant",
+          "line": 5,
+          "col": 22,
+          "end_line": 5,
+          "end_col": 23,
+          "text": "b"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "bystander",
+          "line": 6,
+          "col": 10,
+          "end_line": 6,
+          "end_col": 11,
+          "text": "c"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 6,
+      "event": "c",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(4)",
+          "role": "participant",
+          "line": 5,
+          "col": 27,
+          "end_line": 5,
+          "end_col": 28,
+          "text": "c"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 6,
+          "col": 10,
+          "end_line": 6,
+          "end_col": 11,
+          "text": "c"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 7,
+      "event": "b",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(3)",
+          "role": "participant",
+          "line": 5,
+          "col": 22,
+          "end_line": 5,
+          "end_col": 23,
+          "text": "b"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "bystander",
+          "line": 6,
+          "col": 5,
+          "end_line": 6,
+          "end_col": 6,
+          "text": "a"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 8,
+      "event": "a",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(3)",
+          "role": "bystander",
+          "line": 5,
+          "col": 8,
+          "end_line": 5,
+          "end_col": 58
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 6,
+          "col": 5,
+          "end_line": 6,
+          "end_col": 6,
+          "text": "a"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 9,
+      "event": "c",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(3)",
+          "role": "participant",
+          "line": 5,
+          "col": 27,
+          "end_line": 5,
+          "end_col": 28,
+          "text": "c"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 6,
+          "col": 10,
+          "end_line": 6,
+          "end_col": 11,
+          "text": "c"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 10,
+      "event": "a",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(2)",
+          "role": "bystander",
+          "line": 5,
+          "col": 8,
+          "end_line": 5,
+          "end_col": 58
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 6,
+          "col": 5,
+          "end_line": 6,
+          "end_col": 6,
+          "text": "a"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 11,
+      "event": "b",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(2)",
+          "role": "participant",
+          "line": 5,
+          "col": 22,
+          "end_line": 5,
+          "end_col": 23,
+          "text": "b"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "bystander",
+          "line": 6,
+          "col": 10,
+          "end_line": 6,
+          "end_col": 11,
+          "text": "c"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 12,
+      "event": "c",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(2)",
+          "role": "participant",
+          "line": 5,
+          "col": 27,
+          "end_line": 5,
+          "end_col": 28,
+          "text": "c"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 6,
+          "col": 10,
+          "end_line": 6,
+          "end_col": 11,
+          "text": "c"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 13,
+      "event": "a",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(1)",
+          "role": "bystander",
+          "line": 5,
+          "col": 8,
+          "end_line": 5,
+          "end_col": 58
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 6,
+          "col": 5,
+          "end_line": 6,
+          "end_col": 6,
+          "text": "a"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 14,
+      "event": "b",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(1)",
+          "role": "participant",
+          "line": 5,
+          "col": 22,
+          "end_line": 5,
+          "end_col": 23,
+          "text": "b"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "bystander",
+          "line": 6,
+          "col": 10,
+          "end_line": 6,
+          "end_col": 11,
+          "text": "c"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 15,
+      "event": "c",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(1)",
+          "role": "participant",
+          "line": 5,
+          "col": 27,
+          "end_line": 5,
+          "end_col": 28,
+          "text": "c"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 6,
+          "col": 10,
+          "end_line": 6,
+          "end_col": 11,
+          "text": "c"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 16,
+      "event": "a",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(0)",
+          "role": "participant",
+          "line": 5,
+          "col": 44,
+          "end_line": 5,
+          "end_col": 45,
+          "text": "a"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "bystander",
+          "line": 6,
+          "col": 5,
+          "end_line": 6,
+          "end_col": 6,
+          "text": "a"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 17,
+      "event": "a",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(0)",
+          "role": "participant",
+          "line": 5,
+          "col": 44,
+          "end_line": 5,
+          "end_col": 45,
+          "text": "a"
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "bystander",
+          "line": 6,
+          "col": 5,
+          "end_line": 6,
+          "end_col": 6,
+          "text": "a"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "bystander",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 18,
+      "event": "\u03c4",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(0)",
+          "role": "dormant",
+          "line": 5,
+          "col": 8,
+          "end_line": 5,
+          "end_col": 58
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "bystander",
+          "line": 6,
+          "col": 5,
+          "end_line": 6,
+          "end_col": 6,
+          "text": "a"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "participant",
+          "line": 7,
+          "col": 6,
+          "end_line": 7,
+          "end_col": 7,
+          "text": "c"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "participant",
+          "line": 8,
+          "col": 5,
+          "end_line": 8,
+          "end_col": 6,
+          "text": "c"
+        }
+      ]
+    },
+    {
+      "step": 19,
+      "event": "d",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(0)",
+          "role": "dormant",
+          "line": 5,
+          "col": 8,
+          "end_line": 5,
+          "end_col": 58
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "bystander",
+          "line": 6,
+          "col": 5,
+          "end_line": 6,
+          "end_col": 6,
+          "text": "a"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "participant",
+          "line": 7,
+          "col": 11,
+          "end_line": 7,
+          "end_col": 12,
+          "text": "d"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 10,
+          "end_line": 8,
+          "end_col": 11,
+          "text": "a"
+        }
+      ]
+    },
+    {
+      "step": 20,
+      "event": "a",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "P(0)",
+          "role": "dormant",
+          "line": 5,
+          "col": 8,
+          "end_line": 5,
+          "end_col": 58
+        },
+        {
+          "id": 1,
+          "name": "Q",
+          "role": "participant",
+          "line": 6,
+          "col": 5,
+          "end_line": 6,
+          "end_col": 6,
+          "text": "a"
+        },
+        {
+          "id": 2,
+          "name": "c -> d -> STOP (in R)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "S",
+          "role": "bystander",
+          "line": 8,
+          "col": 10,
+          "end_line": 8,
+          "end_col": 11,
+          "text": "a"
+        }
+      ]
+    }
+  ],
+  "deadlock": [
+    {
+      "id": 0,
+      "name": "P(0)",
+      "acceptance": [],
+      "line": 5,
+      "col": 8,
+      "end_line": 5,
+      "end_col": 58
+    },
+    {
+      "id": 1,
+      "name": "Q",
+      "acceptance": [
+        "c"
+      ],
+      "line": 6,
+      "col": 10,
+      "end_line": 6,
+      "end_col": 11,
+      "text": "c"
+    },
+    {
+      "id": 2,
+      "name": "c -> d -> STOP (in R)",
+      "acceptance": [],
+      "line": 7,
+      "col": 6,
+      "end_line": 7,
+      "end_col": 20
+    },
+    {
+      "id": 3,
+      "name": "S",
+      "acceptance": [
+        "a"
+      ],
+      "line": 8,
+      "col": 10,
+      "end_line": 8,
+      "end_col": 11,
+      "text": "a"
+    }
+  ]
+}

@@ -52,7 +52,9 @@ from .model import AssertionResult, Behaviour, Counterexample
 from .explain import _collect_leaves, _build_display_names, _INTERLEAVE_EVENT
 from .cspm_parser import (
     all_definition_positions,
+    all_prefix_chain_event_positions,
     parallel_operand_labels,
+    parallel_operand_positions,
     prefix_chain_event_positions,
     sequential_tail,
 )
@@ -142,7 +144,9 @@ def generate_replay(
     ops = None
     chains: dict[str, tuple[int, str | None]] = {}
     event_positions: dict[str, list[dict]] = {}
+    all_event_positions: dict[str, list[dict]] = {}
     def_positions: dict[str, dict] = {}
+    operand_positions: dict[str, list[dict]] = {}
 
     try:
         ops = parallel_operand_labels(csp_source)
@@ -153,13 +157,32 @@ def generate_replay(
     except Exception:
         pass
     try:
+        # Visible-only event positions — used for chain segment indexing where
+        # the containing process's b.trace omits τ events from inner hiding.
         event_positions = prefix_chain_event_positions(csp_source)
+    except Exception:
+        pass
+    try:
+        # All event positions including hidden — used for non-chain leaves whose
+        # b.trace IS the process with hiding (τ events appear in the trace).
+        all_event_positions = all_prefix_chain_event_positions(csp_source)
     except Exception:
         pass
     try:
         def_positions = all_definition_positions(csp_source)
     except Exception:
         pass
+    try:
+        operand_positions = parallel_operand_positions(csp_source)
+    except Exception:
+        pass
+
+    # Processes with hidden events: their b.trace includes τ when checked directly,
+    # so they must NOT become chain anchors (chain counting would go out of sync).
+    hide_procs: set[str] = {
+        k for k in all_event_positions
+        if len(all_event_positions[k]) > len(event_positions.get(k, []))
+    }
 
     display_names = _build_display_names(b, ops)
 
@@ -170,7 +193,10 @@ def generate_replay(
 
     for leaf in leaves:
         lbl = display_names.get(id(leaf), leaf.machine_name)
-        if " (in " in lbl or lbl not in chains:
+        # Skip chain anchoring for processes that have hidden events: when such a
+        # process is checked directly, FDR's b.trace includes τ events that would
+        # desync the chain counter (which only counts visible steps).
+        if " (in " in lbl or lbl not in chains or lbl in hide_procs:
             leaf_anchor[id(leaf)] = None
             continue
         anchor = lbl
@@ -183,6 +209,12 @@ def generate_replay(
     per_leaf_sem: dict[int, str] = {
         id(leaf): display_names.get(id(leaf), leaf.machine_name) for leaf in leaves
     }
+    # Shared event counter keyed by operand display name (e.g. "(e1 -> e2) (in P)").
+    # Multiple FDR leaves can represent different segments of the same inline operand;
+    # a shared counter tracks the collective position within the operand event sequence.
+    operand_ev_count: dict[str, int] = {}
+    # Per-leaf event counter for non-chain NAMED process leaves (e.g. jznAJvlT = NB -> SKIP).
+    non_chain_ev: dict[int, int] = {}
 
     # --- Source-highlight helpers ----------------------------------------------
 
@@ -201,11 +233,49 @@ def generate_replay(
             return _sem_name(anchor, anchor_counts[anchor], anchor_thresholds.get(anchor, []))
         return per_leaf_sem.get(id(leaf), display_names.get(id(leaf), leaf.machine_name))
 
-    def _leaf_highlight(leaf: Behaviour) -> dict | None:
+    def _operand_highlight(proc: str) -> dict | None:
+        """Highlight for a leaf whose per_leaf_sem still names an inline operand."""
+        label, parent = proc.rsplit(" (in ", 1)
+        parent = parent.rstrip(")")
+        ops_list = operand_positions.get(parent, [])
+        op = next((o for o in ops_list if o["label"] == label), None)
+        if op is None:
+            return None
+        # Use the shared counter — tracks collective position across all leaves for this operand.
+        ev_count = operand_ev_count.get(proc, 0)
+        events = op.get("events", [])
+        if ev_count < len(events):
+            return events[ev_count]
+        # Past all known events: return the operand's overall span as fallback.
+        return {k: op[k] for k in ("line", "col", "end_line", "end_col")}
+
+    def _leaf_highlight(leaf: Behaviour, sys_event: str | None = None) -> dict | None:
         anchor = leaf_anchor.get(id(leaf))
         if anchor is not None:
             return _chain_highlight(anchor, anchor_counts[anchor])
         proc = per_leaf_sem.get(id(leaf), display_names.get(id(leaf), leaf.machine_name))
+        if " (in " in proc:
+            return _operand_highlight(proc)
+        # Parameterized FDR state like "P(5)" — strip suffix for position lookup.
+        paren_idx = proc.find("(")
+        if paren_idx > 0:
+            base = proc[:paren_idx]
+            positions = event_positions.get(base, [])
+            if positions and sys_event:
+                # Participant: find the event by name for exact per-event precision.
+                for p in positions:
+                    if p.get("text") == sys_event:
+                        return p
+            # Bystander or event not in then-branch: fall back to definition span.
+            return def_positions.get(base)
+        # Per-event precision for non-chain named leaves.
+        # Use all_event_positions so τ steps in b.trace (direct hide_exp assertions)
+        # map to the hidden event's source position rather than the next visible one.
+        positions = all_event_positions.get(proc, [])
+        if positions:
+            ev_count = non_chain_ev.get(id(leaf), 0)
+            if ev_count < len(positions):
+                return positions[ev_count]
         return def_positions.get(proc)
 
     # --- Stable leaf numbering and dormancy tracking -------------------------
@@ -230,9 +300,15 @@ def generate_replay(
 
     # --- Walk the trace -------------------------------------------------------
     steps: list[dict] = []
+    _TAU = 1  # FDR's internal tau event ID
 
     for step, sys_eid in enumerate(b.trace):
-        sys_event = event_map.get(str(sys_eid), str(sys_eid))
+        # Use revealed_trace so τ steps display the actual hidden event name.
+        if sys_eid == _TAU and b.revealed_trace and step < len(b.revealed_trace):
+            rev_eid = b.revealed_trace[step]
+            sys_event = event_map.get(str(rev_eid), str(rev_eid)) if rev_eid != _TAU else "τ"
+        else:
+            sys_event = event_map.get(str(sys_eid), str(sys_eid))
 
         participant_ids = {
             id(leaf)
@@ -250,13 +326,23 @@ def generate_replay(
                 role = "dormant"
             else:
                 role = "bystander"
-            # Dormant chain leaves omit the stale chain-position highlight (the
-            # chain pointer stopped at the boundary process, which is confusing
-            # since that process is now being executed by a different leaf).
-            if role == "dormant" and leaf_anchor.get(id(leaf)) is not None:
+            # Dormant chain leaves and inline operand leaves omit highlights: the
+            # shared counter has advanced past their contribution, so any position
+            # shown would be stale/misleading.
+            proc_now = per_leaf_sem.get(id(leaf), "")
+            if role == "dormant" and (
+                leaf_anchor.get(id(leaf)) is not None or " (in " in proc_now
+            ):
                 hl = None
             else:
-                hl = _leaf_highlight(leaf)
+                # For τ steps with a known revealed event, pass the revealed name
+                # as sys_event so parameterized-process lookups can match by text.
+                if role == "participant" and sys_eid == _TAU:
+                    rev = (b.revealed_trace or [])[step] if b.revealed_trace and step < len(b.revealed_trace or []) else _TAU
+                    lookup_event = event_map.get(str(rev), str(rev)) if rev != _TAU else sys_event
+                else:
+                    lookup_event = sys_event if role == "participant" else None
+                hl = _leaf_highlight(leaf, lookup_event)
             entry: dict = {
                 "id": leaf_index[id(leaf)],
                 "name": _leaf_sem(leaf),
@@ -281,10 +367,24 @@ def generate_replay(
             elif anchor is None and leaf_participated:
                 # Track FDR named-state transitions for non-chain leaves
                 states = leaf.states or []
+                proc = per_leaf_sem.get(id(leaf), "")
                 if step + 1 < len(states):
                     after = states[step + 1]
                     if after not in ("<unchanged>", "<unnamed>", "STOP", "SKIP"):
+                        # Transitioned to a named process; reset per-leaf counter.
+                        if per_leaf_sem.get(id(leaf)) != after:
+                            non_chain_ev[id(leaf)] = 0
                         per_leaf_sem[id(leaf)] = after
+                    elif " (in " in proc:
+                        # Still in inline operand phase: advance the SHARED counter.
+                        operand_ev_count[proc] = operand_ev_count.get(proc, 0) + 1
+                    elif all_event_positions.get(proc):
+                        # Named prefix-chain leaf (e.g. jznAJvlT = NB -> SKIP).
+                        non_chain_ev[id(leaf)] = non_chain_ev.get(id(leaf), 0) + 1
+                elif " (in " in proc:
+                    operand_ev_count[proc] = operand_ev_count.get(proc, 0) + 1
+                elif all_event_positions.get(proc):
+                    non_chain_ev[id(leaf)] = non_chain_ev.get(id(leaf), 0) + 1
 
     # --- Deadlock state -------------------------------------------------------
     deadlock: list[dict] = []

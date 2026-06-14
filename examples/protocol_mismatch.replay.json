@@ -1,0 +1,94 @@
+{
+  "csp_file": "/workspaces/cspm-explain/examples/protocol_mismatch.csp",
+  "assertion": "System :[deadlock free [F]]",
+  "components": [
+    {
+      "id": 0,
+      "name": "Server"
+    },
+    {
+      "id": 1,
+      "name": "Client"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "event": "connect",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "Server",
+          "role": "participant",
+          "line": 6,
+          "col": 10,
+          "end_line": 6,
+          "end_col": 17,
+          "text": "connect"
+        },
+        {
+          "id": 1,
+          "name": "Client",
+          "role": "participant",
+          "line": 7,
+          "col": 10,
+          "end_line": 7,
+          "end_col": 17,
+          "text": "connect"
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "event": "request",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "Server",
+          "role": "participant",
+          "line": 6,
+          "col": 21,
+          "end_line": 6,
+          "end_col": 28,
+          "text": "request"
+        },
+        {
+          "id": 1,
+          "name": "Client",
+          "role": "participant",
+          "line": 7,
+          "col": 21,
+          "end_line": 7,
+          "end_col": 28,
+          "text": "request"
+        }
+      ]
+    }
+  ],
+  "deadlock": [
+    {
+      "id": 0,
+      "name": "Server",
+      "acceptance": [
+        "success"
+      ],
+      "line": 6,
+      "col": 32,
+      "end_line": 6,
+      "end_col": 39,
+      "text": "success"
+    },
+    {
+      "id": 1,
+      "name": "Client",
+      "acceptance": [
+        "rollback"
+      ],
+      "line": 7,
+      "col": 32,
+      "end_line": 7,
+      "end_col": 40,
+      "text": "rollback"
+    }
+  ]
+}

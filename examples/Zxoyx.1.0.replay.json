@@ -1,0 +1,125 @@
+{
+  "csp_file": "/workspaces/cspm-explain/examples/Zxoyx.csp",
+  "assertion": "syCpF :[deadlock free]",
+  "components": [
+    {
+      "id": 0,
+      "name": "(mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF)"
+    },
+    {
+      "id": 1,
+      "name": "(mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF)"
+    },
+    {
+      "id": 2,
+      "name": "WlQRDX"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "event": "KrJknop",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "(mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF)",
+          "role": "participant",
+          "line": 51,
+          "col": 10,
+          "end_line": 51,
+          "end_col": 25,
+          "text": "mrgVjZJVNqWtqXE"
+        },
+        {
+          "id": 1,
+          "name": "(mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF)",
+          "role": "bystander",
+          "line": 51,
+          "col": 10,
+          "end_line": 51,
+          "end_col": 25,
+          "text": "mrgVjZJVNqWtqXE"
+        },
+        {
+          "id": 2,
+          "name": "WlQRDX",
+          "role": "dormant",
+          "line": 52,
+          "col": 10,
+          "end_line": 52,
+          "end_col": 179
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "event": "czQMDDFUCyYHwC",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "(mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF)",
+          "role": "participant",
+          "line": 51,
+          "col": 29,
+          "end_line": 51,
+          "end_col": 36,
+          "text": "KrJknop"
+        },
+        {
+          "id": 1,
+          "name": "(mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF)",
+          "role": "bystander",
+          "line": 51,
+          "col": 29,
+          "end_line": 51,
+          "end_col": 36,
+          "text": "KrJknop"
+        },
+        {
+          "id": 2,
+          "name": "WlQRDX",
+          "role": "dormant",
+          "line": 52,
+          "col": 10,
+          "end_line": 52,
+          "end_col": 179
+        }
+      ]
+    }
+  ],
+  "deadlock": [
+    {
+      "id": 0,
+      "name": "OFXrGAIUfL",
+      "acceptance": [
+        "WZ"
+      ],
+      "line": 50,
+      "col": 14,
+      "end_line": 50,
+      "end_col": 16,
+      "text": "NB"
+    },
+    {
+      "id": 1,
+      "name": "(mrgVjZJVNqWtqXE -> KrJknop -> OFXrGAIUfL) (in syCpF)",
+      "acceptance": [
+        "SxCinvlLfgzCdVYjXlxOXAF"
+      ],
+      "line": 51,
+      "col": 29,
+      "end_line": 51,
+      "end_col": 36,
+      "text": "KrJknop"
+    },
+    {
+      "id": 2,
+      "name": "WlQRDX",
+      "acceptance": [],
+      "line": 52,
+      "col": 10,
+      "end_line": 52,
+      "end_col": 179
+    }
+  ]
+}
