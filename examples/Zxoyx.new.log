@@ -1016,3 +1016,66 @@ Root cause:
   Also: (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ) (reached STOP), WlQRDX (reached STOP).
 
   The deadlock arises because fOPDsgQJmSZ, (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ), WlQRDX can no longer offer any events, so the events that (lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ), (EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ) need from them as synchronisation partners will never be available.
+
+Replay written to: Zxoyx.10.0.replay.json
+Viewer  written to: Zxoyx.10.0.replay.html
+
+======================================================================
+ASSERTION FAILED: ugVLau :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'uLepi' → 'qwgxyKc' → 'uLepi' → 'czQMDDFUCyYHwC' → 'vGbGaszLrbHMhgXeRIosn' → 'LmrdOHS' → 'eAQrnGoDxNxjYJzQajY'.
+
+How the trace unfolds:
+  Step 1: 'uLepi'  ((uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) acts alone)
+           (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau): (ready to perform 'uLepi') → (ready to perform 'qwgxyKc')
+  Step 2: 'qwgxyKc'  ((uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) acts alone)
+           (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau): (ready to perform 'qwgxyKc') → (ready to perform 'vGbGaszLrbHMhgXeRIosn')
+  Step 3: 'uLepi'  ((uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau) acts alone)
+           (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau): (ready to perform 'uLepi') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 4: 'czQMDDFUCyYHwC'  ((uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau) acts alone)
+           (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau): (ready to perform 'czQMDDFUCyYHwC') → (ready to perform 'eAQrnGoDxNxjYJzQajY')
+  Step 5: 'vGbGaszLrbHMhgXeRIosn'  ((uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) acts alone)
+           (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau): (ready to perform 'vGbGaszLrbHMhgXeRIosn') → (ready to perform 'LmrdOHS')
+  Step 6: 'LmrdOHS'  ((uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) acts alone)
+           (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau): (ready to perform 'LmrdOHS') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 7: 'eAQrnGoDxNxjYJzQajY'  ((uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau) acts alone)
+           (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau): (ready to perform 'eAQrnGoDxNxjYJzQajY') → 'STOP'
+
+State at the point of deadlock:
+  • (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau): ready to perform: 'czQMDDFUCyYHwC'
+  • (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau): in 'STOP', no events available
+
+Root cause:
+  (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau) reached STOP, while (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) is still waiting to perform events:
+    – (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) wants to perform 'czQMDDFUCyYHwC'.
+
+  The deadlock arises because (uLepi -> czQMDDFUCyYHwC -> eAQrnGoDxNxjYJzQajY -> STOP) (in ugVLau) can no longer offer any events, so any event that (uLepi -> qwgxyKc -> vGbGaszLrbHMhgXeRIosn -> LmrdOHS -> nwaJDmoecpTOCQOqCIVPK -> hscxeqPrSiJOSfYC -> SA -> eGI -> wqtSgYAOMMm -> jOtveIyFDttOxCDJKzYwPXh -> czQMDDFUCyYHwC -> jWZUgFalxvtQZdbSDIsM -> alKug -> WZ -> pHMsEuDkEUeKlpg -> KrJknop -> eAQrnGoDxNxjYJzQajY -> hSUWRR -> SxCinvlLfgzCdVYjXlxOXAF -> QvcAne -> OFXrGAIUfL) (in ugVLau) needs from it as synchronisation partners will never be available.
+
+Replay written to: Zxoyx.11.0.replay.json
+Viewer  written to: Zxoyx.11.0.replay.html
+
+======================================================================
+ASSERTION FAILED: nFwFQTC :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'SxCinvlLfgzCdVYjXlxOXAF' → 'KrJknop' → 'czQMDDFUCyYHwC' → '✓'.
+
+How the trace unfolds:
+  Step 1: 'SxCinvlLfgzCdVYjXlxOXAF'  (nFwFQTC acts alone)
+           nFwFQTC: 'nFwFQTC' → (ready to perform 'KrJknop')
+  Step 2: 'KrJknop'  (nFwFQTC acts alone)
+           nFwFQTC: (ready to perform 'KrJknop') → (ready to perform 'czQMDDFUCyYHwC')
+  Step 3: 'czQMDDFUCyYHwC'  (nFwFQTC acts alone)
+           nFwFQTC: (ready to perform 'czQMDDFUCyYHwC') → 'SKIP'
+  Step 4: '✓'  (nFwFQTC acts alone)
+           nFwFQTC: 'SKIP' → (terminated)
+
+State at the point of deadlock:
+  • nFwFQTC: terminated normally
+
+Root cause:
+  nFwFQTC terminates normally (performed ✓), after which no further events are available. FDR's deadlock-free check requires a process to be able to make progress indefinitely; a process that successfully terminates is still flagged. If the process is intended to repeat, redefine it to loop back to its initial state.
+
+Replay written to: Zxoyx.12.0.replay.json
+Viewer  written to: Zxoyx.12.0.replay.html
