@@ -11,10 +11,10 @@ class Behaviour:
     trace: list[int]
     states: Optional[list[str]]
     child_behaviours: list[Behaviour]
-    # Populated by the C++ API path: trace with TAU (1) replaced by the actual
-    # hidden compiled-event IDs where the τ originated from a hiding operator.
-    # Non-τ positions and τ from non-determinism remain unchanged.
-    revealed_trace: Optional[list[int]] = field(default=None)
+    # Populated by the C++ API path: for each position in trace, the hidden
+    # event name if that τ was caused by a hiding operator, else None.
+    # Only present at τ positions; all other positions are None.
+    revealed_trace: Optional[list[str | None]] = field(default=None)
 
     @classmethod
     def from_dict(cls, d: dict) -> Behaviour:

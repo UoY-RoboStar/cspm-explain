@@ -839,7 +839,7 @@
     },
     {
       "step": 12,
-      "event": "czQMDDFUCyYHwC",
+      "event": "LmrdOHS",
       "highlights": [
         {
           "id": 0,
@@ -909,7 +909,7 @@
     },
     {
       "step": 13,
-      "event": "LmrdOHS",
+      "event": "czQMDDFUCyYHwC",
       "highlights": [
         {
           "id": 0,
@@ -2004,7 +2004,7 @@
     },
     {
       "step": 29,
-      "event": "LmrdOHS",
+      "event": "czQMDDFUCyYHwC",
       "highlights": [
         {
           "id": 0,
@@ -2134,7 +2134,7 @@
     },
     {
       "step": 31,
-      "event": "KrJknop",
+      "event": "onoCl",
       "highlights": [
         {
           "id": 0,
@@ -2329,7 +2329,7 @@
     },
     {
       "step": 34,
-      "event": "czQMDDFUCyYHwC",
+      "event": "LmrdOHS",
       "highlights": [
         {
           "id": 0,
@@ -2459,7 +2459,7 @@
     },
     {
       "step": 36,
-      "event": "eAQrnGoDxNxjYJzQajY",
+      "event": "ZH",
       "highlights": [
         {
           "id": 0,
@@ -2524,7 +2524,7 @@
     },
     {
       "step": 37,
-      "event": "mrgVjZJVNqWtqXE",
+      "event": "tW",
       "highlights": [
         {
           "id": 0,
@@ -3167,7 +3167,7 @@
     },
     {
       "step": 47,
-      "event": "mrgVjZJVNqWtqXE",
+      "event": "tW",
       "highlights": [
         {
           "id": 0,
@@ -3551,7 +3551,7 @@
     },
     {
       "step": 53,
-      "event": "eAQrnGoDxNxjYJzQajY",
+      "event": "ZH",
       "highlights": [
         {
           "id": 0,
@@ -3615,7 +3615,7 @@
     },
     {
       "step": 54,
-      "event": "mrgVjZJVNqWtqXE",
+      "event": "tW",
       "highlights": [
         {
           "id": 0,
@@ -3999,7 +3999,7 @@
     },
     {
       "step": 60,
-      "event": "KrJknop",
+      "event": "onoCl",
       "highlights": [
         {
           "id": 0,
@@ -4127,6 +4127,70 @@
     },
     {
       "step": 62,
+      "event": "alKug",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "dFxaTm",
+          "role": "dormant"
+        },
+        {
+          "id": 1,
+          "name": "dFxaTm",
+          "role": "dormant"
+        },
+        {
+          "id": 2,
+          "name": "dFxaTm",
+          "role": "dormant",
+          "line": 59,
+          "col": 10,
+          "end_line": 59,
+          "end_col": 322
+        },
+        {
+          "id": 3,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "bystander",
+          "line": 55,
+          "col": 16,
+          "end_line": 55,
+          "end_col": 25,
+          "text": "lLPrcWUdx"
+        },
+        {
+          "id": 4,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "bystander",
+          "line": 55,
+          "col": 16,
+          "end_line": 55,
+          "end_col": 25,
+          "text": "lLPrcWUdx"
+        },
+        {
+          "id": 5,
+          "name": "WlQRDX",
+          "role": "dormant",
+          "line": 52,
+          "col": 10,
+          "end_line": 52,
+          "end_col": 179
+        },
+        {
+          "id": 6,
+          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
+          "role": "participant",
+          "line": 55,
+          "col": 288,
+          "end_line": 55,
+          "end_col": 290,
+          "text": "tW"
+        }
+      ]
+    },
+    {
+      "step": 63,
       "event": "SA",
       "highlights": [
         {
@@ -4182,74 +4246,10 @@
           "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
           "role": "bystander",
           "line": 55,
-          "col": 288,
+          "col": 294,
           "end_line": 55,
-          "end_col": 290,
-          "text": "tW"
-        }
-      ]
-    },
-    {
-      "step": 63,
-      "event": "alKug",
-      "highlights": [
-        {
-          "id": 0,
-          "name": "dFxaTm",
-          "role": "dormant"
-        },
-        {
-          "id": 1,
-          "name": "dFxaTm",
-          "role": "dormant"
-        },
-        {
-          "id": 2,
-          "name": "dFxaTm",
-          "role": "dormant",
-          "line": 59,
-          "col": 10,
-          "end_line": 59,
-          "end_col": 322
-        },
-        {
-          "id": 3,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "bystander",
-          "line": 55,
-          "col": 29,
-          "end_line": 55,
-          "end_col": 40,
-          "text": "FcBgUwi!140"
-        },
-        {
-          "id": 4,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "bystander",
-          "line": 55,
-          "col": 29,
-          "end_line": 55,
-          "end_col": 40,
-          "text": "FcBgUwi!140"
-        },
-        {
-          "id": 5,
-          "name": "WlQRDX",
-          "role": "dormant",
-          "line": 52,
-          "col": 10,
-          "end_line": 52,
-          "end_col": 179
-        },
-        {
-          "id": 6,
-          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
-          "role": "participant",
-          "line": 55,
-          "col": 288,
-          "end_line": 55,
-          "end_col": 290,
-          "text": "tW"
+          "end_col": 307,
+          "text": "HZLSvfprPMuEk"
         }
       ]
     },
@@ -4319,7 +4319,7 @@
     },
     {
       "step": 65,
-      "event": "czQMDDFUCyYHwC",
+      "event": "LmrdOHS",
       "highlights": [
         {
           "id": 0,

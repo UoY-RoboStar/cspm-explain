@@ -411,7 +411,7 @@
     },
     {
       "step": 8,
-      "event": "czQMDDFUCyYHwC",
+      "event": "onoCl",
       "highlights": [
         {
           "id": 0,
@@ -521,7 +521,7 @@
     },
     {
       "step": 10,
-      "event": "czQMDDFUCyYHwC",
+      "event": "LmrdOHS",
       "highlights": [
         {
           "id": 0,
@@ -576,7 +576,7 @@
     },
     {
       "step": 11,
-      "event": "LmrdOHS",
+      "event": "czQMDDFUCyYHwC",
       "highlights": [
         {
           "id": 0,
@@ -686,7 +686,7 @@
     },
     {
       "step": 13,
-      "event": "KrJknop",
+      "event": "ZH",
       "highlights": [
         {
           "id": 0,
@@ -1608,7 +1608,7 @@
     },
     {
       "step": 30,
-      "event": "KrJknop",
+      "event": "ZH",
       "highlights": [
         {
           "id": 0,
@@ -1770,60 +1770,6 @@
     },
     {
       "step": 33,
-      "event": "eAQrnGoDxNxjYJzQajY",
-      "highlights": [
-        {
-          "id": 0,
-          "name": "dFxaTm",
-          "role": "dormant",
-          "line": 59,
-          "col": 10,
-          "end_line": 59,
-          "end_col": 322
-        },
-        {
-          "id": 1,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "participant",
-          "line": 55,
-          "col": 16,
-          "end_line": 55,
-          "end_col": 25,
-          "text": "lLPrcWUdx"
-        },
-        {
-          "id": 2,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "bystander",
-          "line": 55,
-          "col": 16,
-          "end_line": 55,
-          "end_col": 25,
-          "text": "lLPrcWUdx"
-        },
-        {
-          "id": 3,
-          "name": "WlQRDX",
-          "role": "dormant",
-          "line": 52,
-          "col": 10,
-          "end_line": 52,
-          "end_col": 179
-        },
-        {
-          "id": 4,
-          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
-          "role": "bystander",
-          "line": 55,
-          "col": 214,
-          "end_line": 55,
-          "end_col": 225,
-          "text": "FcBgUwi!140"
-        }
-      ]
-    },
-    {
-      "step": 34,
       "event": "SxCinvlLfgzCdVYjXlxOXAF",
       "highlights": [
         {
@@ -1840,20 +1786,20 @@
           "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
           "role": "bystander",
           "line": 55,
-          "col": 29,
+          "col": 16,
           "end_line": 55,
-          "end_col": 40,
-          "text": "FcBgUwi!140"
+          "end_col": 25,
+          "text": "lLPrcWUdx"
         },
         {
           "id": 2,
           "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
           "role": "bystander",
           "line": 55,
-          "col": 29,
+          "col": 16,
           "end_line": 55,
-          "end_col": 40,
-          "text": "FcBgUwi!140"
+          "end_col": 25,
+          "text": "lLPrcWUdx"
         },
         {
           "id": 3,
@@ -1877,7 +1823,7 @@
       ]
     },
     {
-      "step": 35,
+      "step": 34,
       "event": "eAQrnGoDxNxjYJzQajY",
       "highlights": [
         {
@@ -1894,20 +1840,20 @@
           "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
           "role": "bystander",
           "line": 55,
-          "col": 29,
+          "col": 16,
           "end_line": 55,
-          "end_col": 40,
-          "text": "FcBgUwi!140"
+          "end_col": 25,
+          "text": "lLPrcWUdx"
         },
         {
           "id": 2,
           "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
           "role": "bystander",
           "line": 55,
-          "col": 29,
+          "col": 16,
           "end_line": 55,
-          "end_col": 40,
-          "text": "FcBgUwi!140"
+          "end_col": 25,
+          "text": "lLPrcWUdx"
         },
         {
           "id": 3,
@@ -1931,7 +1877,7 @@
       ]
     },
     {
-      "step": 36,
+      "step": 35,
       "event": "SA",
       "highlights": [
         {
@@ -1948,20 +1894,20 @@
           "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
           "role": "bystander",
           "line": 55,
-          "col": 29,
+          "col": 16,
           "end_line": 55,
-          "end_col": 40,
-          "text": "FcBgUwi!140"
+          "end_col": 25,
+          "text": "lLPrcWUdx"
         },
         {
           "id": 2,
           "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
           "role": "bystander",
           "line": 55,
-          "col": 29,
+          "col": 16,
           "end_line": 55,
-          "end_col": 40,
-          "text": "FcBgUwi!140"
+          "end_col": 25,
+          "text": "lLPrcWUdx"
         },
         {
           "id": 3,
@@ -1985,8 +1931,224 @@
       ]
     },
     {
-      "step": 37,
+      "step": 36,
       "event": "hSUWRR",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "dFxaTm",
+          "role": "dormant",
+          "line": 59,
+          "col": 10,
+          "end_line": 59,
+          "end_col": 322
+        },
+        {
+          "id": 1,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "bystander",
+          "line": 55,
+          "col": 16,
+          "end_line": 55,
+          "end_col": 25,
+          "text": "lLPrcWUdx"
+        },
+        {
+          "id": 2,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "bystander",
+          "line": 55,
+          "col": 16,
+          "end_line": 55,
+          "end_col": 25,
+          "text": "lLPrcWUdx"
+        },
+        {
+          "id": 3,
+          "name": "WlQRDX",
+          "role": "dormant",
+          "line": 52,
+          "col": 10,
+          "end_line": 52,
+          "end_col": 179
+        },
+        {
+          "id": 4,
+          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
+          "role": "participant",
+          "line": 55,
+          "col": 253,
+          "end_line": 55,
+          "end_col": 257,
+          "text": "cNfw"
+        }
+      ]
+    },
+    {
+      "step": 37,
+      "event": "onoCl",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "dFxaTm",
+          "role": "dormant",
+          "line": 59,
+          "col": 10,
+          "end_line": 59,
+          "end_col": 322
+        },
+        {
+          "id": 1,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "bystander",
+          "line": 55,
+          "col": 16,
+          "end_line": 55,
+          "end_col": 25,
+          "text": "lLPrcWUdx"
+        },
+        {
+          "id": 2,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "bystander",
+          "line": 55,
+          "col": 16,
+          "end_line": 55,
+          "end_col": 25,
+          "text": "lLPrcWUdx"
+        },
+        {
+          "id": 3,
+          "name": "WlQRDX",
+          "role": "dormant",
+          "line": 52,
+          "col": 10,
+          "end_line": 52,
+          "end_col": 179
+        },
+        {
+          "id": 4,
+          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
+          "role": "participant",
+          "line": 55,
+          "col": 261,
+          "end_line": 55,
+          "end_col": 266,
+          "text": "onoCl"
+        }
+      ]
+    },
+    {
+      "step": 38,
+      "event": "wqtSgYAOMMm",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "dFxaTm",
+          "role": "dormant",
+          "line": 59,
+          "col": 10,
+          "end_line": 59,
+          "end_col": 322
+        },
+        {
+          "id": 1,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "bystander",
+          "line": 55,
+          "col": 16,
+          "end_line": 55,
+          "end_col": 25,
+          "text": "lLPrcWUdx"
+        },
+        {
+          "id": 2,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "bystander",
+          "line": 55,
+          "col": 16,
+          "end_line": 55,
+          "end_col": 25,
+          "text": "lLPrcWUdx"
+        },
+        {
+          "id": 3,
+          "name": "WlQRDX",
+          "role": "dormant",
+          "line": 52,
+          "col": 10,
+          "end_line": 52,
+          "end_col": 179
+        },
+        {
+          "id": 4,
+          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
+          "role": "participant",
+          "line": 55,
+          "col": 270,
+          "end_line": 55,
+          "end_col": 284,
+          "text": "czQMDDFUCyYHwC"
+        }
+      ]
+    },
+    {
+      "step": 39,
+      "event": "eAQrnGoDxNxjYJzQajY",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "dFxaTm",
+          "role": "dormant",
+          "line": 59,
+          "col": 10,
+          "end_line": 59,
+          "end_col": 322
+        },
+        {
+          "id": 1,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "participant",
+          "line": 55,
+          "col": 16,
+          "end_line": 55,
+          "end_col": 25,
+          "text": "lLPrcWUdx"
+        },
+        {
+          "id": 2,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "bystander",
+          "line": 55,
+          "col": 16,
+          "end_line": 55,
+          "end_col": 25,
+          "text": "lLPrcWUdx"
+        },
+        {
+          "id": 3,
+          "name": "WlQRDX",
+          "role": "dormant",
+          "line": 52,
+          "col": 10,
+          "end_line": 52,
+          "end_col": 179
+        },
+        {
+          "id": 4,
+          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
+          "role": "bystander",
+          "line": 55,
+          "col": 288,
+          "end_line": 55,
+          "end_col": 290,
+          "text": "tW"
+        }
+      ]
+    },
+    {
+      "step": 40,
+      "event": "tW",
       "highlights": [
         {
           "id": 0,
@@ -2031,15 +2193,15 @@
           "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
           "role": "participant",
           "line": 55,
-          "col": 253,
+          "col": 288,
           "end_line": 55,
-          "end_col": 257,
-          "text": "cNfw"
+          "end_col": 290,
+          "text": "tW"
         }
       ]
     },
     {
-      "step": 38,
+      "step": 41,
       "event": "SxCinvlLfgzCdVYjXlxOXAF",
       "highlights": [
         {
@@ -2085,163 +2247,16 @@
           "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
           "role": "bystander",
           "line": 55,
-          "col": 261,
+          "col": 294,
           "end_line": 55,
-          "end_col": 266,
-          "text": "onoCl"
-        }
-      ]
-    },
-    {
-      "step": 39,
-      "event": "czQMDDFUCyYHwC",
-      "highlights": [
-        {
-          "id": 0,
-          "name": "dFxaTm",
-          "role": "dormant",
-          "line": 59,
-          "col": 10,
-          "end_line": 59,
-          "end_col": 322
-        },
-        {
-          "id": 1,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "dormant"
-        },
-        {
-          "id": 2,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "bystander",
-          "line": 55,
-          "col": 44,
-          "end_line": 55,
-          "end_col": 66,
-          "text": "wyEkoyKlaHcdRIFFj?true"
-        },
-        {
-          "id": 3,
-          "name": "WlQRDX",
-          "role": "dormant",
-          "line": 52,
-          "col": 10,
-          "end_line": 52,
-          "end_col": 179
-        },
-        {
-          "id": 4,
-          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
-          "role": "participant",
-          "line": 55,
-          "col": 261,
-          "end_line": 55,
-          "end_col": 266,
-          "text": "onoCl"
-        }
-      ]
-    },
-    {
-      "step": 40,
-      "event": "wqtSgYAOMMm",
-      "highlights": [
-        {
-          "id": 0,
-          "name": "dFxaTm",
-          "role": "dormant",
-          "line": 59,
-          "col": 10,
-          "end_line": 59,
-          "end_col": 322
-        },
-        {
-          "id": 1,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "dormant"
-        },
-        {
-          "id": 2,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "bystander",
-          "line": 55,
-          "col": 44,
-          "end_line": 55,
-          "end_col": 66,
-          "text": "wyEkoyKlaHcdRIFFj?true"
-        },
-        {
-          "id": 3,
-          "name": "WlQRDX",
-          "role": "dormant",
-          "line": 52,
-          "col": 10,
-          "end_line": 52,
-          "end_col": 179
-        },
-        {
-          "id": 4,
-          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
-          "role": "participant",
-          "line": 55,
-          "col": 270,
-          "end_line": 55,
-          "end_col": 284,
-          "text": "czQMDDFUCyYHwC"
-        }
-      ]
-    },
-    {
-      "step": 41,
-      "event": "QvcAne",
-      "highlights": [
-        {
-          "id": 0,
-          "name": "dFxaTm",
-          "role": "dormant",
-          "line": 59,
-          "col": 10,
-          "end_line": 59,
-          "end_col": 322
-        },
-        {
-          "id": 1,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "dormant"
-        },
-        {
-          "id": 2,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "bystander",
-          "line": 55,
-          "col": 44,
-          "end_line": 55,
-          "end_col": 66,
-          "text": "wyEkoyKlaHcdRIFFj?true"
-        },
-        {
-          "id": 3,
-          "name": "WlQRDX",
-          "role": "dormant",
-          "line": 52,
-          "col": 10,
-          "end_line": 52,
-          "end_col": 179
-        },
-        {
-          "id": 4,
-          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
-          "role": "participant",
-          "line": 55,
-          "col": 288,
-          "end_line": 55,
-          "end_col": 290,
-          "text": "tW"
+          "end_col": 307,
+          "text": "HZLSvfprPMuEk"
         }
       ]
     },
     {
       "step": 42,
-      "event": "LmrdOHS",
+      "event": "czQMDDFUCyYHwC",
       "highlights": [
         {
           "id": 0,
@@ -2290,6 +2305,55 @@
     },
     {
       "step": 43,
+      "event": "WZ",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "dFxaTm",
+          "role": "dormant",
+          "line": 59,
+          "col": 10,
+          "end_line": 59,
+          "end_col": 322
+        },
+        {
+          "id": 1,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "dormant"
+        },
+        {
+          "id": 2,
+          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
+          "role": "bystander",
+          "line": 55,
+          "col": 44,
+          "end_line": 55,
+          "end_col": 66,
+          "text": "wyEkoyKlaHcdRIFFj?true"
+        },
+        {
+          "id": 3,
+          "name": "WlQRDX",
+          "role": "dormant",
+          "line": 52,
+          "col": 10,
+          "end_line": 52,
+          "end_col": 179
+        },
+        {
+          "id": 4,
+          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
+          "role": "participant",
+          "line": 55,
+          "col": 311,
+          "end_line": 55,
+          "end_col": 334,
+          "text": "SxCinvlLfgzCdVYjXlxOXAF"
+        }
+      ]
+    },
+    {
+      "step": 44,
       "event": "KrJknop",
       "highlights": [
         {
@@ -2330,59 +2394,10 @@
           "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
           "role": "bystander",
           "line": 55,
-          "col": 311,
+          "col": 338,
           "end_line": 55,
-          "end_col": 334,
-          "text": "SxCinvlLfgzCdVYjXlxOXAF"
-        }
-      ]
-    },
-    {
-      "step": 44,
-      "event": "WZ",
-      "highlights": [
-        {
-          "id": 0,
-          "name": "dFxaTm",
-          "role": "dormant",
-          "line": 59,
-          "col": 10,
-          "end_line": 59,
-          "end_col": 322
-        },
-        {
-          "id": 1,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "dormant"
-        },
-        {
-          "id": 2,
-          "name": "(lLPrcWUdx -> FcBgUwi!140 -> wyEkoyKlaHcdRIFFj?true -> VjVyxmAqUDoRgNErtZqX -> WlQRDX) (in fOPDsgQJmSZ)",
-          "role": "bystander",
-          "line": 55,
-          "col": 70,
-          "end_line": 55,
-          "end_col": 90,
-          "text": "VjVyxmAqUDoRgNErtZqX"
-        },
-        {
-          "id": 3,
-          "name": "WlQRDX",
-          "role": "dormant",
-          "line": 52,
-          "col": 10,
-          "end_line": 52,
-          "end_col": 179
-        },
-        {
-          "id": 4,
-          "name": "(EUybzNgv -> ZH -> wbxMsOHAdFiruEJBUUEL -> FrXGZPaCHgRjxsMtCaCEFm -> FcBgUwi!140 -> lLPrcWUdx -> KrJknop -> cNfw -> onoCl -> czQMDDFUCyYHwC -> tW -> HZLSvfprPMuEk -> SxCinvlLfgzCdVYjXlxOXAF -> SKIP) (in fOPDsgQJmSZ)",
-          "role": "participant",
-          "line": 55,
-          "col": 311,
-          "end_line": 55,
-          "end_col": 334,
-          "text": "SxCinvlLfgzCdVYjXlxOXAF"
+          "end_col": 342,
+          "text": "SKIP"
         }
       ]
     }

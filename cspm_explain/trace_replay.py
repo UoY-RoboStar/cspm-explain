@@ -303,10 +303,10 @@ def generate_replay(
     _TAU = 1  # FDR's internal tau event ID
 
     for step, sys_eid in enumerate(b.trace):
-        # Use revealed_trace so τ steps display the actual hidden event name.
+        # revealed_trace entries are now string names (or None), resolved per-session.
         if sys_eid == _TAU and b.revealed_trace and step < len(b.revealed_trace):
-            rev_eid = b.revealed_trace[step]
-            sys_event = event_map.get(str(rev_eid), str(rev_eid)) if rev_eid != _TAU else "τ"
+            name = b.revealed_trace[step]  # string or None
+            sys_event = name if name is not None else "τ"
         else:
             sys_event = event_map.get(str(sys_eid), str(sys_eid))
 
@@ -338,8 +338,8 @@ def generate_replay(
                 # For τ steps with a known revealed event, pass the revealed name
                 # as sys_event so parameterized-process lookups can match by text.
                 if role == "participant" and sys_eid == _TAU:
-                    rev = (b.revealed_trace or [])[step] if b.revealed_trace and step < len(b.revealed_trace or []) else _TAU
-                    lookup_event = event_map.get(str(rev), str(rev)) if rev != _TAU else sys_event
+                    rev_name = b.revealed_trace[step] if b.revealed_trace and step < len(b.revealed_trace) else None
+                    lookup_event = rev_name if rev_name is not None else sys_event
                 else:
                     lookup_event = sys_event if role == "participant" else None
                 hl = _leaf_highlight(leaf, lookup_event)

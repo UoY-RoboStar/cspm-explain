@@ -28,7 +28,7 @@ def _display_event(
     step: int,
     raw_eid: int,
     event_map: dict[str, str],
-    revealed_trace: list[int] | None,
+    revealed_trace: list[str | None] | None,
 ) -> str:
     """Human-readable event label for *step*, using revealed_trace when available.
 
@@ -37,9 +37,8 @@ def _display_event(
     For normal events, returns the event name.
     """
     if raw_eid == _TAU_EVENT and revealed_trace and step < len(revealed_trace):
-        rev = revealed_trace[step]
-        if rev != _TAU_EVENT:
-            name = event_map.get(str(rev), str(rev))
+        name = revealed_trace[step]  # already a string name, or None
+        if name is not None:
             return f"hidden('{name}')"
         return "τ"
     name = event_map.get(str(raw_eid), str(raw_eid))

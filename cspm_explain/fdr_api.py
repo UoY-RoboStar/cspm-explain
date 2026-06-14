@@ -30,12 +30,27 @@ def _build_event_map(session: Session, dc: DebugContext) -> dict[str, str]:
     return ev_map
 
 
-def _revealed(raw_trace: list[int], rev: list[int]) -> list[int] | None:
-    """Return rev if it differs from raw_trace at any τ position, else None."""
+def _build_revealed(
+    raw_trace: list[int],
+    rev: list[int],
+    session: Session,
+) -> list[str | None] | None:
+    """Build the revealed_trace as a list of string names (or None).
+
+    Returns None if no τ position has a non-τ revealed event (nothing to show).
+    Otherwise returns a parallel list: for each trace position, the hidden event
+    name if that τ was produced by a hiding operator, else None.
+    """
+    any_resolved = False
+    result: list[str | None] = []
     for t, r in zip(raw_trace, rev):
         if t == TAU and r != TAU:
-            return rev
-    return None
+            name = session.uncompile_event(r) or str(r)
+            result.append(name)
+            any_resolved = True
+        else:
+            result.append(None)
+    return result if any_resolved else None
 
 
 def _build_behaviour(
@@ -49,9 +64,9 @@ def _build_behaviour(
     states_list  = beh.states()          # uses machine_node_name()
     acceptance   = beh.min_acceptance()  # [] if not MinAcceptanceBehaviour
 
-    # Reveal τ events: replace TAU with the actual hidden compiled event ID.
+    # Resolve τ events to string names now, while this session's mapping is correct.
     rev = dc.reveal_taus_in_trace(beh)
-    revealed = _revealed(raw_trace, rev)
+    revealed = _build_revealed(raw_trace, rev, session)
 
     # Recurse into children produced by --divide decomposition.
     children = [
