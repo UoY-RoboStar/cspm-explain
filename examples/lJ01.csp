@@ -1,0 +1,102 @@
+channel IiA
+channel SYCJpnFlhiPVhayMYgxFV
+channel okvXnttIELnlaUDGlq
+channel mvrVZPFFNekESBOTyqj
+channel qYRMLsuirgf
+channel OpQaiFVe
+channel qhApFyAp
+channel rsEZWBfpOeM
+channel SfsJMBJqqaHsXQcSuoHhYM
+channel Gx
+channel pITGjXIfc
+channel oCCJbs
+channel pEqOFyKZnMkp
+channel ntWiCCgTKkObktZZsShM
+channel ys
+channel XRdxpIUzHgsJz
+channel bcEDmEy
+channel MhZY
+channel JyCLxXZUPibyISqcx
+channel kweqlFGfkPfeaMr
+channel ZydR
+channel jwSYarhESuuzxEGuVy
+channel DLrDLkTeLEetULOjpFyCp
+channel JGOAZcIiHxHzNmXKSXIpB
+channel gPX
+channel EronJzCDU
+channel vRWEHyFOJjuVAisPzwFlIguE
+channel ajVGjjBJyciloNyYbADNCM
+channel WFtxoJbZVdnedfMK
+channel pkJqGIcmxKNCZrKZLrjFp
+channel eRKcgD
+channel RT
+channel uuHLUKRgvdfsdhW
+channel Rgitywubya
+channel jobgqaPAjXyvKymqutefO : Bool
+channel VcOE
+channel inaqQFTpemUVpELpG
+channel KXIEgkutumvQuu
+channel lzkVYzmyPqRiNmiGvOF : {111..116}
+channel pKZJxuardNng
+channel acRWeumQFgoGrcvYIUXs
+channel DBHxtQiERbFZB
+channel GCurIN
+channel fBqOmMjYMMCNlsZNkNLDxIat
+channel hjaIKuKVZmKbpiIhAPjXbh
+channel OF
+channel bz
+channel JrIhpbqXEWQaLSwycNUqNvsG
+channel zawjvc
+channel YFPPzVRnSfeaPLglYlUeYx
+channel uqXyNkRCIqWxSlpGUIldnfaP
+channel dKAyhEVj
+channel DRnMnGGncIQIX
+channel Fd
+channel wmyiFic
+channel g
+channel zAiGc
+channel LvjKy
+channel PJZBE
+channel EuYSsJAhCjmQpPTZRmoB
+channel QxzhU : {0..4}
+channel JeOWQgKCHnApomQW
+channel bLLPf
+channel ruEQMRYXsdOtQm
+channel TzRkjqK : {141..145}
+channel urzJImzsUYSsXf
+channel bivHERtjGzwuZnrLaK : Bool
+channel Sp
+channel MOJtayNSBnca
+channel RckHpIYSjMDpvaiAY
+channel OtoxuLnHIMnFbyaRZqIau
+uzrsiI = jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> lJ
+FatntPR = (EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) [| {ajVGjjBJyciloNyYbADNCM} |] (ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP)
+DiqSUXHTssj = jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> zteEG
+zteEG = jwSYarhESuuzxEGuVy -> Dfi
+Dfi = gPX -> nLEPrcDXm
+nLEPrcDXm = EuYSsJAhCjmQpPTZRmoB -> ajVGjjBJyciloNyYbADNCM -> UTsWH
+UTsWH = jwSYarhESuuzxEGuVy -> FatntPR
+sDvInax = (jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) [ {ajVGjjBJyciloNyYbADNCM} || {bLLPf,jwSYarhESuuzxEGuVy,qYRMLsuirgf,WFtxoJbZVdnedfMK} ] (qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk)
+iPdvuv = WFtxoJbZVdnedfMK -> g -> ajVGjjBJyciloNyYbADNCM -> jwSYarhESuuzxEGuVy -> FRGZVzTWbwV
+FRGZVzTWbwV = WFtxoJbZVdnedfMK -> bLLPf -> MQjxTrmgC
+MQjxTrmgC = jwSYarhESuuzxEGuVy -> bLLPf -> g -> YFPPzVRnSfeaPLglYlUeYx -> qYRMLsuirgf -> uDtp
+uDtp = WFtxoJbZVdnedfMK -> ajVGjjBJyciloNyYbADNCM -> g -> bLLPf -> SEt
+SEt = WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> sDvInax
+cxOScrk = ajVGjjBJyciloNyYbADNCM -> YFPPzVRnSfeaPLglYlUeYx -> SKIP
+zlHf = (pKZJxuardNng -> QxzhU$0 -> JGOAZcIiHxHzNmXKSXIpB -> pkJqGIcmxKNCZrKZLrjFp -> qYRMLsuirgf -> IiA -> JeOWQgKCHnApomQW -> ajVGjjBJyciloNyYbADNCM -> KXIEgkutumvQuu -> Rgitywubya -> GCurIN -> JyCLxXZUPibyISqcx -> lzkVYzmyPqRiNmiGvOF!116 -> jwSYarhESuuzxEGuVy -> bz -> VcOE -> JrIhpbqXEWQaLSwycNUqNvsG -> EronJzCDU -> acRWeumQFgoGrcvYIUXs -> wmyiFic -> eRKcgD -> ruEQMRYXsdOtQm -> DLrDLkTeLEetULOjpFyCp -> okvXnttIELnlaUDGlq -> STOP) [> (Rgitywubya -> pkJqGIcmxKNCZrKZLrjFp -> ajVGjjBJyciloNyYbADNCM -> SKIP)
+DEJbZ = bz -> KXIEgkutumvQuu -> oCCJbs -> qYRMLsuirgf -> Rgitywubya -> mvrVZPFFNekESBOTyqj -> JGOAZcIiHxHzNmXKSXIpB -> OpQaiFVe -> VcOE -> QxzhU$0 -> pKZJxuardNng -> jwSYarhESuuzxEGuVy -> ajVGjjBJyciloNyYbADNCM -> JeOWQgKCHnApomQW -> EronJzCDU -> JyCLxXZUPibyISqcx -> rsEZWBfpOeM -> ruEQMRYXsdOtQm -> dKAyhEVj -> eRKcgD -> lzkVYzmyPqRiNmiGvOF!116 -> wDQSW
+wDQSW = GCurIN -> jwSYarhESuuzxEGuVy -> mvrVZPFFNekESBOTyqj -> JGOAZcIiHxHzNmXKSXIpB -> OpQaiFVe -> JrIhpbqXEWQaLSwycNUqNvsG -> JyCLxXZUPibyISqcx -> oCCJbs -> JeOWQgKCHnApomQW -> Rgitywubya -> wmyiFic -> acRWeumQFgoGrcvYIUXs -> DLrDLkTeLEetULOjpFyCp -> pKZJxuardNng -> EronJzCDU -> lzkVYzmyPqRiNmiGvOF!116 -> eRKcgD -> KXIEgkutumvQuu -> rsEZWBfpOeM -> Tgc
+Tgc = pKZJxuardNng -> bz -> qYRMLsuirgf -> lzkVYzmyPqRiNmiGvOF!116 -> okvXnttIELnlaUDGlq -> acRWeumQFgoGrcvYIUXs -> jwSYarhESuuzxEGuVy -> JeOWQgKCHnApomQW -> rsEZWBfpOeM -> EronJzCDU -> JGOAZcIiHxHzNmXKSXIpB -> Rgitywubya -> eRKcgD -> KXIEgkutumvQuu -> mvrVZPFFNekESBOTyqj -> JrIhpbqXEWQaLSwycNUqNvsG -> oCCJbs -> pkJqGIcmxKNCZrKZLrjFp -> IiA -> OtoxuLnHIMnFbyaRZqIau -> QxzhU$0 -> DLrDLkTeLEetULOjpFyCp -> OpQaiFVe -> ajVGjjBJyciloNyYbADNCM -> wmyiFic -> VcOE -> ruEQMRYXsdOtQm -> pCGfT
+pCGfT = IiA -> rsEZWBfpOeM -> bz -> ruEQMRYXsdOtQm -> pkJqGIcmxKNCZrKZLrjFp -> mvrVZPFFNekESBOTyqj -> JyCLxXZUPibyISqcx -> ajVGjjBJyciloNyYbADNCM -> VcOE -> JeOWQgKCHnApomQW -> eRKcgD -> JrIhpbqXEWQaLSwycNUqNvsG -> QxzhU$0 -> oCCJbs -> KXIEgkutumvQuu -> wmyiFic -> OtoxuLnHIMnFbyaRZqIau -> EronJzCDU -> okvXnttIELnlaUDGlq -> DLrDLkTeLEetULOjpFyCp -> qYRMLsuirgf -> JGOAZcIiHxHzNmXKSXIpB -> acRWeumQFgoGrcvYIUXs -> Rgitywubya -> lzkVYzmyPqRiNmiGvOF!116 -> jwSYarhESuuzxEGuVy -> GCurIN -> dKAyhEVj -> pKZJxuardNng -> xUWdWv
+xUWdWv = IiA -> DLrDLkTeLEetULOjpFyCp -> acRWeumQFgoGrcvYIUXs -> eRKcgD -> lzkVYzmyPqRiNmiGvOF!116 -> wmyiFic -> rsEZWBfpOeM -> jwSYarhESuuzxEGuVy -> bz -> zlHf
+nGvLQQBsvm = GCurIN -> jwSYarhESuuzxEGuVy -> OpQaiFVe -> JrIhpbqXEWQaLSwycNUqNvsG -> JGOAZcIiHxHzNmXKSXIpB -> acRWeumQFgoGrcvYIUXs -> mvrVZPFFNekESBOTyqj -> DLrDLkTeLEetULOjpFyCp -> nGvLQQBsvm
+zTXYRZ = (Gx -> Fd -> qYRMLsuirgf -> PJZBE -> SYCJpnFlhiPVhayMYgxFV -> zAiGc -> ntWiCCgTKkObktZZsShM -> FRGZVzTWbwV) |~| (ntWiCCgTKkObktZZsShM -> ZydR -> jobgqaPAjXyvKymqutefO$true -> zAiGc -> RT -> jwSYarhESuuzxEGuVy -> MOJtayNSBnca -> bcEDmEy -> PJZBE -> STOP)
+VoJddOsF = zawjvc -> SYCJpnFlhiPVhayMYgxFV -> Sp -> SfsJMBJqqaHsXQcSuoHhYM -> RckHpIYSjMDpvaiAY -> inaqQFTpemUVpELpG -> ys -> RT -> uqXyNkRCIqWxSlpGUIldnfaP -> pEqOFyKZnMkp -> kweqlFGfkPfeaMr -> Gx -> uuHLUKRgvdfsdhW -> ffMcbpU
+ffMcbpU = jobgqaPAjXyvKymqutefO$true -> OUgm
+OUgm = qYRMLsuirgf -> ys -> OF -> uuHLUKRgvdfsdhW -> uqXyNkRCIqWxSlpGUIldnfaP -> zAiGc -> urzJImzsUYSsXf -> SYCJpnFlhiPVhayMYgxFV -> Sp -> MOJtayNSBnca -> Gx -> XRdxpIUzHgsJz -> zawjvc -> RckHpIYSjMDpvaiAY -> biCocfj
+biCocfj = zawjvc -> PJZBE -> gKgeYWH
+gKgeYWH = pEqOFyKZnMkp -> zawjvc -> jwSYarhESuuzxEGuVy -> OF -> SYCJpnFlhiPVhayMYgxFV -> MOJtayNSBnca -> RT -> uuHLUKRgvdfsdhW -> XRdxpIUzHgsJz -> Sp -> Fd -> hjaIKuKVZmKbpiIhAPjXbh -> qhApFyAp -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> RckHpIYSjMDpvaiAY -> PJZBE -> urzJImzsUYSsXf -> ZydR -> inaqQFTpemUVpELpG -> bcEDmEy -> kweqlFGfkPfeaMr -> Gx -> jobgqaPAjXyvKymqutefO$true -> uqXyNkRCIqWxSlpGUIldnfaP -> LvjKy -> ntWiCCgTKkObktZZsShM -> zTXYRZ
+NNWOiOg = (vRWEHyFOJjuVAisPzwFlIguE -> MhZY -> qYRMLsuirgf -> bivHERtjGzwuZnrLaK?false -> pITGjXIfc -> TzRkjqK!142 -> jwSYarhESuuzxEGuVy -> DRnMnGGncIQIX -> SKIP) [> (DBHxtQiERbFZB -> pITGjXIfc -> fBqOmMjYMMCNlsZNkNLDxIat -> TzRkjqK!142 -> STOP)
+lJ = ajVGjjBJyciloNyYbADNCM -> STOP
+
+assert FRGZVzTWbwV :[deadlock free]

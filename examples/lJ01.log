@@ -1,0 +1,59 @@
+Running FDR on examples/lJ01.csp …
+Results: 0/1 assertions passed, 1 failed.
+
+
+======================================================================
+ASSERTION FAILED: FRGZVzTWbwV :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'WFtxoJbZVdnedfMK' → 'bLLPf' → 'jwSYarhESuuzxEGuVy' → 'bLLPf' → 'g' → 'YFPPzVRnSfeaPLglYlUeYx' → 'qYRMLsuirgf' → 'WFtxoJbZVdnedfMK' → 'ajVGjjBJyciloNyYbADNCM' → 'g' → 'bLLPf' → 'WFtxoJbZVdnedfMK' → 'YFPPzVRnSfeaPLglYlUeYx' → 'qYRMLsuirgf' → 'WFtxoJbZVdnedfMK' → 'jwSYarhESuuzxEGuVy'.
+
+How the trace unfolds:
+  Step 1: 'WFtxoJbZVdnedfMK'  (FRGZVzTWbwV acts alone)
+           FRGZVzTWbwV: (ready to perform 'WFtxoJbZVdnedfMK') → (ready to perform 'bLLPf')
+  Step 2: 'bLLPf'  (FRGZVzTWbwV acts alone)
+           FRGZVzTWbwV: (ready to perform 'bLLPf') → 'MQjxTrmgC'
+  Step 3: 'jwSYarhESuuzxEGuVy'  (MQjxTrmgC acts alone)
+           MQjxTrmgC: 'MQjxTrmgC' → (ready to perform 'bLLPf')
+  Step 4: 'bLLPf'  (MQjxTrmgC acts alone)
+           MQjxTrmgC: (ready to perform 'bLLPf') → (ready to perform 'g')
+  Step 5: 'g'  (MQjxTrmgC acts alone)
+           MQjxTrmgC: (ready to perform 'g') → (ready to perform 'YFPPzVRnSfeaPLglYlUeYx')
+  Step 6: 'YFPPzVRnSfeaPLglYlUeYx'  (MQjxTrmgC acts alone)
+           MQjxTrmgC: (ready to perform 'YFPPzVRnSfeaPLglYlUeYx') → (ready to perform 'qYRMLsuirgf')
+  Step 7: 'qYRMLsuirgf'  (MQjxTrmgC acts alone)
+           MQjxTrmgC: (ready to perform 'qYRMLsuirgf') → 'uDtp'
+  Step 8: 'WFtxoJbZVdnedfMK'  (uDtp acts alone)
+           uDtp: 'uDtp' → (ready to perform 'ajVGjjBJyciloNyYbADNCM')
+  Step 9: 'ajVGjjBJyciloNyYbADNCM'  (uDtp acts alone)
+           uDtp: (ready to perform 'ajVGjjBJyciloNyYbADNCM') → (ready to perform 'g')
+  Step 10: 'g'  (uDtp acts alone)
+           uDtp: (ready to perform 'g') → (ready to perform 'bLLPf')
+  Step 11: 'bLLPf'  (uDtp acts alone)
+           uDtp: (ready to perform 'bLLPf') → 'SEt'
+  Step 12: 'WFtxoJbZVdnedfMK'  (SEt acts alone)
+           SEt: 'SEt' → (ready to perform 'YFPPzVRnSfeaPLglYlUeYx')
+  Step 13: 'YFPPzVRnSfeaPLglYlUeYx'  (SEt acts alone)
+           (jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax): (ready to perform 'jwSYarhESuuzxEGuVy') → (ready to perform 'jwSYarhESuuzxEGuVy')
+           (qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax): (ready to perform 'qYRMLsuirgf') → (ready to perform 'qYRMLsuirgf')
+  Step 14: 'qYRMLsuirgf'  ((qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax) acts alone)
+           (qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax): (ready to perform 'qYRMLsuirgf') → (ready to perform 'WFtxoJbZVdnedfMK')
+  Step 15: 'WFtxoJbZVdnedfMK'  ((qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax) acts alone)
+           (qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax): (ready to perform 'WFtxoJbZVdnedfMK') → (ready to perform 'jwSYarhESuuzxEGuVy')
+  Step 16: 'jwSYarhESuuzxEGuVy'  ((qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax) acts alone)
+           (qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax): (ready to perform 'jwSYarhESuuzxEGuVy') → 'cxOScrk'
+
+State at the point of deadlock:
+  • sDvInax: no events available
+  • (jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax): ready to perform: 'jwSYarhESuuzxEGuVy'
+  • (EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR): no events available
+  • (ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR): no events available
+  • cxOScrk: in 'cxOScrk', ready to perform: 'ajVGjjBJyciloNyYbADNCM'
+
+Root cause:
+  sDvInax reached STOP, while (jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax), cxOScrk are still waiting to perform events:
+    – (jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax) wants to perform 'jwSYarhESuuzxEGuVy'.
+    – cxOScrk wants to perform 'ajVGjjBJyciloNyYbADNCM'.
+  Also: (EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR) (reached STOP), (ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR) (reached STOP).
+
+  The deadlock arises because sDvInax, (EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR), (ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR) can no longer offer any events, so the events that (jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax), cxOScrk need from them as synchronisation partners will never be available.

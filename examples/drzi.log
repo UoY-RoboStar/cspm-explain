@@ -1,0 +1,160 @@
+Running FDR on examples/drzi.csp …
+Results: 0/1 assertions passed, 1 failed.
+
+
+======================================================================
+ASSERTION FAILED: drzi :[deadlock free]
+======================================================================
+
+The system reaches a deadlock after the trace: 'pJCPri' → 'azMZuJrjrJnS' → 'jsbchsSPy' → 'qVOzJvQEw' → 'OKVBVDkDnMls' → 'AoSkYtPzApRzGORx' → 'BEwaaXibLOMZefRJJkbGX.false' → 'cbhjvhSNJudcWhrLCBCFSd.80' → 'IKz.'L'' → 'jbVALbhItHketgVUgoVg' → 'QtFCtvXpBwLGN' → 'KyrMqcLKmMvgsUGYWTTTO' → 'xNuYollarSWGzFOGYeyXAC' → 'fjMlIqmdoZfW' → 'LjvWQjkgYx' → 'ZWeSxUfvdJVRczZF' → 'uXqjxEIjSOWTnlnWcutCX' → 'pMSNGiYqNUhUK' → 'hxfQ' → 'lENriPHNLAAtxORoQFinEp.12' → 'hxfQ' → 'LjvWQjkgYx' → 'lENriPHNLAAtxORoQFinEp.12' → 'GhixAVcpvPLNujuj' → 'AoSkYtPzApRzGORx' → 'hxfQ' → 'xNuYollarSWGzFOGYeyXAC' → 'kDNeoDkxlatreLFshaPMNG' → 'XTEkNKCASrPHNKNJxmLJ' → 'OKVBVDkDnMls' → 'uXqjxEIjSOWTnlnWcutCX' → 'ZWeSxUfvdJVRczZF' → 'jbVALbhItHketgVUgoVg' → 'cbhjvhSNJudcWhrLCBCFSd.80' → 'IKz.'L'' → 'xNuYollarSWGzFOGYeyXAC' → 'hxfQ' → 'pMSNGiYqNUhUK' → 'UZmbvlSxcAXkukTdGOJUI' → 'jsbchsSPy' → 'pJCPri' → 'uXqjxEIjSOWTnlnWcutCX' → 'BEwaaXibLOMZefRJJkbGX.false' → 'qVOzJvQEw' → 'BcmHoCCJAOS' → 'XTEkNKCASrPHNKNJxmLJ' → 'hxfQ' → 'AoSkYtPzApRzGORx' → 'pJCPri' → 'jbVALbhItHketgVUgoVg' → 'fjMlIqmdoZfW' → 'GhixAVcpvPLNujuj' → 'LjvWQjkgYx' → 'uXqjxEIjSOWTnlnWcutCX' → 'hxfQ' → 'kDNeoDkxlatreLFshaPMNG' → 'UZmbvlSxcAXkukTdGOJUI' → 'jsbchsSPy' → 'OKVBVDkDnMls' → 'BcmHoCCJAOS' → 'azMZuJrjrJnS' → 'ZWeSxUfvdJVRczZF' → 'hxfQ' → 'pMSNGiYqNUhUK' → 'KyrMqcLKmMvgsUGYWTTTO'.
+
+How the trace unfolds:
+  Step 1: 'pJCPri'  (drzi acts alone)
+           drzi: (ready to perform 'pJCPri') → (ready to perform 'azMZuJrjrJnS')
+  Step 2: 'azMZuJrjrJnS'  (drzi acts alone)
+           drzi: (ready to perform 'azMZuJrjrJnS') → (ready to perform 'jsbchsSPy')
+  Step 3: 'jsbchsSPy'  (drzi acts alone)
+           drzi: (ready to perform 'jsbchsSPy') → (ready to perform 'qVOzJvQEw')
+  Step 4: 'qVOzJvQEw'  (drzi acts alone)
+           drzi: (ready to perform 'qVOzJvQEw') → (ready to perform 'OKVBVDkDnMls')
+  Step 5: 'OKVBVDkDnMls'  (drzi acts alone)
+           drzi: (ready to perform 'OKVBVDkDnMls') → (ready to perform 'AoSkYtPzApRzGORx')
+  Step 6: 'AoSkYtPzApRzGORx'  (drzi acts alone)
+           drzi: (ready to perform 'BEwaaXibLOMZefRJJkbGX.false') → (ready to perform 'BEwaaXibLOMZefRJJkbGX.false')
+  Step 7: 'BEwaaXibLOMZefRJJkbGX.false'  (drzi acts alone)
+           drzi: (ready to perform 'BEwaaXibLOMZefRJJkbGX.false') → (ready to perform 'cbhjvhSNJudcWhrLCBCFSd.80')
+  Step 8: 'cbhjvhSNJudcWhrLCBCFSd.80'  (drzi acts alone)
+           drzi: (ready to perform 'IKz.'L'') → (ready to perform 'IKz.'L'')
+  Step 9: 'IKz.'L''  (drzi acts alone)
+           drzi: (ready to perform 'IKz.'L'') → (ready to perform 'jbVALbhItHketgVUgoVg')
+  Step 10: 'jbVALbhItHketgVUgoVg'  (drzi acts alone)
+           drzi: (ready to perform 'jbVALbhItHketgVUgoVg') → (ready to perform 'QtFCtvXpBwLGN')
+  Step 11: 'QtFCtvXpBwLGN'  (drzi acts alone)
+           drzi: (ready to perform 'QtFCtvXpBwLGN') → (ready to perform 'KyrMqcLKmMvgsUGYWTTTO')
+  Step 12: 'KyrMqcLKmMvgsUGYWTTTO'  (drzi acts alone)
+           drzi: (ready to perform 'KyrMqcLKmMvgsUGYWTTTO') → (ready to perform 'xNuYollarSWGzFOGYeyXAC')
+  Step 13: 'xNuYollarSWGzFOGYeyXAC'  (drzi acts alone)
+           drzi: (ready to perform 'xNuYollarSWGzFOGYeyXAC') → (ready to perform 'fjMlIqmdoZfW')
+  Step 14: 'fjMlIqmdoZfW'  (drzi acts alone)
+           drzi: (ready to perform 'fjMlIqmdoZfW') → (ready to perform 'LjvWQjkgYx')
+  Step 15: 'LjvWQjkgYx'  (drzi acts alone)
+           drzi: (ready to perform 'LjvWQjkgYx') → (ready to perform 'ZWeSxUfvdJVRczZF')
+  Step 16: 'ZWeSxUfvdJVRczZF'  (drzi acts alone)
+           drzi: (ready to perform 'ZWeSxUfvdJVRczZF') → (ready to perform 'uXqjxEIjSOWTnlnWcutCX')
+  Step 17: 'uXqjxEIjSOWTnlnWcutCX'  (drzi acts alone)
+           drzi: (ready to perform 'uXqjxEIjSOWTnlnWcutCX') → (ready to perform 'pMSNGiYqNUhUK')
+  Step 18: 'pMSNGiYqNUhUK'  (drzi acts alone)
+           drzi: (ready to perform 'pMSNGiYqNUhUK') → (ready to perform 'hxfQ')
+  Step 19: 'hxfQ'  (drzi acts alone)
+           ibC: (ready to perform 'lENriPHNLAAtxORoQFinEp.12') → (ready to perform 'lENriPHNLAAtxORoQFinEp.12')
+  Step 20: 'lENriPHNLAAtxORoQFinEp.12'  (ibC acts alone)
+           ibC: (ready to perform 'lENriPHNLAAtxORoQFinEp.12') → (ready to perform 'iJRCiYdLNtJVRdPZaQbA')
+  Step 21: 'hxfQ'  (ibC acts alone)
+           ibC: (ready to perform 'iJRCiYdLNtJVRdPZaQbA') → (ready to perform 'LjvWQjkgYx')
+  Step 22: 'LjvWQjkgYx'  (ibC acts alone)
+           JZDOvPgUmp: (ready to perform 'lENriPHNLAAtxORoQFinEp.12') → (ready to perform 'lENriPHNLAAtxORoQFinEp.12')
+  Step 23: 'lENriPHNLAAtxORoQFinEp.12'  (JZDOvPgUmp acts alone)
+           JZDOvPgUmp: (ready to perform 'lENriPHNLAAtxORoQFinEp.12') → (ready to perform 'GhixAVcpvPLNujuj')
+  Step 24: 'GhixAVcpvPLNujuj'  (JZDOvPgUmp acts alone)
+           JZDOvPgUmp: (ready to perform 'GhixAVcpvPLNujuj') → (ready to perform 'AoSkYtPzApRzGORx')
+  Step 25: 'AoSkYtPzApRzGORx'  (JZDOvPgUmp acts alone)
+           JZDOvPgUmp: (ready to perform 'AoSkYtPzApRzGORx') → (ready to perform 'iJRCiYdLNtJVRdPZaQbA')
+  Step 26: 'hxfQ'  (JZDOvPgUmp acts alone)
+           JZDOvPgUmp: (ready to perform 'iJRCiYdLNtJVRdPZaQbA') → (ready to perform 'xNuYollarSWGzFOGYeyXAC')
+  Step 27: 'xNuYollarSWGzFOGYeyXAC'  (JZDOvPgUmp acts alone)
+           JZDOvPgUmp: (ready to perform 'xNuYollarSWGzFOGYeyXAC') → (ready to perform 'kDNeoDkxlatreLFshaPMNG')
+  Step 28: 'kDNeoDkxlatreLFshaPMNG'  (JZDOvPgUmp acts alone)
+           JZDOvPgUmp: (ready to perform 'kDNeoDkxlatreLFshaPMNG') → (ready to perform 'XTEkNKCASrPHNKNJxmLJ')
+  Step 29: 'XTEkNKCASrPHNKNJxmLJ'  (JZDOvPgUmp acts alone)
+           JZDOvPgUmp: (ready to perform 'XTEkNKCASrPHNKNJxmLJ') → (ready to perform 'OKVBVDkDnMls')
+  Step 30: 'OKVBVDkDnMls'  (JZDOvPgUmp acts alone)
+           JZDOvPgUmp: (ready to perform 'OKVBVDkDnMls') → (ready to perform 'uXqjxEIjSOWTnlnWcutCX')
+  Step 31: 'uXqjxEIjSOWTnlnWcutCX'  (JZDOvPgUmp acts alone)
+           JZDOvPgUmp: (ready to perform 'uXqjxEIjSOWTnlnWcutCX') → (ready to perform 'ZWeSxUfvdJVRczZF')
+  Step 32: 'ZWeSxUfvdJVRczZF'  (JZDOvPgUmp acts alone)
+           JZDOvPgUmp: (ready to perform 'ZWeSxUfvdJVRczZF') → 'yVZ'
+  Step 33: 'jbVALbhItHketgVUgoVg'  (yVZ acts alone)
+           yVZ: 'yVZ' → (ready to perform 'cbhjvhSNJudcWhrLCBCFSd.80')
+  Step 34: 'cbhjvhSNJudcWhrLCBCFSd.80'  (yVZ acts alone)
+           yVZ: (ready to perform 'IKz.'L'') → (ready to perform 'IKz.'L'')
+  Step 35: 'IKz.'L''  (yVZ acts alone)
+           yVZ: (ready to perform 'IKz.'L'') → (ready to perform 'xNuYollarSWGzFOGYeyXAC')
+  Step 36: 'xNuYollarSWGzFOGYeyXAC'  (yVZ acts alone)
+           yVZ: (ready to perform 'xNuYollarSWGzFOGYeyXAC') → (ready to perform 'hxfQ')
+  Step 37: 'hxfQ'  (yVZ acts alone)
+           yVZ: (ready to perform 'hxfQ') → (ready to perform 'pMSNGiYqNUhUK')
+  Step 38: 'pMSNGiYqNUhUK'  (yVZ acts alone)
+           yVZ: (ready to perform 'pMSNGiYqNUhUK') → (ready to perform 'UZmbvlSxcAXkukTdGOJUI')
+  Step 39: 'UZmbvlSxcAXkukTdGOJUI'  (yVZ acts alone)
+           yVZ: (ready to perform 'UZmbvlSxcAXkukTdGOJUI') → (ready to perform 'jsbchsSPy')
+  Step 40: 'jsbchsSPy'  (yVZ acts alone)
+           yVZ: (ready to perform 'jsbchsSPy') → (ready to perform 'pJCPri')
+  Step 41: 'pJCPri'  (yVZ acts alone)
+           yVZ: (ready to perform 'pJCPri') → (ready to perform 'uXqjxEIjSOWTnlnWcutCX')
+  Step 42: 'uXqjxEIjSOWTnlnWcutCX'  (yVZ acts alone)
+           yVZ: (ready to perform 'BEwaaXibLOMZefRJJkbGX.false') → (ready to perform 'BEwaaXibLOMZefRJJkbGX.false')
+  Step 43: 'BEwaaXibLOMZefRJJkbGX.false'  (yVZ acts alone)
+           yVZ: (ready to perform 'BEwaaXibLOMZefRJJkbGX.false') → (ready to perform 'qVOzJvQEw')
+  Step 44: 'qVOzJvQEw'  (yVZ acts alone)
+           yVZ: (ready to perform 'qVOzJvQEw') → (ready to perform 'BcmHoCCJAOS')
+  Step 45: 'BcmHoCCJAOS'  (yVZ acts alone)
+           yVZ: (ready to perform 'BcmHoCCJAOS') → (ready to perform 'XTEkNKCASrPHNKNJxmLJ')
+  Step 46: 'XTEkNKCASrPHNKNJxmLJ'  (yVZ acts alone)
+           yVZ: (ready to perform 'XTEkNKCASrPHNKNJxmLJ') → (ready to perform 'iJRCiYdLNtJVRdPZaQbA')
+  Step 47: 'hxfQ'  (yVZ acts alone)
+           yVZ: (ready to perform 'iJRCiYdLNtJVRdPZaQbA') → (ready to perform 'AoSkYtPzApRzGORx')
+  Step 48: 'AoSkYtPzApRzGORx'  (yVZ acts alone)
+           yVZ: (ready to perform 'AoSkYtPzApRzGORx') → 'mXJfIWjdFZ'
+  Step 49: 'pJCPri'  (mXJfIWjdFZ acts alone)
+           mXJfIWjdFZ: 'mXJfIWjdFZ' → (ready to perform 'jbVALbhItHketgVUgoVg')
+  Step 50: 'jbVALbhItHketgVUgoVg'  (mXJfIWjdFZ acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'fjMlIqmdoZfW') → (ready to perform 'fjMlIqmdoZfW')
+           (iJRCiYdLNtJVRdPZaQbA -> KyrMqcLKmMvgsUGYWTTTO -> STOP) (in fhlixF): (ready to perform 'iJRCiYdLNtJVRdPZaQbA') → (ready to perform 'iJRCiYdLNtJVRdPZaQbA')
+  Step 51: 'fjMlIqmdoZfW'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'fjMlIqmdoZfW') → (ready to perform 'GhixAVcpvPLNujuj')
+  Step 52: 'GhixAVcpvPLNujuj'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'GhixAVcpvPLNujuj') → (ready to perform 'LjvWQjkgYx')
+  Step 53: 'LjvWQjkgYx'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'LjvWQjkgYx') → (ready to perform 'uXqjxEIjSOWTnlnWcutCX')
+  Step 54: 'uXqjxEIjSOWTnlnWcutCX'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'uXqjxEIjSOWTnlnWcutCX') → (ready to perform 'iJRCiYdLNtJVRdPZaQbA')
+  Step 55: 'hxfQ'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'iJRCiYdLNtJVRdPZaQbA') → (ready to perform 'kDNeoDkxlatreLFshaPMNG')
+  Step 56: 'kDNeoDkxlatreLFshaPMNG'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'kDNeoDkxlatreLFshaPMNG') → (ready to perform 'cAHUthWICLkJAnjfjXKs')
+  Step 57: 'UZmbvlSxcAXkukTdGOJUI'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'cAHUthWICLkJAnjfjXKs') → (ready to perform 'jsbchsSPy')
+  Step 58: 'jsbchsSPy'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'jsbchsSPy') → (ready to perform 'OKVBVDkDnMls')
+  Step 59: 'OKVBVDkDnMls'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'OKVBVDkDnMls') → (ready to perform 'BcmHoCCJAOS')
+  Step 60: 'BcmHoCCJAOS'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'BcmHoCCJAOS') → (ready to perform 'azMZuJrjrJnS')
+  Step 61: 'azMZuJrjrJnS'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'azMZuJrjrJnS') → (ready to perform 'ZWeSxUfvdJVRczZF')
+  Step 62: 'ZWeSxUfvdJVRczZF'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'ZWeSxUfvdJVRczZF') → (ready to perform 'pMSNGiYqNUhUK')
+  Step 63: 'hxfQ'  ((iJRCiYdLNtJVRdPZaQbA -> KyrMqcLKmMvgsUGYWTTTO -> STOP) (in fhlixF) acts alone)
+           (iJRCiYdLNtJVRdPZaQbA -> KyrMqcLKmMvgsUGYWTTTO -> STOP) (in fhlixF): (ready to perform 'iJRCiYdLNtJVRdPZaQbA') → (ready to perform 'KyrMqcLKmMvgsUGYWTTTO')
+  Step 64: 'pMSNGiYqNUhUK'  ((fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) acts alone)
+           (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): (ready to perform 'pMSNGiYqNUhUK') → 'SKIP'
+  Step 65: 'KyrMqcLKmMvgsUGYWTTTO'  ((iJRCiYdLNtJVRdPZaQbA -> KyrMqcLKmMvgsUGYWTTTO -> STOP) (in fhlixF) acts alone)
+           (iJRCiYdLNtJVRdPZaQbA -> KyrMqcLKmMvgsUGYWTTTO -> STOP) (in fhlixF): (ready to perform 'KyrMqcLKmMvgsUGYWTTTO') → 'STOP'
+
+State at the point of deadlock:
+  • drzi: no events available
+  • drzi: no events available
+  • ibC: no events available
+  • ibC: no events available
+  • yVZ: no events available
+  • yVZ: no events available
+  • fhlixF: no events available
+  • (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF): in 'SKIP', ready to perform: '✓'
+  • (iJRCiYdLNtJVRdPZaQbA -> KyrMqcLKmMvgsUGYWTTTO -> STOP) (in fhlixF): in 'STOP', no events available
+
+Root cause:
+  drzi reached STOP, while (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) is still waiting to perform events:
+    – (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) wants to perform '✓'.
+  Also: drzi (reached STOP), ibC (reached STOP), ibC (reached STOP), yVZ (reached STOP), yVZ (reached STOP), fhlixF (reached STOP), (iJRCiYdLNtJVRdPZaQbA -> KyrMqcLKmMvgsUGYWTTTO -> STOP) (in fhlixF) (reached STOP).
+
+  The deadlock arises because drzi, drzi, ibC, ibC, yVZ, yVZ, fhlixF, (iJRCiYdLNtJVRdPZaQbA -> KyrMqcLKmMvgsUGYWTTTO -> STOP) (in fhlixF) can no longer offer any events, so any event that (fjMlIqmdoZfW -> GhixAVcpvPLNujuj -> LjvWQjkgYx -> uXqjxEIjSOWTnlnWcutCX -> iJRCiYdLNtJVRdPZaQbA -> kDNeoDkxlatreLFshaPMNG -> cAHUthWICLkJAnjfjXKs -> jsbchsSPy -> OKVBVDkDnMls -> BcmHoCCJAOS -> azMZuJrjrJnS -> ZWeSxUfvdJVRczZF -> pMSNGiYqNUhUK -> SKIP) (in fhlixF) needs from them as synchronisation partners will never be available.
