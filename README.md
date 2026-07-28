@@ -2,7 +2,8 @@
 
 Runs [FDR](https://cocotec.io/fdr/) on a CSP-M file that contains
 deadlock-freedom assertions and produces plain-English explanations of any
-counter-examples it finds.
+counter-examples it finds. Can also be applied to a CSV file of CSP-M entries
+with assertions and passing statuses.
 
 ## Requirements
 
@@ -22,6 +23,39 @@ For each failed deadlock assertion the tool prints:
 - how each component behaves at each step,
 - the state of every component at the point of deadlock, and
 - a root-cause analysis explaining why no further progress is possible.
+
+```bash
+python3 main.py path/to/spec.csv
+```
+
+For each failed deadlock assertion, as indicated within the CSV, the tool prints:
+
+- the CSP
+- the assertion
+- the passing status
+- the trace that leads to the deadlock,
+- how each component behaves at each step,
+- the state of every component at the point of deadlock, and
+- a root-cause analysis explaining why no further progress is possible.
+
+For each passing deadlock assertion, as indicated within the CSV, the tool prints:
+
+- the CSP
+- the assertion
+- the passing status
+
+### Optional: Output explanation to CSV
+
+Passing "--output_csv" triggers the generation of an output file of the form 
+`<file>-output.csv` containing the csp, assertion, passing status, and 
+generated explanation steps. 
+
+```bash
+python3 main.py --output_csv path/to/spec.csp
+python3 main.py --o path/to/spec.csp
+python3 main.py --output_csv path/to/spec.csv
+python3 main.py --o path/to/spec.csv
+```
 
 ### Optional: Claude-powered explanations
 
