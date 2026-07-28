@@ -1,7 +1,7 @@
 """Explain FDR deadlock counter-examples — rule-based and (optionally) Claude-based."""
 from __future__ import annotations
 
-import anthropic
+#import anthropic
 
 from .model import AssertionResult, Behaviour, Counterexample, FdrOutput
 from .cspm_parser import parallel_operand_labels, sequential_tail
@@ -48,7 +48,7 @@ def _display_event(
 def _translate_trace(
     trace: list[int],
     event_map: dict[str, str],
-    revealed_trace: list[int] | None = None,
+    revealed_trace: list[str] | None = None,
 ) -> list[str]:
     """Return only the visible (non-interleave) events in *trace*, by name.
 
@@ -186,7 +186,8 @@ def _final_state(b: Behaviour) -> str:
 
 def _collect_leaves(b: Behaviour) -> list[Behaviour]:
     """Return all leaf (atomic) behaviours in the tree, depth-first."""
-    if not b.child_behaviours:
+    run = b.machine_name.find("RUN") != -1
+    if not b.child_behaviours and not run:
         return [b]
     leaves: list[Behaviour] = []
     for child in b.child_behaviours:
@@ -197,6 +198,7 @@ def _collect_leaves(b: Behaviour) -> list[Behaviour]:
 def _build_display_names(
     root: Behaviour,
     operand_labels: dict[str, list[str]] | None = None,
+    assertion_label: str | None = None
 ) -> dict[int, str]:
     """Map each leaf's id() to a human-readable display name.
 
@@ -239,7 +241,8 @@ def _build_display_names(
         for idx, child in enumerate(b.child_behaviours):
             walk(child, child_ancestor, idx)
 
-    walk(root, named_ancestor=None, child_index=0)
+    named_ancestor = assertion_label
+    walk(root, named_ancestor, child_index=0)
     return result
 
 
@@ -437,11 +440,11 @@ def _acceptance_map(
 
 
 def explain_deadlock(
-    assertion: AssertionResult,
+    assertion: str,
     ce: Counterexample,
     event_map: dict[str, str],
     csp_source: str | None = None,
-) -> str:
+) -> tuple[str,str,str,str]:
     """Produce a structured, rule-based explanation of a deadlock counter-example.
 
     If *csp_source* is provided the CSP-M source is parsed so that anonymous
@@ -460,8 +463,15 @@ def explain_deadlock(
         except Exception:
             pass  # parsing failure is non-fatal; fall back to generic labels
 
-    display_names = _build_display_names(b, ops)
-    paras: list[str] = []
+    assertion_label=None
+    if assertion.find("RUN") >= 0:
+        assertion_label = assertion.split(";")[0]
+
+    display_names = _build_display_names(b, ops, assertion_label)
+    trace: list[str] = []
+    steps: list[str] = []
+    state: list[str] = []
+    root_cause: list[str] = []
 
     # final_proc_names is populated by _narrate_trace; dn() uses it so that
     # "State at deadlock" and "Root cause" sections show semantic process names
@@ -476,44 +486,45 @@ def explain_deadlock(
     visible = _translate_trace(b.trace, event_map, b.revealed_trace)
 
     if not visible:
-        paras.append(
+        trace.append(
             "The system deadlocks immediately — no events need to occur before "
             "the system becomes stuck."
         )
     else:
         trace_str = " → ".join(f"'{e}'" for e in visible)
-        paras.append(f"The system reaches a deadlock after the trace: {trace_str}.")
-        paras.append("")
-        paras.append("How the trace unfolds:")
+        trace.append(f"The system reaches a deadlock after the trace: {trace_str}.")
+        trace.append("")
+        trace.append("How the trace unfolds:")
         trace_lines, fp = _narrate_trace(b, leaves, display_names, event_map, chains)
         final_proc_names.update(fp)
-        paras.extend(trace_lines)
+        steps.extend(trace_lines)
 
     # ── 2. State at deadlock ────────────────────────────────────────────────
-    paras.append("")
-    paras.append("State at the point of deadlock:")
+    state.append("")
+    state.append("State at the point of deadlock:")
     for c in leaves:
-        accepted = [event_map.get(str(e), str(e)) for e in c.acceptance]
-        final = _final_state(c)
-        if final == "STOP" and not accepted and _terminated_via_tick(c, event_map):
-            # Process reached STOP by performing ✓ — it terminated normally.
-            paras.append(f"  • {dn(c)}: terminated normally")
-        elif final == "<unnamed>":
-            # Process is in an intermediate unnamed state; describe by what it wants to do.
-            if accepted:
+        if dn(c).find("RUN") == -1:
+            accepted = [event_map.get(str(e), str(e)) for e in c.acceptance]
+            final = _final_state(c)
+            if final == "STOP" and not accepted and _terminated_via_tick(c, event_map):
+                # Process reached STOP by performing ✓ — it terminated normally.
+                state.append(f"  • {dn(c)}: terminated normally")
+            elif final == "<unnamed>":
+                # Process is in an intermediate unnamed state; describe by what it wants to do.
+                if accepted:
+                    acc_str = ", ".join(f"'{e}'" for e in accepted)
+                    state.append(f"  • {dn(c)}: ready to perform: {acc_str}")
+                else:
+                    state.append(f"  • {dn(c)}: no events available")
+            elif accepted:
                 acc_str = ", ".join(f"'{e}'" for e in accepted)
-                paras.append(f"  • {dn(c)}: ready to perform: {acc_str}")
+                state.append(f"  • {dn(c)}: in {repr(final)}, ready to perform: {acc_str}")
             else:
-                paras.append(f"  • {dn(c)}: no events available")
-        elif accepted:
-            acc_str = ", ".join(f"'{e}'" for e in accepted)
-            paras.append(f"  • {dn(c)}: in {repr(final)}, ready to perform: {acc_str}")
-        else:
-            paras.append(f"  • {dn(c)}: in {repr(final)}, no events available")
+                state.append(f"  • {dn(c)}: in {repr(final)}, no events available")
 
     # ── 3. Root-cause analysis ──────────────────────────────────────────────
-    paras.append("")
-    paras.append("Root cause:")
+    root_cause.append("")
+    root_cause.append("Root cause:")
 
     stopped     = [c for c in leaves if not c.acceptance]
     waiting     = [c for c in leaves if     c.acceptance]
@@ -525,7 +536,7 @@ def explain_deadlock(
         if terminated and not stuck:
             if len(leaves) == 1:
                 name = dn(terminated[0])
-                paras.append(
+                root_cause.append(
                     f"  {name} terminates normally (performed ✓), after which no further "
                     "events are available. FDR's deadlock-free check requires a process "
                     "to be able to make progress indefinitely; a process that "
@@ -534,29 +545,27 @@ def explain_deadlock(
                 )
             else:
                 names_str = ", ".join(dn(c) for c in terminated)
-                paras.append(
+                root_cause.append(
                     f"  Every component ({names_str}) has terminated normally (performed ✓). "
                     "The parallel composition has no further events to synchronise on, "
                     "so the system is stuck."
                 )
-                paras.append("")
-                paras.append(
+                root_cause.append("")
+                root_cause.append(
                     "  If the components are intended to run repeatedly, redefine them "
                     "to loop back to their initial state, or sequence them further "
                     "using sequential composition (;)."
                 )
         else:
             names_str = ", ".join(dn(c) for c in stopped)
-            paras.append(
+            root_cause.append(
                 f"  Every component ({names_str}) has reached a state with no outgoing "
                 "events (STOP or equivalent). The composition is permanently stuck "
                 "because there is nothing left for any process to do."
             )
-            paras.append("")
-            paras.append(
-                "  This is a termination deadlock. If the processes are intended to "
-                "terminate, replace STOP with SKIP and use sequential composition (;) "
-                "or redefine components to loop back to their initial state."
+            root_cause.append("")
+            root_cause.append(
+                "  This is a termination deadlock."
             )
 
     elif not stopped:
@@ -565,19 +574,19 @@ def explain_deadlock(
         shared = {e: ps for e, ps in acc_map.items() if len(ps) > 1}
         solo   = {e: ps[0] for e, ps in acc_map.items() if len(ps) == 1}
 
-        paras.append(
+        root_cause.append(
             "  All components are waiting for events that cannot occur in the "
             "current state of the composition:"
         )
         for c in waiting:
             events = ", ".join(f"'{event_map.get(str(e),str(e))}'" for e in c.acceptance)
-            paras.append(f"    – {dn(c)} is ready to perform {events}.")
+            root_cause.append(f"    – {dn(c)} is ready to perform {events}.")
 
-        paras.append("")
+        root_cause.append("")
 
         if solo and not shared:
             # Classic mismatched-first-event deadlock
-            paras.append(
+            root_cause.append(
                 "  No two components are offering the same event. Because all "
                 "events in the synchronisation alphabet must be agreed on jointly, "
                 "and the processes' ready-sets are disjoint, no event can be "
@@ -589,13 +598,13 @@ def explain_deadlock(
                     if dn(c) != proc:
                         w = [event_map.get(str(e), str(e)) for e in c.acceptance]
                         other_wants.append(f"{dn(c)} (offering {', '.join(repr(x) for x in w)})")
-                paras.append(
+                root_cause.append(
                     f"    – '{event}' is only offered by {proc}, "
                     f"not by {'; '.join(other_wants)}."
                 )
         elif shared:
             shared_str = ", ".join(f"'{e}'" for e in shared)
-            paras.append(
+            root_cause.append(
                 f"  Events {shared_str} are offered by multiple components "
                 "simultaneously but still cannot proceed. This can happen when a "
                 "required third participant is absent, or when a renaming or hiding "
@@ -605,10 +614,10 @@ def explain_deadlock(
         else:
             # Mix of solo and shared — report both
             for event, proc in solo.items():
-                paras.append(f"    – '{event}' is only offered by {proc}; no partner offers it.")
+                root_cause.append(f"    – '{event}' is only offered by {proc}; no partner offers it.")
             for event, procs in shared.items():
                 names_str = " and ".join(procs)
-                paras.append(
+                root_cause.append(
                     f"    – '{event}' is offered by {names_str} but is still blocked "
                     "(possible missing third-party synchronisation)."
                 )
@@ -623,7 +632,7 @@ def explain_deadlock(
         # Describe each non-waiting component individually.
         for c in stopped:
             verb = "has" if True else "have"   # always singular here
-            paras.append(
+            root_cause.append(
                 f"  {dn(c)} {_stop_desc(c)}, while "
                 f"{waiting_names} {'is' if len(waiting) == 1 else 'are'} still "
                 "waiting to perform events:"
@@ -631,16 +640,16 @@ def explain_deadlock(
             break   # opening sentence covers all stopped; rest listed below
         for c in waiting:
             events = ", ".join(f"'{event_map.get(str(e),str(e))}'" for e in c.acceptance)
-            paras.append(f"    – {dn(c)} wants to perform {events}.")
+            root_cause.append(f"    – {dn(c)} wants to perform {events}.")
         if len(stopped) > 1:
             extras = ", ".join(
                 f"{dn(c)} ({_stop_desc(c)})" for c in stopped[1:]
             )
-            paras.append(f"  Also: {extras}.")
+            root_cause.append(f"  Also: {extras}.")
 
-        paras.append("")
+        root_cause.append("")
         stopped_names = ", ".join(dn(c) for c in stopped)
-        paras.append(
+        root_cause.append(
             f"  The deadlock arises because "
             f"{stopped_names} can no longer offer any events, so "
             f"{'any event' if len(waiting) == 1 else 'the events'} that "
@@ -649,7 +658,7 @@ def explain_deadlock(
             "partners will never be available."
         )
 
-    return "\n".join(paras)
+    return "\n".join(trace),"\n".join(steps),"\n".join(state),"\n".join(root_cause)
 
 
 def explain_fdr_output(

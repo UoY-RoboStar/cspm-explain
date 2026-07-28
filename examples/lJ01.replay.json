@@ -1,0 +1,804 @@
+{
+  "csp_file": "/home/hrh517/IdeaProjects/cspm-explain/examples/lJ01.csp",
+  "assertion": "FRGZVzTWbwV :[deadlock free]",
+  "components": [
+    {
+      "id": 0,
+      "name": "FRGZVzTWbwV"
+    },
+    {
+      "id": 1,
+      "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)"
+    },
+    {
+      "id": 2,
+      "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)"
+    },
+    {
+      "id": 3,
+      "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)"
+    },
+    {
+      "id": 4,
+      "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "event": "WFtxoJbZVdnedfMK",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "FRGZVzTWbwV",
+          "role": "participant",
+          "line": 81,
+          "col": 15,
+          "end_line": 81,
+          "end_col": 31,
+          "text": "WFtxoJbZVdnedfMK"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "event": "bLLPf",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "FRGZVzTWbwV",
+          "role": "participant",
+          "line": 81,
+          "col": 35,
+          "end_line": 81,
+          "end_col": 40,
+          "text": "bLLPf"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "event": "jwSYarhESuuzxEGuVy",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "MQjxTrmgC",
+          "role": "participant",
+          "line": 82,
+          "col": 13,
+          "end_line": 82,
+          "end_col": 31,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "event": "bLLPf",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "MQjxTrmgC",
+          "role": "participant",
+          "line": 82,
+          "col": 35,
+          "end_line": 82,
+          "end_col": 40,
+          "text": "bLLPf"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 5,
+      "event": "g",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "MQjxTrmgC",
+          "role": "participant",
+          "line": 82,
+          "col": 44,
+          "end_line": 82,
+          "end_col": 45,
+          "text": "g"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 6,
+      "event": "YFPPzVRnSfeaPLglYlUeYx",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "MQjxTrmgC",
+          "role": "participant",
+          "line": 82,
+          "col": 49,
+          "end_line": 82,
+          "end_col": 71,
+          "text": "YFPPzVRnSfeaPLglYlUeYx"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 7,
+      "event": "qYRMLsuirgf",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "MQjxTrmgC",
+          "role": "participant",
+          "line": 82,
+          "col": 75,
+          "end_line": 82,
+          "end_col": 86,
+          "text": "qYRMLsuirgf"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 8,
+      "event": "WFtxoJbZVdnedfMK",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "uDtp",
+          "role": "participant",
+          "line": 83,
+          "col": 8,
+          "end_line": 83,
+          "end_col": 24,
+          "text": "WFtxoJbZVdnedfMK"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 9,
+      "event": "ajVGjjBJyciloNyYbADNCM",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "uDtp",
+          "role": "participant",
+          "line": 83,
+          "col": 28,
+          "end_line": 83,
+          "end_col": 50,
+          "text": "ajVGjjBJyciloNyYbADNCM"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 10,
+      "event": "g",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "uDtp",
+          "role": "participant",
+          "line": 83,
+          "col": 54,
+          "end_line": 83,
+          "end_col": 55,
+          "text": "g"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 11,
+      "event": "bLLPf",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "uDtp",
+          "role": "participant",
+          "line": 83,
+          "col": 59,
+          "end_line": 83,
+          "end_col": 64,
+          "text": "bLLPf"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 12,
+      "event": "WFtxoJbZVdnedfMK",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "SEt",
+          "role": "participant",
+          "line": 84,
+          "col": 7,
+          "end_line": 84,
+          "end_col": 23,
+          "text": "WFtxoJbZVdnedfMK"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 13,
+      "event": "YFPPzVRnSfeaPLglYlUeYx",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "SEt",
+          "role": "participant",
+          "line": 84,
+          "col": 27,
+          "end_line": 84,
+          "end_col": 49,
+          "text": "YFPPzVRnSfeaPLglYlUeYx"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 14,
+      "event": "qYRMLsuirgf",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "sDvInax",
+          "role": "dormant"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "participant",
+          "line": 79,
+          "col": 197,
+          "end_line": 79,
+          "end_col": 208,
+          "text": "qYRMLsuirgf"
+        }
+      ]
+    },
+    {
+      "step": 15,
+      "event": "WFtxoJbZVdnedfMK",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "sDvInax",
+          "role": "dormant"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "participant",
+          "line": 79,
+          "col": 212,
+          "end_line": 79,
+          "end_col": 228,
+          "text": "WFtxoJbZVdnedfMK"
+        }
+      ]
+    },
+    {
+      "step": 16,
+      "event": "jwSYarhESuuzxEGuVy",
+      "highlights": [
+        {
+          "id": 0,
+          "name": "sDvInax",
+          "role": "dormant"
+        },
+        {
+          "id": 1,
+          "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+          "role": "bystander",
+          "line": 79,
+          "col": 12,
+          "end_line": 79,
+          "end_col": 30,
+          "text": "jwSYarhESuuzxEGuVy"
+        },
+        {
+          "id": 2,
+          "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 3,
+          "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+          "role": "dormant"
+        },
+        {
+          "id": 4,
+          "name": "(qYRMLsuirgf -> WFtxoJbZVdnedfMK -> jwSYarhESuuzxEGuVy -> cxOScrk) (in sDvInax)",
+          "role": "participant",
+          "line": 79,
+          "col": 232,
+          "end_line": 79,
+          "end_col": 250,
+          "text": "jwSYarhESuuzxEGuVy"
+        }
+      ]
+    }
+  ],
+  "deadlock": [
+    {
+      "id": 0,
+      "name": "sDvInax",
+      "acceptance": [],
+      "line": 79,
+      "col": 11,
+      "end_line": 79,
+      "end_col": 262
+    },
+    {
+      "id": 1,
+      "name": "(jwSYarhESuuzxEGuVy -> qYRMLsuirgf -> WFtxoJbZVdnedfMK -> YFPPzVRnSfeaPLglYlUeYx -> DiqSUXHTssj) (in sDvInax)",
+      "acceptance": [
+        "jwSYarhESuuzxEGuVy"
+      ],
+      "line": 79,
+      "col": 12,
+      "end_line": 79,
+      "end_col": 30,
+      "text": "jwSYarhESuuzxEGuVy"
+    },
+    {
+      "id": 2,
+      "name": "(EuYSsJAhCjmQpPTZRmoB -> qYRMLsuirgf -> ajVGjjBJyciloNyYbADNCM -> gPX -> uzrsiI) (in FatntPR)",
+      "acceptance": [],
+      "line": 73,
+      "col": 12,
+      "end_line": 73,
+      "end_col": 32,
+      "text": "EuYSsJAhCjmQpPTZRmoB"
+    },
+    {
+      "id": 3,
+      "name": "(ajVGjjBJyciloNyYbADNCM -> qYRMLsuirgf -> EuYSsJAhCjmQpPTZRmoB -> jwSYarhESuuzxEGuVy -> STOP) (in FatntPR)",
+      "acceptance": [],
+      "line": 73,
+      "col": 124,
+      "end_line": 73,
+      "end_col": 146,
+      "text": "ajVGjjBJyciloNyYbADNCM"
+    },
+    {
+      "id": 4,
+      "name": "cxOScrk",
+      "acceptance": [
+        "ajVGjjBJyciloNyYbADNCM"
+      ],
+      "line": 85,
+      "col": 11,
+      "end_line": 85,
+      "end_col": 33,
+      "text": "ajVGjjBJyciloNyYbADNCM"
+    }
+  ]
+}

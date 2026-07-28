@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$USER_HOME$/PycharmProjects/CSPMInspector/.idea/CSPMInspector.iml" filepath="$USER_HOME$/PycharmProjects/CSPMInspector/.idea/CSPMInspector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/cspm-explain.iml" filepath="$PROJECT_DIR$/.idea/cspm-explain.iml" />
+    </modules>
+  </component>
+</project>

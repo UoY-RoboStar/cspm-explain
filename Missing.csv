@@ -1,0 +1,1400 @@
+CSP,Assertion,Passed,CounterExample,Trace,Steps,State at point of deadlock,Root Cause
+"datatype LNprxQKnQxpD = mLDWZH|hahViC|MKTUy|QwrkBhcQwT|HPdOSicgcl|tUvuBSX|GevGvLjwpTLtjS|xnhLabCTgoMbN|EffHPiC|oUHXD9
+channel zAuSfIJsBdyfV
+channel ycnTF
+channel TCbnINnBAJA
+channel ioyuZ
+channel hiipIGiWJkt
+channel qeMqlKRmMNM
+channel ZA
+channel cWEz
+channel L
+channel alnYRrH
+channel N
+channel yUiaYZCP
+channel cttDZ
+channel skLyvowRGeVByp
+channel elIxSexSxctR
+channel wkwYC
+channel YjLCdWZIozFWl : LNprxQKnQxpD
+channel DWMzDXzKBqxz
+channel Fofu
+channel twJpuVxsTGdLGE
+channel ZgnBzKEy
+channel GBz
+channel qoDaSvUMKruQCE : Char
+tHQGq = (ZA -> cXFIXXi) [] (ioyuZ -> SKIP)
+cXFIXXi = YjLCdWZIozFWl$oUHXD9 -> STOP
+gzLXI = (L -> SKIP) |~| (skLyvowRGeVByp -> Fofu -> alnYRrH -> zAuSfIJsBdyfV -> N -> wkwYC -> L -> STOP)
+KJQiUbJsKf = qoDaSvUMKruQCE$'s' -> skLyvowRGeVByp -> cWEz -> twJpuVxsTGdLGE -> zAuSfIJsBdyfV -> yUiaYZCP -> L -> elIxSexSxctR -> cttDZ -> hiipIGiWJkt -> qeMqlKRmMNM -> yAblGQFjFg
+yAblGQFjFg = ycnTF -> cttDZ -> JOWyCDtjPp
+JOWyCDtjPp = (qoDaSvUMKruQCE$'s' -> elIxSexSxctR -> cWEz -> qeMqlKRmMNM -> DWMzDXzKBqxz -> yUiaYZCP -> skLyvowRGeVByp -> GBz -> L -> alnYRrH -> zAuSfIJsBdyfV -> N -> TCbnINnBAJA -> ZgnBzKEy -> Fofu -> mAcu)\{TCbnINnBAJA,ycnTF,qeMqlKRmMNM,cWEz,L,alnYRrH,N,yUiaYZCP,skLyvowRGeVByp,wkwYC,DWMzDXzKBqxz,Fofu,twJpuVxsTGdLGE,GBz,qoDaSvUMKruQCE.'s'}
+mAcu = skLyvowRGeVByp -> TOUikUsWVQ
+TOUikUsWVQ = cttDZ -> gzLXI
+assert tHQGq :[deadlock free]
+assert cXFIXXi :[deadlock free]
+assert gzLXI :[deadlock free]
+assert KJQiUbJsKf :[deadlock free]
+assert yAblGQFjFg :[deadlock free]
+assert JOWyCDtjPp :[deadlock free]
+assert mAcu :[deadlock free]
+assert TOUikUsWVQ :[deadlock free]",tHQGq :[deadlock free],false,"<ZA,YjLCdWZIozFWl.oUHXD9>",The system reaches a deadlock after the trace: 'ZA' → 'YjLCdWZIozFWl.oUHXD9'.,"Step 1: 'ZA'  (tHQGq  acts alone)
+           tHQGq : (ready to perform 'ZA') → (ready to perform 'YjLCdWZIozFWl.oUHXD9')
+  Step 2: 'YjLCdWZIozFWl.oUHXD9'  (tHQGq  acts alone)
+           tHQGq : (ready to perform 'YjLCdWZIozFWl.oUHXD9') → (done)",• tHQGq : no events available,"Every component (tHQGq ) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"datatype dSFUYQLtPWKQ = AXoAigFVunthbA|uVZOwqjj|DcCYzhVqwg|qVaFQgDPDsSVyL|gxLIepSAd|RlZmxVdjOD|ZgYJtoVcMAq|RTVm5XfLi
+datatype frUIAvcjgnDj = YfvYi|MHYBKNuHW|eSihVkMmIeLh|ZmPIaRKZLcHV|iTBA
+datatype ckG = IK|JxN|TwuYJughGj|EXaMKAggcei|SzXvxxYwAm|xWIcnyniRjM|aobR
+datatype HlNpsTy = QutlZjUwandpJf|RJxAryNiELLb|XF8GYlx
+channel pHeLrW
+channel OFqiG
+channel YqCNcwMVULzQ
+channel BVCmYtp
+channel daIrlJPUKZWQS
+channel ceGoBybYOUc
+channel GvgIaVqkvnRVIB
+channel tHUBqFPxM
+channel yDsdwgsc
+channel iZrPWWGPFvnI
+channel PHCdv
+channel CQvS
+channel SyrDt
+channel LTOFvxDzOBF
+channel zBXlACxkASS
+channel wpT
+channel mFANcCrtzKqhb
+channel jnxucGXfYi
+channel NTiZd
+channel FikxAtalDZzt
+channel knqepqo
+channel ZwDxwf
+channel mVzliajFcY
+channel gSSIyQUcPa
+channel tLplXDmeek
+channel Dk
+channel bZvZllHyaa
+channel UQG
+channel uyN
+channel HKJIeiFwq
+channel SETOyVryMAyuqI
+channel HUSQy
+channel oKQhOlw
+channel yzZACD
+channel GYXx
+channel frqxizBoLst : dSFUYQLtPWKQ
+channel UETfauSavKmfS
+channel xVR : frUIAvcjgnDj
+channel SQENDJhVj
+channel FUOPdSqWMX
+channel ysUYwZQUBbX
+channel ebuPU
+channel tZMbbdNDRUumj : {17..22}
+channel MMAijD
+channel uKwPeFWN
+channel ddnkaDfiG
+channel ySBgru
+channel J
+channel DVcmFcuGser
+channel LdRc
+channel hnVbds
+channel dJFYyh
+channel fv
+channel tMeIetTL
+channel CCYmVTvvf : ckG
+channel S
+channel cKpmg
+channel U
+channel LMeszS
+channel qXYqUWGrBuq
+channel doOtqvAcbeun
+channel wEFfwozAwuTZ
+channel hJSeaV : Bool
+channel vzEXYj : Bool
+channel fwLbHD
+channel lIVg
+channel csQ
+channel EcSYYcIqpyYsko
+channel WAVBBd
+channel nOoOpLwYsQjecZ
+channel NVyrEg
+channel Fu : HlNpsTy
+channel IVAem
+channel rNZtMF
+channel juzbhWSqG
+channel aeuTPiIjmMZd : Char
+channel XL
+channel eoMDsIhg
+channel HvFaMXPZN
+channel FvsETnSNTtti
+KccdNE = ((nOoOpLwYsQjecZ -> GYXx -> vo) /\ (GYXx -> iZrPWWGPFvnI -> wpT -> aeuTPiIjmMZd?'i' -> xVR.iTBA -> ySBgru -> ceGoBybYOUc -> PHCdv -> hnVbds -> daIrlJPUKZWQS -> GvgIaVqkvnRVIB -> wEFfwozAwuTZ -> FvsETnSNTtti -> YqCNcwMVULzQ -> SETOyVryMAyuqI -> csQ -> bZvZllHyaa -> OFqiG -> nOoOpLwYsQjecZ -> yzZACD -> HKJIeiFwq -> dJFYyh -> tHUBqFPxM -> oKQhOlw -> jnxucGXfYi -> CCYmVTvvf?aobR -> DVcmFcuGser -> frqxizBoLst!RTVm5XfLi -> qXYqUWGrBuq -> NTiZd -> hJSeaV?true -> SQENDJhVj -> DDHtKKoxNQ)); uKwPeFWN -> LdRc -> SyrDt -> tHUBqFPxM -> doOtqvAcbeun -> nOoOpLwYsQjecZ -> aeuTPiIjmMZd?'i' -> pHeLrW -> Dk -> pMYmpyWho
+vo = tHUBqFPxM -> jnxucGXfYi -> tdkQ
+EFDOs = hnVbds -> SETOyVryMAyuqI -> ddnkaDfiG -> IQdRZY
+IQdRZY = dJFYyh -> daIrlJPUKZWQS -> FikxAtalDZzt -> ceGoBybYOUc -> hJSeaV?true -> YqCNcwMVULzQ -> PHCdv -> SETOyVryMAyuqI -> csQ -> wEFfwozAwuTZ -> bZvZllHyaa -> qXYqUWGrBuq -> HKJIeiFwq -> wpT -> gJsar
+gJsar = (ceGoBybYOUc -> fwLbHD -> GYXx -> tHUBqFPxM -> juzbhWSqG -> DVcmFcuGser -> PHCdv -> frqxizBoLst!RTVm5XfLi -> NTiZd -> bZvZllHyaa -> FvsETnSNTtti -> hnVbds -> aeuTPiIjmMZd?'i' -> wpT -> jnxucGXfYi -> nOoOpLwYsQjecZ -> csQ -> qXYqUWGrBuq -> xVR.iTBA -> GvgIaVqkvnRVIB -> lMNVuMRTo)\{OFqiG,YqCNcwMVULzQ,ddnkaDfiG,ceGoBybYOUc,GvgIaVqkvnRVIB,DVcmFcuGser,tHUBqFPxM,hnVbds,PHCdv,hJSeaV.true,qXYqUWGrBuq,wpT,wEFfwozAwuTZ,NTiZd,HKJIeiFwq,nOoOpLwYsQjecZ,SETOyVryMAyuqI,yzZACD,frqxizBoLst.RTVm5XfLi,oKQhOlw,juzbhWSqG,GYXx,SQENDJhVj,FvsETnSNTtti,CCYmVTvvf.aobR}
+lMNVuMRTo = oKQhOlw -> GYXx -> SQENDJhVj -> ceGoBybYOUc -> yzZACD -> tHUBqFPxM -> hJSeaV?true -> ddnkaDfiG -> fwLbHD -> wEFfwozAwuTZ -> iZrPWWGPFvnI -> CCYmVTvvf?aobR -> bZvZllHyaa -> juzbhWSqG -> wpT -> qXYqUWGrBuq -> NTiZd -> PHCdv -> YqCNcwMVULzQ -> SETOyVryMAyuqI -> HKJIeiFwq -> hix
+hix = iZrPWWGPFvnI -> YqCNcwMVULzQ -> FvsETnSNTtti -> SQENDJhVj -> DVcmFcuGser -> CCYmVTvvf?aobR -> wpT -> juzbhWSqG -> yzZACD -> ceGoBybYOUc -> ySBgru -> HKJIeiFwq -> fwLbHD -> dJFYyh -> tHUBqFPxM -> aeuTPiIjmMZd?'i' -> GYXx -> wEFfwozAwuTZ -> SETOyVryMAyuqI -> frqxizBoLst!RTVm5XfLi -> nOoOpLwYsQjecZ -> OFqiG -> oKQhOlw -> daIrlJPUKZWQS -> NTiZd -> jnxucGXfYi -> KccdNE
+DDHtKKoxNQ = YqCNcwMVULzQ -> ceGoBybYOUc -> frqxizBoLst!RTVm5XfLi -> ddnkaDfiG -> fwLbHD -> PHCdv -> OFqiG -> qXYqUWGrBuq -> daIrlJPUKZWQS -> yzZACD -> wpT -> SQENDJhVj -> STOP
+pMYmpyWho = doOtqvAcbeun -> eoMDsIhg -> SyrDt -> zBXlACxkASS -> ceGoBybYOUc -> csQ -> wpT -> MMAijD -> NVyrEg -> UETfauSavKmfS -> uKwPeFWN -> aeuTPiIjmMZd?'i' -> nOoOpLwYsQjecZ -> oKQhOlw -> CQvS -> qXYqUWGrBuq -> Dk -> tHUBqFPxM -> pHeLrW -> SKIP
+VQOmiOrevhV = (qXYqUWGrBuq -> cKpmg -> YqCNcwMVULzQ -> jnxucGXfYi -> csQ -> oKQhOlw -> EcSYYcIqpyYsko -> tMeIetTL -> tHUBqFPxM -> aeuTPiIjmMZd?'i' -> yDsdwgsc -> FvsETnSNTtti -> vo) [| {vzEXYj.true} |> (qXYqUWGrBuq -> wpT -> EcSYYcIqpyYsko -> mFANcCrtzKqhb -> SKIP)
+ERsT = wpT -> IVAem -> FUOPdSqWMX -> oKQhOlw -> tLplXDmeek -> FvsETnSNTtti -> yDsdwgsc -> tHUBqFPxM -> mFANcCrtzKqhb -> nOoOpLwYsQjecZ -> YqCNcwMVULzQ -> rTauw
+rTauw = mFANcCrtzKqhb -> tLplXDmeek -> ceGoBybYOUc -> FvsETnSNTtti -> cKpmg -> yDsdwgsc -> oKQhOlw -> FUOPdSqWMX -> PeDlaRwWNbb
+PeDlaRwWNbb = YqCNcwMVULzQ -> nOoOpLwYsQjecZ -> aeuTPiIjmMZd?'i' -> mFANcCrtzKqhb -> tLplXDmeek -> tHUBqFPxM -> jnxucGXfYi -> tMeIetTL -> VMHWaz
+VMHWaz = YqCNcwMVULzQ -> uyN -> tLplXDmeek -> yDsdwgsc -> FvsETnSNTtti -> cKpmg -> FUOPdSqWMX -> mFANcCrtzKqhb -> vzEXYj.true -> nOoOpLwYsQjecZ -> oKQhOlw -> tMeIetTL -> ceGoBybYOUc -> aeuTPiIjmMZd?'i' -> wpT -> EcSYYcIqpyYsko -> qXYqUWGrBuq -> Kapewsb
+Kapewsb = ceGoBybYOUc -> tMeIetTL -> nOoOpLwYsQjecZ -> qXYqUWGrBuq -> cKpmg -> IVAem -> tHUBqFPxM -> FUOPdSqWMX -> mFANcCrtzKqhb -> oKQhOlw -> yDsdwgsc -> wpT -> VQOmiOrevhV
+DQEVWepwlJE = (U -> tZMbbdNDRUumj!22 -> BVCmYtp -> gJsar) [ {ebuPU,csQ,knqepqo,ZwDxwf,mVzliajFcY,YqCNcwMVULzQ,gSSIyQUcPa,Fu.XF8GYlx,WAVBBd,ceGoBybYOUc,nOoOpLwYsQjecZ,tHUBqFPxM,HUSQy,rNZtMF,oKQhOlw,XL,U,LTOFvxDzOBF,qXYqUWGrBuq,wpT,HvFaMXPZN,lIVg,ysUYwZQUBbX} || {csQ,ZwDxwf,YqCNcwMVULzQ,gSSIyQUcPa,BVCmYtp,ceGoBybYOUc,WAVBBd,Fu.XF8GYlx,J,UQG,aeuTPiIjmMZd.'i',nOoOpLwYsQjecZ,HUSQy,rNZtMF,oKQhOlw,S,qXYqUWGrBuq,lIVg,ysUYwZQUBbX,FvsETnSNTtti} ] (csQ -> wpT -> WAVBBd -> ysUYwZQUBbX -> tHUBqFPxM -> knqepqo -> qXYqUWGrBuq -> Fu?XF8GYlx -> XL -> lIVg -> nOoOpLwYsQjecZ -> YqCNcwMVULzQ -> FvsETnSNTtti -> UQG -> aeuTPiIjmMZd?'i' -> LMeszS -> gSSIyQUcPa -> J -> fv -> mVzliajFcY -> ceGoBybYOUc -> S -> ebuPU -> HvFaMXPZN -> jnxucGXfYi -> LTOFvxDzOBF -> rNZtMF -> HUSQy -> STOP)
+tdkQ = FvsETnSNTtti -> csQ -> qXYqUWGrBuq -> aeuTPiIjmMZd?'i' -> oKQhOlw -> YqCNcwMVULzQ -> ceGoBybYOUc -> nOoOpLwYsQjecZ -> jnxucGXfYi -> wpT -> SKIP
+assert KccdNE :[deadlock free]
+assert vo :[deadlock free]
+assert EFDOs :[deadlock free]
+assert IQdRZY :[deadlock free]
+assert gJsar :[deadlock free]
+assert lMNVuMRTo :[deadlock free]
+assert hix :[deadlock free]
+assert DDHtKKoxNQ :[deadlock free]
+assert pMYmpyWho :[deadlock free]
+assert VQOmiOrevhV :[deadlock free]
+assert ERsT :[deadlock free]
+assert rTauw :[deadlock free]
+assert PeDlaRwWNbb :[deadlock free]
+assert VMHWaz :[deadlock free]
+assert Kapewsb :[deadlock free]
+assert DQEVWepwlJE :[deadlock free]
+assert tdkQ :[deadlock free]",KccdNE :[deadlock free],false,"<GYXx,iZrPWWGPFvnI,wpT,aeuTPiIjmMZd.'i',xVR.iTBA,ySBgru,ceGoBybYOUc,PHCdv,hnVbds,daIrlJPUKZWQS,GvgIaVqkvnRVIB,wEFfwozAwuTZ,FvsETnSNTtti,YqCNcwMVULzQ,SETOyVryMAyuqI,csQ,bZvZllHyaa,OFqiG,nOoOpLwYsQjecZ,yzZACD,HKJIeiFwq,dJFYyh,tHUBqFPxM,oKQhOlw,jnxucGXfYi,CCYmVTvvf.aobR,DVcmFcuGser,frqxizBoLst.RTVm5XfLi,qXYqUWGrBuq,NTiZd,hJSeaV.true,SQENDJhVj,YqCNcwMVULzQ,ceGoBybYOUc,frqxizBoLst.RTVm5XfLi,ddnkaDfiG,fwLbHD,PHCdv,OFqiG,qXYqUWGrBuq,daIrlJPUKZWQS,yzZACD,wpT,SQENDJhVj>",The system reaches a deadlock after the trace: 'GYXx' → 'iZrPWWGPFvnI' → 'wpT' → 'aeuTPiIjmMZd.'i'' → 'xVR.iTBA' → 'ySBgru' → 'ceGoBybYOUc' → 'PHCdv' → 'hnVbds' → 'daIrlJPUKZWQS' → 'GvgIaVqkvnRVIB' → 'wEFfwozAwuTZ' → 'FvsETnSNTtti' → 'YqCNcwMVULzQ' → 'SETOyVryMAyuqI' → 'csQ' → 'bZvZllHyaa' → 'OFqiG' → 'nOoOpLwYsQjecZ' → 'yzZACD' → 'HKJIeiFwq' → 'dJFYyh' → 'tHUBqFPxM' → 'oKQhOlw' → 'jnxucGXfYi' → 'CCYmVTvvf.aobR' → 'DVcmFcuGser' → 'frqxizBoLst.RTVm5XfLi' → 'qXYqUWGrBuq' → 'NTiZd' → 'hJSeaV.true' → 'SQENDJhVj' → 'YqCNcwMVULzQ' → 'ceGoBybYOUc' → 'frqxizBoLst.RTVm5XfLi' → 'ddnkaDfiG' → 'fwLbHD' → 'PHCdv' → 'OFqiG' → 'qXYqUWGrBuq' → 'daIrlJPUKZWQS' → 'yzZACD' → 'wpT' → 'SQENDJhVj'.,"Step 1: 'GYXx'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'GYXx') → (ready to perform 'iZrPWWGPFvnI')
+  Step 2: 'iZrPWWGPFvnI'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'iZrPWWGPFvnI') → (ready to perform 'wpT')
+  Step 3: 'wpT'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'wpT') → (ready to perform 'aeuTPiIjmMZd.'i'')
+  Step 4: 'aeuTPiIjmMZd.'i''  (KccdNE acts alone)
+           KccdNE: (ready to perform 'aeuTPiIjmMZd.'i'') → (ready to perform 'xVR.iTBA')
+  Step 5: 'xVR.iTBA'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'xVR.iTBA') → (ready to perform 'ySBgru')
+  Step 6: 'ySBgru'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'ySBgru') → (ready to perform 'ceGoBybYOUc')
+  Step 7: 'ceGoBybYOUc'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'ceGoBybYOUc') → (ready to perform 'PHCdv')
+  Step 8: 'PHCdv'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'PHCdv') → (ready to perform 'hnVbds')
+  Step 9: 'hnVbds'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'hnVbds') → (ready to perform 'daIrlJPUKZWQS')
+  Step 10: 'daIrlJPUKZWQS'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'daIrlJPUKZWQS') → (ready to perform 'GvgIaVqkvnRVIB')
+  Step 11: 'GvgIaVqkvnRVIB'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'GvgIaVqkvnRVIB') → (ready to perform 'wEFfwozAwuTZ')
+  Step 12: 'wEFfwozAwuTZ'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'wEFfwozAwuTZ') → (ready to perform 'FvsETnSNTtti')
+  Step 13: 'FvsETnSNTtti'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'FvsETnSNTtti') → (ready to perform 'YqCNcwMVULzQ')
+  Step 14: 'YqCNcwMVULzQ'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'YqCNcwMVULzQ') → (ready to perform 'SETOyVryMAyuqI')
+  Step 15: 'SETOyVryMAyuqI'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'SETOyVryMAyuqI') → (ready to perform 'csQ')
+  Step 16: 'csQ'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'csQ') → (ready to perform 'bZvZllHyaa')
+  Step 17: 'bZvZllHyaa'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'bZvZllHyaa') → (ready to perform 'OFqiG')
+  Step 18: 'OFqiG'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'OFqiG') → (ready to perform 'nOoOpLwYsQjecZ')
+  Step 19: 'nOoOpLwYsQjecZ'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'nOoOpLwYsQjecZ') → (ready to perform 'yzZACD')
+  Step 20: 'yzZACD'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'yzZACD') → (ready to perform 'HKJIeiFwq')
+  Step 21: 'HKJIeiFwq'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'HKJIeiFwq') → (ready to perform 'dJFYyh')
+  Step 22: 'dJFYyh'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'dJFYyh') → (ready to perform 'tHUBqFPxM')
+  Step 23: 'tHUBqFPxM'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'tHUBqFPxM') → (ready to perform 'oKQhOlw')
+  Step 24: 'oKQhOlw'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'oKQhOlw') → (ready to perform 'jnxucGXfYi')
+  Step 25: 'jnxucGXfYi'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'jnxucGXfYi') → (ready to perform 'CCYmVTvvf.aobR')
+  Step 26: 'CCYmVTvvf.aobR'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'CCYmVTvvf.aobR') → (ready to perform 'DVcmFcuGser')
+  Step 27: 'DVcmFcuGser'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'DVcmFcuGser') → (ready to perform 'frqxizBoLst.RTVm5XfLi')
+  Step 28: 'frqxizBoLst.RTVm5XfLi'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'frqxizBoLst.RTVm5XfLi') → (ready to perform 'qXYqUWGrBuq')
+  Step 29: 'qXYqUWGrBuq'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'qXYqUWGrBuq') → (ready to perform 'NTiZd')
+  Step 30: 'NTiZd'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'NTiZd') → (ready to perform 'hJSeaV.true')
+  Step 31: 'hJSeaV.true'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'hJSeaV.true') → (ready to perform 'SQENDJhVj')
+  Step 32: 'SQENDJhVj'  (KccdNE acts alone)
+           KccdNE: (ready to perform 'SQENDJhVj') → 'DDHtKKoxNQ'
+  Step 33: 'YqCNcwMVULzQ'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: 'DDHtKKoxNQ' → (ready to perform 'ceGoBybYOUc')
+  Step 34: 'ceGoBybYOUc'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: (ready to perform 'ceGoBybYOUc') → (ready to perform 'frqxizBoLst.RTVm5XfLi')
+  Step 35: 'frqxizBoLst.RTVm5XfLi'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: (ready to perform 'frqxizBoLst.RTVm5XfLi') → (ready to perform 'ddnkaDfiG')
+  Step 36: 'ddnkaDfiG'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: (ready to perform 'ddnkaDfiG') → (ready to perform 'fwLbHD')
+  Step 37: 'fwLbHD'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: (ready to perform 'fwLbHD') → (ready to perform 'PHCdv')
+  Step 38: 'PHCdv'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: (ready to perform 'PHCdv') → (ready to perform 'OFqiG')
+  Step 39: 'OFqiG'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: (ready to perform 'OFqiG') → (ready to perform 'qXYqUWGrBuq')
+  Step 40: 'qXYqUWGrBuq'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: (ready to perform 'qXYqUWGrBuq') → (ready to perform 'daIrlJPUKZWQS')
+  Step 41: 'daIrlJPUKZWQS'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: (ready to perform 'daIrlJPUKZWQS') → (ready to perform 'yzZACD')
+  Step 42: 'yzZACD'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: (ready to perform 'yzZACD') → (ready to perform 'wpT')
+  Step 43: 'wpT'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: (ready to perform 'wpT') → (ready to perform 'SQENDJhVj')
+  Step 44: 'SQENDJhVj'  (DDHtKKoxNQ acts alone)
+           DDHtKKoxNQ: (ready to perform 'SQENDJhVj') → 'STOP'","• KccdNE: no events available
+  • DDHtKKoxNQ: in 'STOP', no events available
+  • KccdNE: no events available","Every component (KccdNE, DDHtKKoxNQ, KccdNE) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"channel IQHCOHpjG
+channel CJhdLUfdQIQ
+channel hlNDPnwBZZZUK
+channel eyrqYEHws
+channel QCVqUwZcEoNERP
+channel UA
+channel NXcTnEbVurBJQ
+channel tD
+channel UYCVXcXvFo
+channel PqpBJpL
+channel BpRRQo
+channel SslCuJQOTx
+channel nYRrfDjvEexVSn
+channel RXxUmZQWkQBNSk
+channel mCvJhotXOSbqe
+channel jTebXEyzOIt
+channel AdrrpqXYHgcxEe
+channel kLrKqDYifkqr
+channel yIZ
+channel YaiowgWmgNIP
+channel jIGHAjgMnWn
+channel HJKRtYUjZ
+channel jMJtANLXyG
+channel w
+channel bjmZAEmrOjK : Char
+channel rtkyu
+channel gqMMoENgm
+channel CuPZ
+channel HeRFrvaDR
+ZSlrCEcubVU = (PqpBJpL -> YaiowgWmgNIP -> QCVqUwZcEoNERP -> SslCuJQOTx -> SKIP) [] (YaiowgWmgNIP -> jTebXEyzOIt -> mCvJhotXOSbqe -> PqpBJpL -> NXcTnEbVurBJQ -> STOP)
+ueYjOQ = mCvJhotXOSbqe -> UYCVXcXvFo -> kLrKqDYifkqr -> nYRrfDjvEexVSn -> yIZ -> CuPZ -> gqMMoENgm -> hlNDPnwBZZZUK -> RXxUmZQWkQBNSk -> jMJtANLXyG -> QCVqUwZcEoNERP -> SslCuJQOTx -> BoSvGjPOCRd
+BoSvGjPOCRd = CuPZ -> RXxUmZQWkQBNSk -> SslCuJQOTx -> PqpBJpL -> mCvJhotXOSbqe -> hlNDPnwBZZZUK -> QCVqUwZcEoNERP -> UA -> HeRFrvaDR -> OGCLlGXJ
+OGCLlGXJ = PqpBJpL -> RFWhTJuKx
+RFWhTJuKx = (kLrKqDYifkqr -> CJhdLUfdQIQ -> CuPZ -> UA -> RXxUmZQWkQBNSk -> nYRrfDjvEexVSn -> exgqDI)\{SslCuJQOTx,nYRrfDjvEexVSn,CJhdLUfdQIQ,RXxUmZQWkQBNSk,mCvJhotXOSbqe,jTebXEyzOIt,hlNDPnwBZZZUK,kLrKqDYifkqr,yIZ,UA,UYCVXcXvFo,jMJtANLXyG,PqpBJpL}
+exgqDI = PqpBJpL -> SslCuJQOTx -> hlNDPnwBZZZUK -> UA -> kLrKqDYifkqr -> jTebXEyzOIt -> jMJtANLXyG -> UYCVXcXvFo -> HeRFrvaDR -> yIZ -> NXcTnEbVurBJQ -> nYRrfDjvEexVSn -> ZSlrCEcubVU
+cEcimCS = (jTebXEyzOIt -> IQHCOHpjG -> tD -> bjmZAEmrOjK.'O' -> jIGHAjgMnWn -> w -> HJKRtYUjZ -> BpRRQo -> eyrqYEHws -> SKIP) [| {tD,IQHCOHpjG,w,jTebXEyzOIt,rtkyu,eyrqYEHws,BpRRQo,bjmZAEmrOjK.'O',jIGHAjgMnWn} |] (jIGHAjgMnWn -> IQHCOHpjG -> w -> HJKRtYUjZ -> bjmZAEmrOjK.'O' -> jTebXEyzOIt -> BpRRQo -> rtkyu -> SKIP)
+yjDTQMYNR = bjmZAEmrOjK.'O' -> IQHCOHpjG -> BpRRQo -> HJKRtYUjZ -> jTebXEyzOIt -> eyrqYEHws -> tD -> LSjYdS
+LSjYdS = eyrqYEHws -> bjmZAEmrOjK.'O' -> BpRRQo -> w -> rtkyu -> tD -> IQHCOHpjG -> HJKRtYUjZ -> APR
+APR = bjmZAEmrOjK.'O' -> w -> IQHCOHpjG -> VPdWvFrvwP
+VPdWvFrvwP = tD -> HJKRtYUjZ -> w -> rtkyu -> jTebXEyzOIt -> jIGHAjgMnWn -> eQgHs
+eQgHs = (jIGHAjgMnWn -> eyrqYEHws -> cEcimCS)\{tD,IQHCOHpjG,HJKRtYUjZ,jTebXEyzOIt,w,rtkyu,eyrqYEHws,BpRRQo,jIGHAjgMnWn}
+zwJGyWVtUgo = jTebXEyzOIt -> SKIP
+assert ZSlrCEcubVU :[deadlock free]
+assert ueYjOQ :[deadlock free]
+assert BoSvGjPOCRd :[deadlock free]
+assert OGCLlGXJ :[deadlock free]
+assert RFWhTJuKx :[deadlock free]
+assert exgqDI :[deadlock free]
+assert cEcimCS :[deadlock free]
+assert yjDTQMYNR :[deadlock free]
+assert LSjYdS :[deadlock free]
+assert APR :[deadlock free]
+assert VPdWvFrvwP :[deadlock free]
+assert eQgHs :[deadlock free]
+assert zwJGyWVtUgo :[deadlock free]",ZSlrCEcubVU :[deadlock free],false,"<YaiowgWmgNIP,jTebXEyzOIt,mCvJhotXOSbqe,PqpBJpL,NXcTnEbVurBJQ>",The system reaches a deadlock after the trace: 'YaiowgWmgNIP' → 'jTebXEyzOIt' → 'mCvJhotXOSbqe' → 'PqpBJpL' → 'NXcTnEbVurBJQ'.,"Step 1: 'YaiowgWmgNIP'  (ZSlrCEcubVU  acts alone)
+           ZSlrCEcubVU : (ready to perform 'YaiowgWmgNIP') → (ready to perform 'jTebXEyzOIt')
+  Step 2: 'jTebXEyzOIt'  (ZSlrCEcubVU  acts alone)
+           ZSlrCEcubVU : (ready to perform 'jTebXEyzOIt') → (ready to perform 'mCvJhotXOSbqe')
+  Step 3: 'mCvJhotXOSbqe'  (ZSlrCEcubVU  acts alone)
+           ZSlrCEcubVU : (ready to perform 'mCvJhotXOSbqe') → (ready to perform 'PqpBJpL')
+  Step 4: 'PqpBJpL'  (ZSlrCEcubVU  acts alone)
+           ZSlrCEcubVU : (ready to perform 'PqpBJpL') → (ready to perform 'NXcTnEbVurBJQ')
+  Step 5: 'NXcTnEbVurBJQ'  (ZSlrCEcubVU  acts alone)
+           ZSlrCEcubVU : (ready to perform 'NXcTnEbVurBJQ') → (done)",• ZSlrCEcubVU : no events available,"Every component (ZSlrCEcubVU ) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"datatype dGVvkc = SW|Buoi
+datatype DE = kFLMSzZ|Wh|Lqjsviuy|r6rfXqy
+channel mcevyJVME
+channel HkztOzosDFDaD
+channel nNTWCCSVruGBBR
+channel VqhQnWP
+channel OVlt
+channel DPX
+channel lLFIsUtLEMhvP
+channel mJQSJFTLsh
+channel JYsaNagkInypL
+channel vKVCxRzQt : {30..34}
+channel MAyboXdOQoxbKp
+channel HZtmJCGwamBzWE
+channel zO : Char
+channel fKpBvu
+channel UBlQ
+channel HAATNPADKb
+channel VJzvXAURFZjqJf
+channel DCXqGjHgfbQMcT
+channel nOanXg : DE
+channel HcaFjICUTLCX
+channel ZFsjdBjD
+channel vwK
+channel k
+channel l
+channel RCsj : Bool
+channel Dr
+channel FcZK
+channel tOYpuFuUotRkU
+channel TEsfhezlEYVhf
+channel JXgSkRzcuEckp
+channel APJgZ
+channel GbqVWm
+channel xVNMw
+channel qAj
+channel XNRPjiJALkn : dGVvkc
+hDdzxL = (JYsaNagkInypL -> HAATNPADKb -> mcevyJVME -> APJgZ -> STOP) |~| (JYsaNagkInypL -> SKIP)
+rrEZ = ZFsjdBjD -> HAATNPADKb -> mcevyJVME -> VKarG
+VKarG = mcevyJVME -> APJgZ -> HkztOzosDFDaD -> ZFsjdBjD -> VqhQnWP -> FcZK -> HAATNPADKb -> ouxLwlfhKpj
+ouxLwlfhKpj = mcevyJVME -> HAATNPADKb -> FcZK -> CTOJgyFmmHO
+CTOJgyFmmHO = VqhQnWP -> ZFsjdBjD -> APJgZ -> JYsaNagkInypL -> FcZK -> EmqkHCWJyEj
+EmqkHCWJyEj = HAATNPADKb -> APJgZ -> mcevyJVME -> ZFsjdBjD -> FcZK -> JYsaNagkInypL -> VqhQnWP -> hDdzxL
+vsbWLLD = (zO.'z' -> MAyboXdOQoxbKp -> HZtmJCGwamBzWE -> XNRPjiJALkn?Buoi -> fKpBvu -> l -> nOanXg$r6rfXqy -> DPX -> FcZK -> tOYpuFuUotRkU -> OVlt -> RCsj?false -> mJQSJFTLsh -> lLFIsUtLEMhvP -> nNTWCCSVruGBBR -> xVNMw -> JXgSkRzcuEckp -> Dr -> qAj -> UBlQ -> vKVCxRzQt$32 -> TEsfhezlEYVhf -> ouxLwlfhKpj) [> (mJQSJFTLsh -> UBlQ -> DCXqGjHgfbQMcT -> qAj -> vwK -> VJzvXAURFZjqJf -> DPX -> TEsfhezlEYVhf -> GbqVWm -> RCsj?false -> OVlt -> nOanXg$r6rfXqy -> HZtmJCGwamBzWE -> nNTWCCSVruGBBR -> k -> HcaFjICUTLCX -> vKVCxRzQt$32 -> SKIP)
+IyidAwxunQ = (FcZK -> SKIP) [> (FcZK -> STOP)
+mx = FcZK -> STOP
+assert hDdzxL :[deadlock free]
+assert rrEZ :[deadlock free]
+assert VKarG :[deadlock free]
+assert ouxLwlfhKpj :[deadlock free]
+assert CTOJgyFmmHO :[deadlock free]
+assert EmqkHCWJyEj :[deadlock free]
+assert vsbWLLD :[deadlock free]
+assert IyidAwxunQ :[deadlock free]
+assert mx :[deadlock free]",IyidAwxunQ :[deadlock free],false,"<τ,FcZK>",The system reaches a deadlock after the trace: 'τ' → 'FcZK'.,"Step 1: 'τ'  (IyidAwxunQ  acts alone)
+           IyidAwxunQ : (ready to perform 'τ') → (ready to perform 'FcZK')
+  Step 2: 'FcZK'  (IyidAwxunQ  acts alone)
+           IyidAwxunQ : (ready to perform 'FcZK') → (done)",• IyidAwxunQ : no events available,"Every component (IyidAwxunQ ) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"channel tgUx
+channel urzzRArwwPdVQe : Char
+channel CCDpELPbheYFaV
+channel EMyANwV
+channel CIniRzC
+channel hrPTGlfwPOFAO
+channel AKdAiveqtbN
+channel noIgIiivqVZY
+channel EzlE
+channel yFILnmm
+channel MuPUec
+channel zK
+channel JZnSHO
+channel MQJnbEiYj
+channel fET
+channel lzdkwcLisNvRQf
+channel U
+channel SeANpmeDYjBov
+channel jwDYHJJq
+channel JKxovTCQuXCo
+channel Frud
+channel eUmp
+channel xnYLlD
+channel oljdSRcxwyYu
+channel rxktm
+channel b
+channel PxoEpG
+channel FGaYuBmTFsMu
+channel ZOnzT
+channel xEBpEmdJzRIC
+channel PXjFCf : Bool
+channel eOYLANRdDhHW
+channel ULgxD
+channel n
+channel nIfGFpYUb
+channel VtcjHRBeo
+channel EoWZBKrvvHSMab
+channel BZBfwDEpNpkKWN
+channel TDfzSjPfUJ
+channel sSrxU
+channel cvMQWNFVvL
+channel vtru : Char
+channel igwJrZ
+channel YJg
+channel VoBTmfppweAbd
+channel ng
+channel ldPOUuevrePaTw
+channel sXSBcDJWnCO
+bgw = (noIgIiivqVZY -> zK -> STOP) /\ (yFILnmm -> JZnSHO -> jwDYHJJq -> eUmp -> urzzRArwwPdVQe.'i' -> xnYLlD -> TDfzSjPfUJ -> PxoEpG -> oljdSRcxwyYu -> noIgIiivqVZY -> ZOnzT -> Frud -> BZBfwDEpNpkKWN -> eOYLANRdDhHW -> MQJnbEiYj -> CCDpELPbheYFaV -> ldPOUuevrePaTw -> SKIP)
+VnUVD = (CIniRzC -> ZOnzT -> FGaYuBmTFsMu -> oljdSRcxwyYu -> vtru?'T' -> ldPOUuevrePaTw -> ng -> hrPTGlfwPOFAO -> JZnSHO -> igwJrZ -> xEBpEmdJzRIC -> n -> xnYLlD -> b -> sSrxU -> VoBTmfppweAbd -> Frud -> JKxovTCQuXCo -> tgUx -> STOP) [> (JKxovTCQuXCo -> fET -> VoBTmfppweAbd -> CIniRzC -> xEBpEmdJzRIC -> n -> rxktm -> zK -> sSrxU -> MQJnbEiYj -> MuPUec -> ZOnzT -> vtru?'T' -> b -> VtcjHRBeo -> EzlE -> AKdAiveqtbN -> SKIP)
+DnZSDWr = sSrxU -> MuPUec -> AKdAiveqtbN -> FGaYuBmTFsMu -> cNRK
+cNRK = oljdSRcxwyYu -> YJg -> zK -> xEBpEmdJzRIC -> VtcjHRBeo -> FGaYuBmTFsMu -> nIfGFpYUb -> EzlE -> AKdAiveqtbN -> fET -> jwDYHJJq -> ZOnzT -> EoWZBKrvvHSMab -> n -> ldPOUuevrePaTw -> SeANpmeDYjBov -> CIniRzC -> sXSBcDJWnCO -> EMyANwV -> nuYodaARaKo
+nuYodaARaKo = hrPTGlfwPOFAO -> jwDYHJJq -> ZOnzT -> EMyANwV -> fET -> JZnSHO -> Frud -> AKdAiveqtbN -> sXSBcDJWnCO -> EzlE -> ULgxD -> n -> cvMQWNFVvL -> EoWZBKrvvHSMab -> nOIBHZb
+nOIBHZb = ldPOUuevrePaTw -> rxktm -> SeANpmeDYjBov -> zlRethimv
+zlRethimv = fET -> lzdkwcLisNvRQf -> nIfGFpYUb -> rxktm -> VnUVD
+AvHh = igwJrZ -> ZOnzT -> zK -> ldPOUuevrePaTw -> YJg -> vtru?'T' -> PXjFCf$false -> Frud -> oljdSRcxwyYu -> JZnSHO -> xnYLlD -> MQJnbEiYj -> AKdAiveqtbN -> egPY
+egPY = MQJnbEiYj -> ZOnzT -> igwJrZ -> jwDYHJJq -> oljdSRcxwyYu -> AKdAiveqtbN -> YJg -> xnYLlD -> vtru?'T' -> PXjFCf$false -> zK -> Frud -> ldPOUuevrePaTw -> STOP
+assert bgw :[deadlock free]
+assert VnUVD :[deadlock free]
+assert DnZSDWr :[deadlock free]
+assert cNRK :[deadlock free]
+assert nuYodaARaKo :[deadlock free]
+assert nOIBHZb :[deadlock free]
+assert zlRethimv :[deadlock free]
+assert AvHh :[deadlock free]
+assert egPY :[deadlock free]",DnZSDWr :[deadlock free],false,"<sSrxU,MuPUec,AKdAiveqtbN,FGaYuBmTFsMu,oljdSRcxwyYu,YJg,zK,xEBpEmdJzRIC,VtcjHRBeo,FGaYuBmTFsMu,nIfGFpYUb,EzlE,AKdAiveqtbN,fET,jwDYHJJq,ZOnzT,EoWZBKrvvHSMab,n,ldPOUuevrePaTw,SeANpmeDYjBov,CIniRzC,sXSBcDJWnCO,EMyANwV,hrPTGlfwPOFAO,jwDYHJJq,ZOnzT,EMyANwV,fET,JZnSHO,Frud,AKdAiveqtbN,sXSBcDJWnCO,EzlE,ULgxD,n,cvMQWNFVvL,EoWZBKrvvHSMab,ldPOUuevrePaTw,rxktm,SeANpmeDYjBov,fET,lzdkwcLisNvRQf,nIfGFpYUb,rxktm,CIniRzC,ZOnzT,FGaYuBmTFsMu,oljdSRcxwyYu,vtru.'T',ldPOUuevrePaTw,ng,hrPTGlfwPOFAO,JZnSHO,igwJrZ,xEBpEmdJzRIC,n,xnYLlD,b,sSrxU,VoBTmfppweAbd,Frud,JKxovTCQuXCo,tgUx>",The system reaches a deadlock after the trace: 'sSrxU' → 'MuPUec' → 'AKdAiveqtbN' → 'FGaYuBmTFsMu' → 'oljdSRcxwyYu' → 'YJg' → 'zK' → 'xEBpEmdJzRIC' → 'VtcjHRBeo' → 'FGaYuBmTFsMu' → 'nIfGFpYUb' → 'EzlE' → 'AKdAiveqtbN' → 'fET' → 'jwDYHJJq' → 'ZOnzT' → 'EoWZBKrvvHSMab' → 'n' → 'ldPOUuevrePaTw' → 'SeANpmeDYjBov' → 'CIniRzC' → 'sXSBcDJWnCO' → 'EMyANwV' → 'hrPTGlfwPOFAO' → 'jwDYHJJq' → 'ZOnzT' → 'EMyANwV' → 'fET' → 'JZnSHO' → 'Frud' → 'AKdAiveqtbN' → 'sXSBcDJWnCO' → 'EzlE' → 'ULgxD' → 'n' → 'cvMQWNFVvL' → 'EoWZBKrvvHSMab' → 'ldPOUuevrePaTw' → 'rxktm' → 'SeANpmeDYjBov' → 'fET' → 'lzdkwcLisNvRQf' → 'nIfGFpYUb' → 'rxktm' → 'CIniRzC' → 'ZOnzT' → 'FGaYuBmTFsMu' → 'oljdSRcxwyYu' → 'vtru.'T'' → 'ldPOUuevrePaTw' → 'ng' → 'hrPTGlfwPOFAO' → 'JZnSHO' → 'igwJrZ' → 'xEBpEmdJzRIC' → 'n' → 'xnYLlD' → 'b' → 'sSrxU' → 'VoBTmfppweAbd' → 'Frud' → 'JKxovTCQuXCo' → 'tgUx'.,"Step 1: 'sSrxU'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'sSrxU') → (ready to perform 'MuPUec')
+  Step 2: 'MuPUec'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'MuPUec') → (ready to perform 'AKdAiveqtbN')
+  Step 3: 'AKdAiveqtbN'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'AKdAiveqtbN') → (ready to perform 'FGaYuBmTFsMu')
+  Step 4: 'FGaYuBmTFsMu'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'FGaYuBmTFsMu') → (ready to perform 'oljdSRcxwyYu')
+  Step 5: 'oljdSRcxwyYu'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'oljdSRcxwyYu') → (ready to perform 'YJg')
+  Step 6: 'YJg'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'YJg') → (ready to perform 'zK')
+  Step 7: 'zK'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'zK') → (ready to perform 'xEBpEmdJzRIC')
+  Step 8: 'xEBpEmdJzRIC'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'xEBpEmdJzRIC') → (ready to perform 'VtcjHRBeo')
+  Step 9: 'VtcjHRBeo'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'VtcjHRBeo') → (ready to perform 'FGaYuBmTFsMu')
+  Step 10: 'FGaYuBmTFsMu'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'FGaYuBmTFsMu') → (ready to perform 'nIfGFpYUb')
+  Step 11: 'nIfGFpYUb'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'nIfGFpYUb') → (ready to perform 'EzlE')
+  Step 12: 'EzlE'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'EzlE') → (ready to perform 'AKdAiveqtbN')
+  Step 13: 'AKdAiveqtbN'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'AKdAiveqtbN') → (ready to perform 'fET')
+  Step 14: 'fET'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'fET') → (ready to perform 'jwDYHJJq')
+  Step 15: 'jwDYHJJq'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'jwDYHJJq') → (ready to perform 'ZOnzT')
+  Step 16: 'ZOnzT'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'ZOnzT') → (ready to perform 'EoWZBKrvvHSMab')
+  Step 17: 'EoWZBKrvvHSMab'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'EoWZBKrvvHSMab') → (ready to perform 'n')
+  Step 18: 'n'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'n') → (ready to perform 'ldPOUuevrePaTw')
+  Step 19: 'ldPOUuevrePaTw'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'ldPOUuevrePaTw') → (ready to perform 'SeANpmeDYjBov')
+  Step 20: 'SeANpmeDYjBov'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'SeANpmeDYjBov') → (ready to perform 'CIniRzC')
+  Step 21: 'CIniRzC'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'CIniRzC') → (ready to perform 'sXSBcDJWnCO')
+  Step 22: 'sXSBcDJWnCO'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'sXSBcDJWnCO') → (ready to perform 'EMyANwV')
+  Step 23: 'EMyANwV'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'EMyANwV') → (ready to perform 'hrPTGlfwPOFAO')
+  Step 24: 'hrPTGlfwPOFAO'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'hrPTGlfwPOFAO') → (ready to perform 'jwDYHJJq')
+  Step 25: 'jwDYHJJq'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'jwDYHJJq') → (ready to perform 'ZOnzT')
+  Step 26: 'ZOnzT'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'ZOnzT') → (ready to perform 'EMyANwV')
+  Step 27: 'EMyANwV'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'EMyANwV') → (ready to perform 'fET')
+  Step 28: 'fET'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'fET') → (ready to perform 'JZnSHO')
+  Step 29: 'JZnSHO'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'JZnSHO') → (ready to perform 'Frud')
+  Step 30: 'Frud'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'Frud') → (ready to perform 'AKdAiveqtbN')
+  Step 31: 'AKdAiveqtbN'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'AKdAiveqtbN') → (ready to perform 'sXSBcDJWnCO')
+  Step 32: 'sXSBcDJWnCO'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'sXSBcDJWnCO') → (ready to perform 'EzlE')
+  Step 33: 'EzlE'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'EzlE') → (ready to perform 'ULgxD')
+  Step 34: 'ULgxD'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'ULgxD') → (ready to perform 'n')
+  Step 35: 'n'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'n') → (ready to perform 'cvMQWNFVvL')
+  Step 36: 'cvMQWNFVvL'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'cvMQWNFVvL') → (ready to perform 'EoWZBKrvvHSMab')
+  Step 37: 'EoWZBKrvvHSMab'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'EoWZBKrvvHSMab') → (ready to perform 'ldPOUuevrePaTw')
+  Step 38: 'ldPOUuevrePaTw'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'ldPOUuevrePaTw') → (ready to perform 'rxktm')
+  Step 39: 'rxktm'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'rxktm') → (ready to perform 'SeANpmeDYjBov')
+  Step 40: 'SeANpmeDYjBov'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'SeANpmeDYjBov') → (ready to perform 'fET')
+  Step 41: 'fET'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'fET') → (ready to perform 'lzdkwcLisNvRQf')
+  Step 42: 'lzdkwcLisNvRQf'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'lzdkwcLisNvRQf') → (ready to perform 'nIfGFpYUb')
+  Step 43: 'nIfGFpYUb'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'nIfGFpYUb') → (ready to perform 'rxktm')
+  Step 44: 'rxktm'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'rxktm') → (ready to perform 'CIniRzC')
+  Step 45: 'CIniRzC'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'CIniRzC') → (ready to perform 'ZOnzT')
+  Step 46: 'ZOnzT'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'ZOnzT') → (ready to perform 'FGaYuBmTFsMu')
+  Step 47: 'FGaYuBmTFsMu'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'FGaYuBmTFsMu') → (ready to perform 'oljdSRcxwyYu')
+  Step 48: 'oljdSRcxwyYu'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'oljdSRcxwyYu') → (ready to perform 'vtru.'T'')
+  Step 49: 'vtru.'T''  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'vtru.'T'') → (ready to perform 'ldPOUuevrePaTw')
+  Step 50: 'ldPOUuevrePaTw'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'ldPOUuevrePaTw') → (ready to perform 'ng')
+  Step 51: 'ng'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'ng') → (ready to perform 'hrPTGlfwPOFAO')
+  Step 52: 'hrPTGlfwPOFAO'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'hrPTGlfwPOFAO') → (ready to perform 'JZnSHO')
+  Step 53: 'JZnSHO'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'JZnSHO') → (ready to perform 'igwJrZ')
+  Step 54: 'igwJrZ'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'igwJrZ') → (ready to perform 'xEBpEmdJzRIC')
+  Step 55: 'xEBpEmdJzRIC'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'xEBpEmdJzRIC') → (ready to perform 'n')
+  Step 56: 'n'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'n') → (ready to perform 'xnYLlD')
+  Step 57: 'xnYLlD'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'xnYLlD') → (ready to perform 'b')
+  Step 58: 'b'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'b') → (ready to perform 'sSrxU')
+  Step 59: 'sSrxU'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'sSrxU') → (ready to perform 'VoBTmfppweAbd')
+  Step 60: 'VoBTmfppweAbd'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'VoBTmfppweAbd') → (ready to perform 'Frud')
+  Step 61: 'Frud'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'Frud') → (ready to perform 'JKxovTCQuXCo')
+  Step 62: 'JKxovTCQuXCo'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'JKxovTCQuXCo') → (ready to perform 'tgUx')
+  Step 63: 'tgUx'  (DnZSDWr  acts alone)
+           DnZSDWr : (ready to perform 'tgUx') → (done)",• DnZSDWr : no events available,"Every component (DnZSDWr ) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"channel jwpBerK
+channel fNbzBEYJXNALeS
+channel cxqzPHCqwv
+channel cZmIhFjhXap
+channel rx
+channel pH
+channel K
+ZtEm = (K -> tFHFKoniz) [] (K -> SKIP)
+tFHFKoniz = K -> STOP
+QsaU = K -> viLL
+viLL = K -> lmsoQiSPdq
+lmsoQiSPdq = K -> CadMAfydrkF
+CadMAfydrkF = K -> lGEbhxXcgvd
+lGEbhxXcgvd = K -> ZtEm
+HENdHZlaZT = (K -> cZmIhFjhXap -> pH -> rx -> lGEbhxXcgvd) ||| (rx -> STOP)
+pfCXoeVXrw = rx -> K -> vtTkV
+vtTkV = jwpBerK -> K -> pH -> cxqzPHCqwv -> rx -> IBXyract
+IBXyract = (cZmIhFjhXap -> urMC)|\{jwpBerK,K}
+urMC = K -> rx -> cZmIhFjhXap -> cxqzPHCqwv -> pH -> MbwuYidNwtC
+MbwuYidNwtC = cZmIhFjhXap -> pH -> HENdHZlaZT
+lYZFnZJJRoY = (K -> IBXyract) |~| (fNbzBEYJXNALeS -> SKIP)
+kGYGWHEXUh = (K -> STOP) [| {K} |> (K -> STOP)
+ONP = K -> XhlatpX
+XhlatpX = K -> wAPTboPELJM
+wAPTboPELJM = (K -> BbiYxaaI)\{K}
+BbiYxaaI = K -> uHMjhNXCRBT
+uHMjhNXCRBT = (K -> kGYGWHEXUh)|\{K}
+assert ZtEm :[deadlock free]
+assert tFHFKoniz :[deadlock free]
+assert QsaU :[deadlock free]
+assert viLL :[deadlock free]
+assert lmsoQiSPdq :[deadlock free]
+assert CadMAfydrkF :[deadlock free]
+assert lGEbhxXcgvd :[deadlock free]
+assert HENdHZlaZT :[deadlock free]
+assert pfCXoeVXrw :[deadlock free]
+assert vtTkV :[deadlock free]
+assert IBXyract :[deadlock free]
+assert urMC :[deadlock free]
+assert MbwuYidNwtC :[deadlock free]
+assert lYZFnZJJRoY :[deadlock free]
+assert kGYGWHEXUh :[deadlock free]
+assert ONP :[deadlock free]
+assert XhlatpX :[deadlock free]
+assert wAPTboPELJM :[deadlock free]
+assert BbiYxaaI :[deadlock free]
+assert uHMjhNXCRBT :[deadlock free]",ZtEm :[deadlock free],false,"<K,K>",The system reaches a deadlock after the trace: 'K' → 'K'.,"Step 1: 'K'  (ZtEm  acts alone)
+           ZtEm : (ready to perform 'K') → (ready to perform 'K')
+  Step 2: 'K'  (ZtEm  acts alone)
+           ZtEm : (ready to perform 'K') → (done)",• ZtEm : no events available,"Every component (ZtEm ) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"datatype QfDmPotzkYENB = lM|KXab|JM|CmIpATXEG|BBWFNscYvNADGp|ATJdYbPNBQmC|UcHodO|lUAmQCspnybiH|o897hg
+datatype ND = jTEtF|Vff|xIqZ|zlirPfQCA|gCeAMGgX|HR|ezDXsuaoPVPk|YU
+datatype MlGQRId = eyzZQgp|USCJEP
+channel XiorlbbDhBmDY
+channel KDDpRdxmRmxJ
+channel lo
+channel WCZMlw
+channel Gsus
+channel hvHEMjHSMOrU : {149..154}
+channel qNHyBKZsXAh : Bool
+channel VptSfvbQP
+channel wj
+channel cyNwEVCCtssO
+channel SAvUmqrF
+channel iuntNf
+channel EfxTagPnMnF
+channel dstKKgIKyWCE
+channel vNdChSkvC : {6..6}
+channel XVYZRXo
+channel ZSUD
+channel ojoPHKvqLne : MlGQRId
+channel b
+channel SRAWZewOCm
+channel yDJksDPTgIdqhR
+channel JJfObSNDwd : QfDmPotzkYENB
+channel xHITLgGEkPnXtz
+channel uGbK
+channel HPFAfOpW
+channel pZohin
+channel pHLSlAkroPoo : Char
+channel CHvUGNCZecCg
+channel kgOV
+channel atvRyJf
+channel Jcn
+channel lDqVIzUxaQdnHn : ND
+channel eVh
+channel JLVzSFg
+iBgD(ELUvKC) = (XiorlbbDhBmDY -> VptSfvbQP -> Gsus -> ZSUD -> Jcn -> dstKKgIKyWCE -> STOP) [] (lo -> Gsus -> dstKKgIKyWCE -> VptSfvbQP -> ZSUD -> SKIP)
+BgRcXuWKv = (Jcn -> EfxTagPnMnF -> hvHEMjHSMOrU$149 -> STOP) ||| (Jcn -> VptSfvbQP -> EfxTagPnMnF -> STOP)
+CQxkrAqg = VptSfvbQP -> CHvUGNCZecCg -> hvHEMjHSMOrU$149 -> Jcn -> tzInH
+tzInH = CHvUGNCZecCg -> yUiOOcGXUF
+yUiOOcGXUF = CHvUGNCZecCg -> smSBZx
+smSBZx = Jcn -> VptSfvbQP -> hvHEMjHSMOrU$149 -> Nlrs
+Nlrs = CHvUGNCZecCg -> hvHEMjHSMOrU$149 -> BgRcXuWKv
+Cwywq = (yDJksDPTgIdqhR -> JJfObSNDwd$o897hg -> pZohin -> wj -> JLVzSFg -> xHITLgGEkPnXtz -> lDqVIzUxaQdnHn?YU -> SAvUmqrF -> qNHyBKZsXAh!false -> WCZMlw -> pHLSlAkroPoo.'m' -> XVYZRXo -> cyNwEVCCtssO -> Jcn -> uGbK -> iuntNf -> KDDpRdxmRmxJ -> VptSfvbQP -> HPFAfOpW -> STOP) [| {Jcn,qNHyBKZsXAh.false,XVYZRXo} |] (WCZMlw -> wj -> iuntNf -> eVh -> vNdChSkvC?6 -> atvRyJf -> ojoPHKvqLne?USCJEP -> qNHyBKZsXAh!false -> JLVzSFg -> SAvUmqrF -> kgOV -> b -> uGbK -> Jcn -> pHLSlAkroPoo.'m' -> KDDpRdxmRmxJ -> HPFAfOpW -> xHITLgGEkPnXtz -> JJfObSNDwd$o897hg -> XVYZRXo -> cyNwEVCCtssO -> pZohin -> SRAWZewOCm -> SKIP)
+TwlQCnb = VptSfvbQP -> Jcn -> STOP
+assert iBgD(false) :[deadlock free]
+assert BgRcXuWKv :[deadlock free]
+assert CQxkrAqg :[deadlock free]
+assert tzInH :[deadlock free]
+assert yUiOOcGXUF :[deadlock free]
+assert smSBZx :[deadlock free]
+assert Nlrs :[deadlock free]
+assert Cwywq :[deadlock free]
+assert TwlQCnb :[deadlock free]",iBgD(false) :[deadlock free],false,"<XiorlbbDhBmDY,VptSfvbQP,Gsus,ZSUD,Jcn,dstKKgIKyWCE>",The system reaches a deadlock after the trace: 'XiorlbbDhBmDY' → 'VptSfvbQP' → 'Gsus' → 'ZSUD' → 'Jcn' → 'dstKKgIKyWCE'.,"Step 1: 'XiorlbbDhBmDY'  (iBgD(false)  acts alone)
+           iBgD(false) : (ready to perform 'XiorlbbDhBmDY') → (ready to perform 'VptSfvbQP')
+  Step 2: 'VptSfvbQP'  (iBgD(false)  acts alone)
+           iBgD(false) : (ready to perform 'VptSfvbQP') → (ready to perform 'Gsus')
+  Step 3: 'Gsus'  (iBgD(false)  acts alone)
+           iBgD(false) : (ready to perform 'Gsus') → (ready to perform 'ZSUD')
+  Step 4: 'ZSUD'  (iBgD(false)  acts alone)
+           iBgD(false) : (ready to perform 'ZSUD') → (ready to perform 'Jcn')
+  Step 5: 'Jcn'  (iBgD(false)  acts alone)
+           iBgD(false) : (ready to perform 'Jcn') → (ready to perform 'dstKKgIKyWCE')
+  Step 6: 'dstKKgIKyWCE'  (iBgD(false)  acts alone)
+           iBgD(false) : (ready to perform 'dstKKgIKyWCE') → (done)",• iBgD(false) : no events available,"Every component (iBgD(false) ) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"datatype YBOKgZ = PBHJXP|XheOTvFGf|Cdr|Fo|tcUqqT|D3f|ArWgPuV
+datatype qsbIoNKFsQEz = BNnvZr|TzrfNAXMA|YNQXX|kOzc|XXWt|lfaty|FCIbmh|wAgkpzWbtb|Qnd|nkGmV
+channel FHFqChP
+channel mN
+channel C
+channel RCJMhZu
+channel imEekfVmvcbXi
+channel dbbJlNdNS
+channel DYI
+channel BIjm
+channel PNkbnqlpXdlD : qsbIoNKFsQEz
+channel ZLGqnpipNB
+channel qlQth : {69..73}
+channel vOvBiAZjvHhm
+channel XtYfXArhjMJLK
+channel k
+channel iMnXQAJrVGQuU
+channel l
+channel Fs
+channel aWJv
+channel luQkERBLmB
+channel VroMJwmao
+channel WBRxoua
+channel BvDrnhcjnI
+channel gmXQCDDjUe
+channel pEQAlkHjdpxQ
+channel VU
+cwbWWDnYyIs(NiJh) = ((NiJh!=D3f)&(vOvBiAZjvHhm -> DYI -> PNkbnqlpXdlD.nkGmV -> gmXQCDDjUe -> BvDrnhcjnI -> FHFqChP -> fUIGWUuaex)) [] ((NiJh!=ArWgPuV)&(gmXQCDDjUe -> BIjm -> XtYfXArhjMJLK -> luQkERBLmB -> PNkbnqlpXdlD.nkGmV -> SKIP))
+fUIGWUuaex = STOP
+zxFBWUwG = iMnXQAJrVGQuU -> RCJMhZu -> k -> DYI -> aWJv -> PNkbnqlpXdlD.nkGmV -> YCudLDAx
+YCudLDAx = vOvBiAZjvHhm -> dbbJlNdNS -> DYI -> XtYfXArhjMJLK -> luQkERBLmB -> WBRxoua -> GjeKxd
+GjeKxd = FHFqChP -> k -> luQkERBLmB -> slVc
+slVc = (DYI -> Fs -> luQkERBLmB -> BIjm -> iMnXQAJrVGQuU -> ZLGqnpipNB -> dbbJlNdNS -> WBRxoua -> aWJv -> k -> PNkbnqlpXdlD.nkGmV -> FHFqChP -> qlQth!73 -> ukTIMuqKvgq)[[luQkERBLmB<-k,mN<-aWJv,RCJMhZu<-Fs,FHFqChP<-l,PNkbnqlpXdlD.nkGmV<-BvDrnhcjnI,aWJv<-BIjm,Fs<-iMnXQAJrVGQuU,vOvBiAZjvHhm<-ZLGqnpipNB,BvDrnhcjnI<-FHFqChP,DYI<-mN,k<-WBRxoua,gmXQCDDjUe<-PNkbnqlpXdlD.nkGmV]]
+ukTIMuqKvgq = RCJMhZu -> BvDrnhcjnI -> aWJv -> PNkbnqlpXdlD.nkGmV -> iMnXQAJrVGQuU -> luQkERBLmB -> vOvBiAZjvHhm -> WBRxoua -> FHFqChP -> dbbJlNdNS -> ZLGqnpipNB -> Fs -> mN -> XtYfXArhjMJLK -> gmXQCDDjUe -> BIjm -> cwbWWDnYyIs(PBHJXP)
+wsZJvvNPy = (imEekfVmvcbXi -> pEQAlkHjdpxQ -> SKIP) [] (VU -> VroMJwmao -> pEQAlkHjdpxQ -> SKIP)
+pjQAkPW = VroMJwmao -> VU -> tWRlEMMF
+tWRlEMMF = pEQAlkHjdpxQ -> ltHnerOu
+ltHnerOu = pEQAlkHjdpxQ -> imEekfVmvcbXi -> VroMJwmao -> C -> gkVUZkWZ
+gkVUZkWZ = C -> pEQAlkHjdpxQ -> VU -> ClYI
+ClYI = pEQAlkHjdpxQ -> VU -> wsZJvvNPy
+dTjs = erpNL
+erpNL = fUIGWUuaex
+assert cwbWWDnYyIs(tcUqqT) :[deadlock free]
+assert fUIGWUuaex :[deadlock free]
+assert zxFBWUwG :[deadlock free]
+assert YCudLDAx :[deadlock free]
+assert GjeKxd :[deadlock free]
+assert slVc :[deadlock free]
+assert ukTIMuqKvgq :[deadlock free]
+assert wsZJvvNPy :[deadlock free]
+assert pjQAkPW :[deadlock free]
+assert tWRlEMMF :[deadlock free]
+assert ltHnerOu :[deadlock free]
+assert gkVUZkWZ :[deadlock free]
+assert ClYI :[deadlock free]
+assert dTjs :[deadlock free]
+assert erpNL :[deadlock free]",cwbWWDnYyIs(tcUqqT) :[deadlock free],false,"<vOvBiAZjvHhm,DYI,PNkbnqlpXdlD.nkGmV,gmXQCDDjUe,BvDrnhcjnI,FHFqChP>",The system reaches a deadlock after the trace: 'vOvBiAZjvHhm' → 'DYI' → 'PNkbnqlpXdlD.nkGmV' → 'gmXQCDDjUe' → 'BvDrnhcjnI' → 'FHFqChP'.,"Step 1: 'vOvBiAZjvHhm'  (cwbWWDnYyIs(tcUqqT)  acts alone)
+           cwbWWDnYyIs(tcUqqT) : (ready to perform 'vOvBiAZjvHhm') → (ready to perform 'DYI')
+  Step 2: 'DYI'  (cwbWWDnYyIs(tcUqqT)  acts alone)
+           cwbWWDnYyIs(tcUqqT) : (ready to perform 'DYI') → (ready to perform 'PNkbnqlpXdlD.nkGmV')
+  Step 3: 'PNkbnqlpXdlD.nkGmV'  (cwbWWDnYyIs(tcUqqT)  acts alone)
+           cwbWWDnYyIs(tcUqqT) : (ready to perform 'PNkbnqlpXdlD.nkGmV') → (ready to perform 'gmXQCDDjUe')
+  Step 4: 'gmXQCDDjUe'  (cwbWWDnYyIs(tcUqqT)  acts alone)
+           cwbWWDnYyIs(tcUqqT) : (ready to perform 'gmXQCDDjUe') → (ready to perform 'BvDrnhcjnI')
+  Step 5: 'BvDrnhcjnI'  (cwbWWDnYyIs(tcUqqT)  acts alone)
+           cwbWWDnYyIs(tcUqqT) : (ready to perform 'BvDrnhcjnI') → (ready to perform 'FHFqChP')
+  Step 6: 'FHFqChP'  (cwbWWDnYyIs(tcUqqT)  acts alone)
+           cwbWWDnYyIs(tcUqqT) : (ready to perform 'FHFqChP') → (done)",• cwbWWDnYyIs(tcUqqT) : no events available,"Every component (cwbWWDnYyIs(tcUqqT) ) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"channel flRnypZdual
+channel DbCfddCuOFtfcJ
+channel A
+channel wCNCQv
+channel FUgdpy
+channel DnpIOgJ
+channel twiAidxGfL
+channel zwQEpzookhNG
+channel L
+channel yZMTbxbZNqM
+channel rsbAKJmTYI
+channel hYzNNnpaghpbf
+channel glS
+channel qbLvKARFW
+channel jBiwPn
+channel SJekFMWXxc
+channel RsmsSByTtKDbB : {107..109}
+channel ZeJYn
+channel Kxf
+VrgAXcauG = (wCNCQv -> Bguzo) |~| (wCNCQv -> SKIP)
+Bguzo = RsmsSByTtKDbB$108 -> STOP
+FhyMtbeyy = (twiAidxGfL -> Kxf -> glS -> A -> flRnypZdual -> jBiwPn -> DnpIOgJ -> SJekFMWXxc -> ZeJYn -> hYzNNnpaghpbf -> L -> rsbAKJmTYI -> DbCfddCuOFtfcJ -> Bguzo) [> (zwQEpzookhNG -> jBiwPn -> L -> qbLvKARFW -> SKIP)
+afHNct = hYzNNnpaghpbf -> jBiwPn -> yZMTbxbZNqM -> glS -> Kxf -> flRnypZdual -> SJekFMWXxc -> DbCfddCuOFtfcJ -> A -> FUgdpy -> rsbAKJmTYI -> zwQEpzookhNG -> IFzkf
+IFzkf = ZeJYn -> Kxf -> DbCfddCuOFtfcJ -> PVHz
+PVHz = FUgdpy -> zwQEpzookhNG -> qbLvKARFW -> hYzNNnpaghpbf -> yZMTbxbZNqM -> glS -> DnpIOgJ -> Kxf -> jBiwPn -> A -> L -> rsbAKJmTYI -> SJekFMWXxc -> ZeJYn -> DbCfddCuOFtfcJ -> flRnypZdual -> ClePpZhl
+ClePpZhl = Kxf -> glS -> A -> hYzNNnpaghpbf -> yZMTbxbZNqM -> ZeJYn -> qbLvKARFW -> SJekFMWXxc -> FUgdpy -> L -> DbCfddCuOFtfcJ -> flRnypZdual -> zwQEpzookhNG -> rsbAKJmTYI -> twiAidxGfL -> DnpIOgJ -> EXLAfdLxZm
+EXLAfdLxZm = glS -> DbCfddCuOFtfcJ -> L -> hYzNNnpaghpbf -> SJekFMWXxc -> ZeJYn -> qbLvKARFW -> FUgdpy -> zwQEpzookhNG -> DnpIOgJ -> FhyMtbeyy
+assert VrgAXcauG :[deadlock free]
+assert Bguzo :[deadlock free]
+assert FhyMtbeyy :[deadlock free]
+assert afHNct :[deadlock free]
+assert IFzkf :[deadlock free]
+assert PVHz :[deadlock free]
+assert ClePpZhl :[deadlock free]
+assert EXLAfdLxZm :[deadlock free]",VrgAXcauG :[deadlock free],false,"<τ,wCNCQv,RsmsSByTtKDbB.108>",The system reaches a deadlock after the trace: 'τ' → 'wCNCQv' → 'RsmsSByTtKDbB.108'.,"Step 1: 'τ'  (VrgAXcauG  acts alone)
+           VrgAXcauG : (ready to perform 'τ') → (ready to perform 'wCNCQv')
+  Step 2: 'wCNCQv'  (VrgAXcauG  acts alone)
+           VrgAXcauG : (ready to perform 'wCNCQv') → (ready to perform 'RsmsSByTtKDbB.108')
+  Step 3: 'RsmsSByTtKDbB.108'  (VrgAXcauG  acts alone)
+           VrgAXcauG : (ready to perform 'RsmsSByTtKDbB.108') → (done)",• VrgAXcauG : no events available,"Every component (VrgAXcauG ) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"datatype rIoJ = uBODp|akyYyiDMZWp|LKgTwFfub|layimtXfT|wifQWFo|eKmq|SOb|Raat2K
+channel dpynWblNj
+channel WYXZtykD
+channel qXihDBnR
+channel Qx
+channel UaYIO : rIoJ
+channel GoKPQhrh
+channel lumVu
+channel frLoEiUh
+channel xjsOZhDqdDf
+channel O
+channel GovDb
+channel QlLkpYykjrhq
+channel fYjxJsisQ
+channel ojnLRKxitFOJww
+channel gHOZzAj
+channel biSd
+channel XvsrRUXGzMJgb
+channel rOX
+channel osPCOsPwhrIpWs
+channel c
+channel FHlGV
+channel JXqlZg
+channel SHoNRzgqlPDcNf
+channel YAIhYbeSVBs
+channel CN
+channel n
+channel wuAF
+channel u
+channel xpq
+channel TJbI
+channel WcLvjCYhhsngfl
+bWdoK = (n -> FHo) |~| (GovDb -> n -> dpynWblNj -> frLoEiUh -> u -> SKIP)
+FHo = GovDb -> QlLkpYykjrhq -> dfkOyVI
+KVD = (xjsOZhDqdDf -> c -> lumVu -> QlLkpYykjrhq -> GovDb -> XvsrRUXGzMJgb -> FHo) [| {GovDb,QlLkpYykjrhq,c,XvsrRUXGzMJgb,lumVu,xjsOZhDqdDf} |] (xjsOZhDqdDf -> lumVu -> QlLkpYykjrhq -> SKIP)
+yfrRopp = XvsrRUXGzMJgb -> FHlGV -> lumVu -> xjsOZhDqdDf -> RqZqy
+RqZqy = c -> xjsOZhDqdDf -> QlLkpYykjrhq -> XvsrRUXGzMJgb -> FHlGV -> GovDb -> DSEYtt
+DSEYtt = FHlGV -> c -> QlLkpYykjrhq -> lumVu -> xjsOZhDqdDf -> iePuZ
+iePuZ = GovDb -> lumVu -> FHlGV -> rfFpIYcqgc
+rfFpIYcqgc = QlLkpYykjrhq -> FHlGV -> KVD
+nojrTcoPLk = (qXihDBnR -> fYjxJsisQ -> O -> osPCOsPwhrIpWs -> CN -> YAIhYbeSVBs -> ojnLRKxitFOJww -> xpq -> wuAF -> WcLvjCYhhsngfl -> SHoNRzgqlPDcNf -> WYXZtykD -> xjsOZhDqdDf -> TJbI -> QlLkpYykjrhq -> Qx -> rOX -> UaYIO?Raat2K -> biSd -> GoKPQhrh -> SKIP) [] (biSd -> TJbI -> osPCOsPwhrIpWs -> WcLvjCYhhsngfl -> CN -> WYXZtykD -> fYjxJsisQ -> SHoNRzgqlPDcNf -> GovDb -> xpq -> UaYIO?Raat2K -> JXqlZg -> qXihDBnR -> gHOZzAj -> Qx -> YAIhYbeSVBs -> GoKPQhrh -> xjsOZhDqdDf -> O -> wuAF -> ojnLRKxitFOJww -> nojrTcoPLk)
+JHqb = osPCOsPwhrIpWs -> qXihDBnR -> QlLkpYykjrhq -> Qx -> SHoNRzgqlPDcNf -> WYXZtykD -> biSd -> wuAF -> GovDb -> rOX -> WcLvjCYhhsngfl -> ojnLRKxitFOJww -> xjsOZhDqdDf -> JXqlZg -> UaYIO?Raat2K -> O -> CN -> TJbI -> xpq -> gHOZzAj -> YAIhYbeSVBs -> MaBH
+MaBH = UaYIO?Raat2K -> WYXZtykD -> GoKPQhrh -> ojnLRKxitFOJww -> biSd -> SHoNRzgqlPDcNf -> YAIhYbeSVBs -> TJbI -> xjsOZhDqdDf -> CN -> GovDb -> QlLkpYykjrhq -> rOX -> fYjxJsisQ -> gHOZzAj -> qXihDBnR -> WcLvjCYhhsngfl -> wuAF -> O -> JXqlZg -> osPCOsPwhrIpWs -> xpq -> YFlSpgzX
+YFlSpgzX = osPCOsPwhrIpWs -> TJbI -> gHOZzAj -> qXihDBnR -> Qx -> GovDb -> xpq -> YAIhYbeSVBs -> UaYIO?Raat2K -> GoKPQhrh -> JXqlZg -> xjsOZhDqdDf -> QlLkpYykjrhq -> rOX -> WcLvjCYhhsngfl -> O -> fYjxJsisQ -> WYXZtykD -> wuAF -> SHoNRzgqlPDcNf -> biSd -> CN -> dogIzIZeY
+dogIzIZeY = O -> WYXZtykD -> UaYIO?Raat2K -> GoKPQhrh -> YAIhYbeSVBs -> Qx -> rOX -> QlLkpYykjrhq -> WcLvjCYhhsngfl -> gHOZzAj -> osPCOsPwhrIpWs -> xjsOZhDqdDf -> ojnLRKxitFOJww -> biSd -> wuAF -> qXihDBnR -> NAeQv
+NAeQv = QlLkpYykjrhq -> ojnLRKxitFOJww -> O -> wuAF -> biSd -> YAIhYbeSVBs -> CN -> osPCOsPwhrIpWs -> xjsOZhDqdDf -> Qx -> UaYIO?Raat2K -> fYjxJsisQ -> GoKPQhrh -> qXihDBnR -> WcLvjCYhhsngfl -> TJbI -> JXqlZg -> xpq -> nojrTcoPLk
+dfkOyVI = QlLkpYykjrhq -> PYv
+PYv = xjsOZhDqdDf -> GovDb -> STOP
+assert bWdoK :[deadlock free]
+assert FHo :[deadlock free]
+assert KVD :[deadlock free]
+assert yfrRopp :[deadlock free]
+assert RqZqy :[deadlock free]
+assert DSEYtt :[deadlock free]
+assert iePuZ :[deadlock free]
+assert rfFpIYcqgc :[deadlock free]
+assert nojrTcoPLk :[deadlock free]
+assert JHqb :[deadlock free]
+assert MaBH :[deadlock free]
+assert YFlSpgzX :[deadlock free]
+assert dogIzIZeY :[deadlock free]
+assert NAeQv :[deadlock free]
+assert dfkOyVI :[deadlock free]
+assert PYv :[deadlock free]",bWdoK :[deadlock free],false,"<τ,n,GovDb,QlLkpYykjrhq,QlLkpYykjrhq,xjsOZhDqdDf,GovDb>",The system reaches a deadlock after the trace: 'τ' → 'n' → 'GovDb' → 'QlLkpYykjrhq' → 'QlLkpYykjrhq' → 'xjsOZhDqdDf' → 'GovDb'.,"Step 1: 'τ'  (bWdoK  acts alone)
+           bWdoK : (ready to perform 'τ') → (ready to perform 'n')
+  Step 2: 'n'  (bWdoK  acts alone)
+           bWdoK : (ready to perform 'n') → (ready to perform 'GovDb')
+  Step 3: 'GovDb'  (bWdoK  acts alone)
+           bWdoK : (ready to perform 'GovDb') → (ready to perform 'QlLkpYykjrhq')
+  Step 4: 'QlLkpYykjrhq'  (bWdoK  acts alone)
+           bWdoK : (ready to perform 'QlLkpYykjrhq') → (ready to perform 'QlLkpYykjrhq')
+  Step 5: 'QlLkpYykjrhq'  (bWdoK  acts alone)
+           bWdoK : (ready to perform 'QlLkpYykjrhq') → (ready to perform 'xjsOZhDqdDf')
+  Step 6: 'xjsOZhDqdDf'  (bWdoK  acts alone)
+           bWdoK : (ready to perform 'xjsOZhDqdDf') → (ready to perform 'GovDb')
+  Step 7: 'GovDb'  (bWdoK  acts alone)
+           bWdoK : (ready to perform 'GovDb') → (done)",• bWdoK : no events available,"Every component (bWdoK ) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"channel HJpnPp
+channel FJhcwR
+channel LgBQFQvvnCPRTl
+channel JwzmOeHR
+channel HFN
+channel OqZTZ
+channel GANRuaoTY
+channel EpIxPBZxAkt
+channel qi
+channel qTrxhCFlwomx
+channel tIArE
+channel ONaZjDkyMr : Bool
+channel QlRALzQpvgQEQ
+channel LnKLeyrGFY
+channel xJatREdmljjD
+channel DifE
+channel GwrgWltyatWl
+channel SjIZFKdxsy
+channel RSxMIq
+channel LOcBqaDGf
+channel okUuTEaIG : Bool
+channel nPHZZr
+channel LrwKRYWuYjHrj
+channel YnL
+channel WjKW
+channel AVES
+channel JxWdUrZUlgy
+channel BefzubzowB
+channel WUBTlZCp
+channel mWAkRCf
+channel xOgVnQ
+channel bCVwE
+channel MNPNSWzdAJtCj
+channel K
+channel M
+channel NiVICNy
+channel ARTUYOYyPKx
+channel JCBUsSepzTPmIF
+channel XvC
+channel ddd
+channel obPyWJYg
+channel qoZvJymCB
+channel nsOF
+channel fpxp
+channel EpzOunUibcM
+channel CTHOzHmYoybbdu : {94..99}
+channel DQrxuXmm
+channel LxijGc
+channel LA
+channel mJbGTzoKo
+channel CJoThKVmHZY
+channel urEPZ
+channel JQDZywo
+channel VrWRAtrXADr : {19..23}
+pJmnF = (CJoThKVmHZY -> MNPNSWzdAJtCj -> VrWRAtrXADr.23 -> JxWdUrZUlgy -> qi -> GwrgWltyatWl -> xJatREdmljjD -> FWOlnnTfo) [| {DifE,MNPNSWzdAJtCj,qoZvJymCB,JwzmOeHR,HFN,nPHZZr,ARTUYOYyPKx,OqZTZ,EpzOunUibcM,EpIxPBZxAkt,LxijGc,qi,VrWRAtrXADr.23,JxWdUrZUlgy,AVES} |> (DQrxuXmm -> JxWdUrZUlgy -> nPHZZr -> DifE -> OqZTZ -> SKIP)
+FWOlnnTfo = OqZTZ -> GwrgWltyatWl -> AVES -> HFN -> GANRuaoTY -> xJatREdmljjD -> EpIxPBZxAkt -> nPHZZr -> LxijGc -> STOP
+jVzROxnQj = ARTUYOYyPKx -> JCBUsSepzTPmIF -> obPyWJYg -> xJatREdmljjD -> VrWRAtrXADr.23 -> MNPNSWzdAJtCj -> OqZTZ -> LxijGc -> EpzOunUibcM -> CJoThKVmHZY -> DQrxuXmm -> EpIxPBZxAkt -> GANRuaoTY -> JwzmOeHR -> AVES -> qi -> HFN -> GwrgWltyatWl -> LOcBqaDGf -> nPHZZr -> VHnNR
+VHnNR = JCBUsSepzTPmIF -> LxijGc -> LgBQFQvvnCPRTl -> AVES -> YnL -> GANRuaoTY -> LhIHcZVQW
+LhIHcZVQW = AVES -> GwrgWltyatWl -> obPyWJYg -> DQrxuXmm -> ARTUYOYyPKx -> HFN -> CJoThKVmHZY -> qoZvJymCB -> LOcBqaDGf -> nPHZZr -> OqZTZ -> YnL -> EpIxPBZxAkt -> MNPNSWzdAJtCj -> xJatREdmljjD -> TkAntONZJ
+TkAntONZJ = HFN -> LgBQFQvvnCPRTl -> obPyWJYg -> JCBUsSepzTPmIF -> LxijGc -> xJatREdmljjD -> AVES -> OqZTZ -> bixvoEIFZ
+bixvoEIFZ = DifE -> ARTUYOYyPKx -> CJoThKVmHZY -> nPHZZr -> MNPNSWzdAJtCj -> DQrxuXmm -> JwzmOeHR -> JCBUsSepzTPmIF -> GANRuaoTY -> AVES -> LOcBqaDGf -> OqZTZ -> VrWRAtrXADr.23 -> xJatREdmljjD -> LgBQFQvvnCPRTl -> LxijGc -> EpIxPBZxAkt -> qi -> EpzOunUibcM -> obPyWJYg -> YnL -> pJmnF
+MohAjb = || hPHFlAgzvX : {503..506} @ [{QlRALzQpvgQEQ,fpxp,xOgVnQ,K}] wrVPAOjXK(hPHFlAgzvX)
+wrVPAOjXK(hPHFlAgzvX) = xOgVnQ -> HFN -> OqZTZ -> xJatREdmljjD -> QlRALzQpvgQEQ -> ObXMrQlZuWy
+ObXMrQlZuWy = fpxp -> LxijGc -> CTHOzHmYoybbdu$99 -> xJatREdmljjD -> xOgVnQ -> XvC -> tIArE -> GwrgWltyatWl -> GANRuaoTY -> OqZTZ -> EpIxPBZxAkt -> HFN -> nPHZZr -> STOP
+VObLjXvh = (ONaZjDkyMr.false -> JQDZywo -> LrwKRYWuYjHrj -> OqZTZ -> WjKW -> LxijGc -> nPHZZr -> GANRuaoTY -> xJatREdmljjD -> bCVwE -> nsOF -> LnKLeyrGFY -> GwrgWltyatWl -> HJpnPp -> FJhcwR -> EpIxPBZxAkt -> HFN -> AVES -> VObLjXvh) [| {HFN,ONaZjDkyMr.false,LnKLeyrGFY,OqZTZ,HJpnPp,LrwKRYWuYjHrj,WjKW,GwrgWltyatWl,bCVwE,SjIZFKdxsy,JQDZywo,FJhcwR} |> (xJatREdmljjD -> GwrgWltyatWl -> OqZTZ -> bCVwE -> FJhcwR -> HJpnPp -> LrwKRYWuYjHrj -> LnKLeyrGFY -> nPHZZr -> WjKW -> GANRuaoTY -> SKIP)
+tOlzx = LrwKRYWuYjHrj -> jwBA
+jwBA = JQDZywo -> HJpnPp -> bCVwE -> ONaZjDkyMr.false -> GwrgWltyatWl -> WjKW -> GANRuaoTY -> FJhcwR -> AVES -> nsOF -> OqZTZ -> LxijGc -> xJatREdmljjD -> VXXvM
+VXXvM = LnKLeyrGFY -> AVES -> nPHZZr -> SjIZFKdxsy -> JQDZywo -> GwrgWltyatWl -> WjKW -> ONaZjDkyMr.false -> EpIxPBZxAkt -> FJhcwR -> OqZTZ -> xJatREdmljjD -> HFN -> GANRuaoTY -> LrwKRYWuYjHrj -> bCVwE -> nsOF -> cKbxI
+cKbxI = OqZTZ -> HJpnPp -> xJatREdmljjD -> SjIZFKdxsy -> AVES -> LxijGc -> ONaZjDkyMr.false -> LrwKRYWuYjHrj -> HFN -> WjKW -> FJhcwR -> ZpwVlEHgejD
+ZpwVlEHgejD = bCVwE -> GANRuaoTY -> LnKLeyrGFY -> GwrgWltyatWl -> HJpnPp -> nsOF -> LxijGc -> xJatREdmljjD -> nPHZZr -> WjKW -> AVES -> JQDZywo -> FJhcwR -> VObLjXvh
+WJRwBz = LxijGc -> bCVwE -> HJpnPp -> JQDZywo -> xJatREdmljjD -> GwrgWltyatWl -> GANRuaoTY -> SjIZFKdxsy -> FJhcwR -> AVES -> nsOF -> EpIxPBZxAkt -> WJRwBz
+mZKb = (WUBTlZCp -> GANRuaoTY -> mJbGTzoKo -> AVES -> NiVICNy -> FWOlnnTfo) [] (RSxMIq -> BefzubzowB -> WUBTlZCp -> AVES -> okUuTEaIG!true -> mWAkRCf -> M -> LA -> GwrgWltyatWl -> ddd -> nPHZZr -> LxijGc -> EpIxPBZxAkt -> SKIP)
+oTS = okUuTEaIG!true -> WUBTlZCp -> M -> RSxMIq -> mJbGTzoKo -> CpU
+CpU = urEPZ -> mWAkRCf -> xJatREdmljjD -> RSxMIq -> HFN -> M -> GwrgWltyatWl -> LxijGc -> mJbGTzoKo -> NiVICNy -> nPHZZr -> OqZTZ -> CXW
+CXW = RSxMIq -> NiVICNy -> LxijGc -> EpIxPBZxAkt -> HFN -> mxJxLQjAnU
+mxJxLQjAnU = AVES -> mJbGTzoKo -> BefzubzowB -> ddd -> M -> nPHZZr -> LxijGc -> okUuTEaIG!true -> HFN -> xJatREdmljjD -> LA -> GANRuaoTY -> urEPZ -> RSxMIq -> NiVICNy -> GwrgWltyatWl -> CogDJlJdiJ
+CogDJlJdiJ = LxijGc -> EpIxPBZxAkt -> mWAkRCf -> WUBTlZCp -> RSxMIq -> mJbGTzoKo -> mZKb
+assert pJmnF :[deadlock free]
+assert FWOlnnTfo :[deadlock free]
+assert jVzROxnQj :[deadlock free]
+assert VHnNR :[deadlock free]
+assert LhIHcZVQW :[deadlock free]
+assert TkAntONZJ :[deadlock free]
+assert bixvoEIFZ :[deadlock free]
+assert MohAjb :[deadlock free]
+assert wrVPAOjXK(494792922) :[deadlock free]
+assert ObXMrQlZuWy :[deadlock free]
+assert VObLjXvh :[deadlock free]
+assert tOlzx :[deadlock free]
+assert jwBA :[deadlock free]
+assert VXXvM :[deadlock free]
+assert cKbxI :[deadlock free]
+assert ZpwVlEHgejD :[deadlock free]
+assert WJRwBz :[deadlock free]
+assert mZKb :[deadlock free]
+assert oTS :[deadlock free]
+assert CpU :[deadlock free]
+assert CXW :[deadlock free]
+assert mxJxLQjAnU :[deadlock free]
+assert CogDJlJdiJ :[deadlock free]",CogDJlJdiJ :[deadlock free],false,"<LxijGc,EpIxPBZxAkt,mWAkRCf,WUBTlZCp,RSxMIq,mJbGTzoKo,WUBTlZCp,GANRuaoTY,mJbGTzoKo,AVES,NiVICNy,OqZTZ,GwrgWltyatWl,AVES,HFN,GANRuaoTY,xJatREdmljjD,EpIxPBZxAkt,nPHZZr,LxijGc>",The system reaches a deadlock after the trace: 'LxijGc' → 'EpIxPBZxAkt' → 'mWAkRCf' → 'WUBTlZCp' → 'RSxMIq' → 'mJbGTzoKo' → 'WUBTlZCp' → 'GANRuaoTY' → 'mJbGTzoKo' → 'AVES' → 'NiVICNy' → 'OqZTZ' → 'GwrgWltyatWl' → 'AVES' → 'HFN' → 'GANRuaoTY' → 'xJatREdmljjD' → 'EpIxPBZxAkt' → 'nPHZZr' → 'LxijGc'.,"Step 1: 'LxijGc'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'LxijGc') → (ready to perform 'EpIxPBZxAkt')
+  Step 2: 'EpIxPBZxAkt'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'EpIxPBZxAkt') → (ready to perform 'mWAkRCf')
+  Step 3: 'mWAkRCf'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'mWAkRCf') → (ready to perform 'WUBTlZCp')
+  Step 4: 'WUBTlZCp'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'WUBTlZCp') → (ready to perform 'RSxMIq')
+  Step 5: 'RSxMIq'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'RSxMIq') → (ready to perform 'mJbGTzoKo')
+  Step 6: 'mJbGTzoKo'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'mJbGTzoKo') → (ready to perform 'WUBTlZCp')
+  Step 7: 'WUBTlZCp'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'WUBTlZCp') → (ready to perform 'GANRuaoTY')
+  Step 8: 'GANRuaoTY'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'GANRuaoTY') → (ready to perform 'mJbGTzoKo')
+  Step 9: 'mJbGTzoKo'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'mJbGTzoKo') → (ready to perform 'AVES')
+  Step 10: 'AVES'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'AVES') → (ready to perform 'NiVICNy')
+  Step 11: 'NiVICNy'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'NiVICNy') → (ready to perform 'OqZTZ')
+  Step 12: 'OqZTZ'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'OqZTZ') → (ready to perform 'GwrgWltyatWl')
+  Step 13: 'GwrgWltyatWl'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'GwrgWltyatWl') → (ready to perform 'AVES')
+  Step 14: 'AVES'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'AVES') → (ready to perform 'HFN')
+  Step 15: 'HFN'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'HFN') → (ready to perform 'GANRuaoTY')
+  Step 16: 'GANRuaoTY'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'GANRuaoTY') → (ready to perform 'xJatREdmljjD')
+  Step 17: 'xJatREdmljjD'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'xJatREdmljjD') → (ready to perform 'EpIxPBZxAkt')
+  Step 18: 'EpIxPBZxAkt'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'EpIxPBZxAkt') → (ready to perform 'nPHZZr')
+  Step 19: 'nPHZZr'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'nPHZZr') → (ready to perform 'LxijGc')
+  Step 20: 'LxijGc'  (CogDJlJdiJ  acts alone)
+           CogDJlJdiJ : (ready to perform 'LxijGc') → (done)",• CogDJlJdiJ : no events available,"Every component (CogDJlJdiJ ) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"datatype mKWimACW = bbVyYasSMV|qecoxtfQMxl|PndIpVY|i2OiSsRCYL
+channel AFbwYjIqAZU
+channel VYOwK
+channel zqvVwyzBB
+channel JWNAMSvpk
+channel RBRZWxXiL
+channel SHBQabXsxlwvK
+channel NzQip
+channel bEU
+channel BnhHqKhl
+channel icIv
+channel uk
+channel qfxxoIGqImOS
+channel AHMXZDZlr
+channel CmKKqJGvjXeZC
+channel Z
+channel NDmGa
+channel UFTjUSJFptei
+channel zlBeBYoF
+channel EMTOVxrYOC
+channel wCM
+channel VqfhmBJnmIA
+channel uArvXXYFYc
+channel KnfhwaCFmXQA
+channel YTwgmoWKdzgh
+channel m
+channel kqapl
+channel pPuPNrqQB : mKWimACW
+channel pNO
+channel aCys : Bool
+channel TMGLO
+channel t
+channel drG
+channel sYMt
+channel xll
+channel zFBjksb
+channel YpxkaVk
+channel tWNhVkL
+qjFWbsm = (VYOwK -> EMTOVxrYOC -> CmKKqJGvjXeZC -> STOP) [> (BnhHqKhl -> VYOwK -> EMTOVxrYOC -> YTwgmoWKdzgh -> icIv -> uk -> CmKKqJGvjXeZC -> VqfhmBJnmIA -> AVNGvfQXvR)
+AVNGvfQXvR = VYOwK -> RBRZWxXiL -> icIv -> YTwgmoWKdzgh -> EMTOVxrYOC -> SKIP; AFbwYjIqAZU -> KnfhwaCFmXQA -> EMTOVxrYOC -> tWNhVkL -> qQvJ
+TkjT = (BnhHqKhl -> qjFWbsm) [] (EMTOVxrYOC -> xll -> m -> SKIP)
+CXjkHSuSm = BnhHqKhl -> m -> YTwgmoWKdzgh -> EMTOVxrYOC -> bJLmfb
+bJLmfb = EMTOVxrYOC -> m -> BnhHqKhl -> NzQip -> xll -> IBW
+IBW = YTwgmoWKdzgh -> NzQip -> EMTOVxrYOC -> BnhHqKhl -> uZ
+uZ = NzQip -> YTwgmoWKdzgh -> ZRzlarI
+ZRzlarI = BnhHqKhl -> YTwgmoWKdzgh -> EMTOVxrYOC -> NzQip -> xll -> TkjT
+qQvJ = wCM -> TMGLO -> kqapl -> aCys.true -> pNO -> drG -> t -> YpxkaVk -> uArvXXYFYc -> zqvVwyzBB -> SHBQabXsxlwvK -> KnfhwaCFmXQA -> UFTjUSJFptei -> qfxxoIGqImOS -> AHMXZDZlr -> pPuPNrqQB!i2OiSsRCYL -> sYMt -> tWNhVkL -> EMTOVxrYOC -> zFBjksb -> Z -> bEU -> BnhHqKhl -> NDmGa -> m -> JWNAMSvpk -> zlBeBYoF -> AFbwYjIqAZU -> STOP
+cqCjbbTSOR = YTwgmoWKdzgh -> m -> BnhHqKhl -> sJX
+sJX = EMTOVxrYOC -> STOP
+assert qjFWbsm :[deadlock free]
+assert AVNGvfQXvR :[deadlock free]
+assert TkjT :[deadlock free]
+assert CXjkHSuSm :[deadlock free]
+assert bJLmfb :[deadlock free]
+assert IBW :[deadlock free]
+assert uZ :[deadlock free]
+assert ZRzlarI :[deadlock free]
+assert qQvJ :[deadlock free]
+assert cqCjbbTSOR :[deadlock free]
+assert sJX :[deadlock free]",CXjkHSuSm :[deadlock free],false,"<BnhHqKhl,m,YTwgmoWKdzgh,EMTOVxrYOC,EMTOVxrYOC,m,BnhHqKhl,NzQip,xll,YTwgmoWKdzgh,NzQip,EMTOVxrYOC,BnhHqKhl,NzQip,YTwgmoWKdzgh,BnhHqKhl,YTwgmoWKdzgh,EMTOVxrYOC,NzQip,xll,BnhHqKhl,VYOwK,EMTOVxrYOC,CmKKqJGvjXeZC>",The system reaches a deadlock after the trace: 'BnhHqKhl' → 'm' → 'YTwgmoWKdzgh' → 'EMTOVxrYOC' → 'EMTOVxrYOC' → 'm' → 'BnhHqKhl' → 'NzQip' → 'xll' → 'YTwgmoWKdzgh' → 'NzQip' → 'EMTOVxrYOC' → 'BnhHqKhl' → 'NzQip' → 'YTwgmoWKdzgh' → 'BnhHqKhl' → 'YTwgmoWKdzgh' → 'EMTOVxrYOC' → 'NzQip' → 'xll' → 'BnhHqKhl' → 'VYOwK' → 'EMTOVxrYOC' → 'CmKKqJGvjXeZC'.,"Step 1: 'BnhHqKhl'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'BnhHqKhl') → (ready to perform 'm')
+  Step 2: 'm'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'm') → (ready to perform 'YTwgmoWKdzgh')
+  Step 3: 'YTwgmoWKdzgh'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'YTwgmoWKdzgh') → (ready to perform 'EMTOVxrYOC')
+  Step 4: 'EMTOVxrYOC'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'EMTOVxrYOC') → (ready to perform 'EMTOVxrYOC')
+  Step 5: 'EMTOVxrYOC'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'EMTOVxrYOC') → (ready to perform 'm')
+  Step 6: 'm'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'm') → (ready to perform 'BnhHqKhl')
+  Step 7: 'BnhHqKhl'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'BnhHqKhl') → (ready to perform 'NzQip')
+  Step 8: 'NzQip'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'NzQip') → (ready to perform 'xll')
+  Step 9: 'xll'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'xll') → (ready to perform 'YTwgmoWKdzgh')
+  Step 10: 'YTwgmoWKdzgh'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'YTwgmoWKdzgh') → (ready to perform 'NzQip')
+  Step 11: 'NzQip'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'NzQip') → (ready to perform 'EMTOVxrYOC')
+  Step 12: 'EMTOVxrYOC'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'EMTOVxrYOC') → (ready to perform 'BnhHqKhl')
+  Step 13: 'BnhHqKhl'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'BnhHqKhl') → (ready to perform 'NzQip')
+  Step 14: 'NzQip'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'NzQip') → (ready to perform 'YTwgmoWKdzgh')
+  Step 15: 'YTwgmoWKdzgh'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'YTwgmoWKdzgh') → (ready to perform 'BnhHqKhl')
+  Step 16: 'BnhHqKhl'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'BnhHqKhl') → (ready to perform 'YTwgmoWKdzgh')
+  Step 17: 'YTwgmoWKdzgh'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'YTwgmoWKdzgh') → (ready to perform 'EMTOVxrYOC')
+  Step 18: 'EMTOVxrYOC'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'EMTOVxrYOC') → (ready to perform 'NzQip')
+  Step 19: 'NzQip'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'NzQip') → (ready to perform 'xll')
+  Step 20: 'xll'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'xll') → (ready to perform 'BnhHqKhl')
+  Step 21: 'BnhHqKhl'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'BnhHqKhl') → (ready to perform 'VYOwK')
+  Step 22: 'VYOwK'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'VYOwK') → (ready to perform 'EMTOVxrYOC')
+  Step 23: 'EMTOVxrYOC'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'EMTOVxrYOC') → (ready to perform 'CmKKqJGvjXeZC')
+  Step 24: 'CmKKqJGvjXeZC'  (CXjkHSuSm  acts alone)
+           CXjkHSuSm : (ready to perform 'CmKKqJGvjXeZC') → (done)",• CXjkHSuSm : no events available,"Every component (CXjkHSuSm ) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"channel XjqVmhwZYDV
+channel B
+channel KvRAssPAmZy
+channel ztXmKRVAsovShf
+channel zdcjVJDmtb
+channel EVEeiDowjcFx
+channel U
+channel zO
+channel znXS
+channel VBPxGYppI
+channel Fqkjb
+channel jAS
+channel wrkuD
+channel ZDiGymBrFybQS
+channel xpyWdCONKUXX
+channel aGSNXymHK
+channel TRlFQNi
+channel VUpcWjLiE
+channel rX
+channel CKLWZdsCdYVX
+channel UGdHvjlmKWYc
+channel HgydGbefgYQZ
+channel RJRPcGKJ
+channel eitvQaF
+channel MyMrO
+channel xXDreXBteFht
+channel hEXjDsfcLwaLV
+channel FdIBnYTw
+channel DlFfUgpFM
+channel sndlPipJx
+channel orvY
+channel IbN
+channel JeRykrYS
+channel uK
+channel Gdjyy
+channel oOYPTyOtVQrQa
+channel VeOu
+channel KyNsqOgMMu
+channel rbNaUVvZSCRp
+Djye = |~| VurCgNdWhJg : {338..343} @ oFNd(VurCgNdWhJg)
+Ocu = JeRykrYS -> DlFfUgpFM -> hEXjDsfcLwaLV -> oOYPTyOtVQrQa -> UGdHvjlmKWYc -> ztXmKRVAsovShf -> MyMrO -> CKLWZdsCdYVX -> U -> Djye
+BVgZOkoIxdG = JeRykrYS -> ztXmKRVAsovShf -> U -> CKLWZdsCdYVX -> IjlJjxqYmZ
+IjlJjxqYmZ = DlFfUgpFM -> UGdHvjlmKWYc -> eitvQaF -> hEXjDsfcLwaLV -> ZDiGymBrFybQS -> U -> ztXmKRVAsovShf -> rX -> lpLkxu
+lpLkxu = ZDiGymBrFybQS -> U -> CKLWZdsCdYVX -> iaOuPtwR
+iaOuPtwR = MyMrO -> ztXmKRVAsovShf -> aGSNXymHK -> zO -> RBMjCxPMY
+RBMjCxPMY = U -> aGSNXymHK -> rX -> ZDiGymBrFybQS -> hEXjDsfcLwaLV -> CKLWZdsCdYVX -> sndlPipJx -> UGdHvjlmKWYc -> oOYPTyOtVQrQa -> Djye
+oFNd(VurCgNdWhJg) = DlFfUgpFM -> aGSNXymHK -> U -> oOYPTyOtVQrQa -> rX -> MyMrO -> ZDiGymBrFybQS -> ztXmKRVAsovShf -> UGdHvjlmKWYc -> sndlPipJx -> CKLWZdsCdYVX -> JeRykrYS -> zO -> hEXjDsfcLwaLV -> STOP
+yPm = (KvRAssPAmZy -> xXDreXBteFht -> Gdjyy -> yPm) [> (wrkuD -> zdcjVJDmtb -> jAS -> KvRAssPAmZy -> znXS -> uK -> Fqkjb -> aGSNXymHK -> orvY -> DlFfUgpFM -> xXDreXBteFht -> VBPxGYppI -> EVEeiDowjcFx -> VUpcWjLiE -> RJRPcGKJ -> TRlFQNi -> IbN -> kYrQzbilFI)
+UBO = jAS -> EVEeiDowjcFx -> VUpcWjLiE -> KyNsqOgMMu -> wrkuD -> XjqVmhwZYDV -> RJRPcGKJ -> orvY -> rbNaUVvZSCRp -> xpyWdCONKUXX -> znXS -> VBPxGYppI -> MV
+MV = KvRAssPAmZy -> VeOu -> RJRPcGKJ -> B -> DlFfUgpFM -> znXS -> VBPxGYppI -> VUpcWjLiE -> xpyWdCONKUXX -> uK -> bcUSMWOEXr
+bcUSMWOEXr = IbN -> XjqVmhwZYDV -> xXDreXBteFht -> KyNsqOgMMu -> wrkuD -> RJRPcGKJ -> uK -> VUpcWjLiE -> Gdjyy -> KvRAssPAmZy -> orvY -> zdcjVJDmtb -> IzGzguWL
+IzGzguWL = (RJRPcGKJ -> Gdjyy -> IbN -> rbNaUVvZSCRp -> wrkuD -> Fqkjb -> VBPxGYppI -> EVEeiDowjcFx -> XjqVmhwZYDV -> xXDreXBteFht -> DlFfUgpFM -> TRlFQNi -> VUpcWjLiE -> uK -> FdIBnYTw -> KyNsqOgMMu -> orvY -> znXS -> GKqLpIzxvh)[[rbNaUVvZSCRp<-HgydGbefgYQZ,TRlFQNi<-Gdjyy,VBPxGYppI<-xpyWdCONKUXX,VUpcWjLiE<-DlFfUgpFM,EVEeiDowjcFx<-znXS,orvY<-EVEeiDowjcFx,DlFfUgpFM<-jAS,aGSNXymHK<-IbN,B<-VeOu,VeOu<-uK,zdcjVJDmtb<-XjqVmhwZYDV,uK<-TRlFQNi,znXS<-rbNaUVvZSCRp,Fqkjb<-zdcjVJDmtb,FdIBnYTw<-Fqkjb,wrkuD<-VUpcWjLiE,KyNsqOgMMu<-wrkuD,xXDreXBteFht<-KvRAssPAmZy,xpyWdCONKUXX<-RJRPcGKJ,IbN<-aGSNXymHK,Gdjyy<-xXDreXBteFht,KvRAssPAmZy<-FdIBnYTw,RJRPcGKJ<-B,XjqVmhwZYDV<-VBPxGYppI]]
+GKqLpIzxvh = jAS -> Fqkjb -> VUpcWjLiE -> EVEeiDowjcFx -> aGSNXymHK -> TRlFQNi -> B -> uK -> KvRAssPAmZy -> orvY -> KyNsqOgMMu -> DlFfUgpFM -> HgydGbefgYQZ -> yPm
+eehTwbeg = wrkuD -> HgydGbefgYQZ -> Fqkjb -> VeOu -> Gdjyy -> znXS -> IbN -> orvY -> EVEeiDowjcFx -> uK -> zdcjVJDmtb -> DlFfUgpFM -> FdIBnYTw -> RJRPcGKJ -> KvRAssPAmZy -> KyNsqOgMMu -> rtnkQaof
+rtnkQaof = B -> VUpcWjLiE -> wrkuD -> STOP
+kYrQzbilFI = IbN -> orvY -> TRlFQNi -> VUpcWjLiE -> jAS -> VeOu -> SKIP
+KIJgQ = (aGSNXymHK -> KIJgQ)|\{DlFfUgpFM}
+assert Djye :[deadlock free]
+assert Ocu :[deadlock free]
+assert BVgZOkoIxdG :[deadlock free]
+assert IjlJjxqYmZ :[deadlock free]
+assert lpLkxu :[deadlock free]
+assert iaOuPtwR :[deadlock free]
+assert RBMjCxPMY :[deadlock free]
+assert oFNd(-1584561725) :[deadlock free]
+assert yPm :[deadlock free]
+assert UBO :[deadlock free]
+assert MV :[deadlock free]
+assert bcUSMWOEXr :[deadlock free]
+assert IzGzguWL :[deadlock free]
+assert GKqLpIzxvh :[deadlock free]
+assert eehTwbeg :[deadlock free]
+assert rtnkQaof :[deadlock free]
+assert kYrQzbilFI :[deadlock free]
+assert KIJgQ :[deadlock free]",iaOuPtwR :[deadlock free],false,"<MyMrO,ztXmKRVAsovShf,aGSNXymHK,zO,U,aGSNXymHK,rX,ZDiGymBrFybQS,hEXjDsfcLwaLV,CKLWZdsCdYVX,sndlPipJx,UGdHvjlmKWYc,oOYPTyOtVQrQa,τ,DlFfUgpFM,aGSNXymHK,U,oOYPTyOtVQrQa,rX,MyMrO,ZDiGymBrFybQS,ztXmKRVAsovShf,UGdHvjlmKWYc,sndlPipJx,CKLWZdsCdYVX,JeRykrYS,zO,hEXjDsfcLwaLV>",The system reaches a deadlock after the trace: 'MyMrO' → 'ztXmKRVAsovShf' → 'aGSNXymHK' → 'zO' → 'U' → 'aGSNXymHK' → 'rX' → 'ZDiGymBrFybQS' → 'hEXjDsfcLwaLV' → 'CKLWZdsCdYVX' → 'sndlPipJx' → 'UGdHvjlmKWYc' → 'oOYPTyOtVQrQa' → 'τ' → 'DlFfUgpFM' → 'aGSNXymHK' → 'U' → 'oOYPTyOtVQrQa' → 'rX' → 'MyMrO' → 'ZDiGymBrFybQS' → 'ztXmKRVAsovShf' → 'UGdHvjlmKWYc' → 'sndlPipJx' → 'CKLWZdsCdYVX' → 'JeRykrYS' → 'zO' → 'hEXjDsfcLwaLV'.,"Step 1: 'MyMrO'  (iaOuPtwR acts alone)
+           iaOuPtwR: 'iaOuPtwR' → (ready to perform 'ztXmKRVAsovShf')
+  Step 2: 'ztXmKRVAsovShf'  (iaOuPtwR acts alone)
+           iaOuPtwR: (ready to perform 'ztXmKRVAsovShf') → (ready to perform 'aGSNXymHK')
+  Step 3: 'aGSNXymHK'  (iaOuPtwR acts alone)
+           iaOuPtwR: (ready to perform 'aGSNXymHK') → (ready to perform 'zO')
+  Step 4: 'zO'  (iaOuPtwR acts alone)
+           iaOuPtwR: (ready to perform 'zO') → 'RBMjCxPMY'
+  Step 5: 'U'  (RBMjCxPMY acts alone)
+           RBMjCxPMY: 'RBMjCxPMY' → (ready to perform 'aGSNXymHK')
+  Step 6: 'aGSNXymHK'  (RBMjCxPMY acts alone)
+           RBMjCxPMY: (ready to perform 'aGSNXymHK') → (ready to perform 'rX')
+  Step 7: 'rX'  (RBMjCxPMY acts alone)
+           RBMjCxPMY: (ready to perform 'rX') → (ready to perform 'ZDiGymBrFybQS')
+  Step 8: 'ZDiGymBrFybQS'  (RBMjCxPMY acts alone)
+           RBMjCxPMY: (ready to perform 'ZDiGymBrFybQS') → (ready to perform 'hEXjDsfcLwaLV')
+  Step 9: 'hEXjDsfcLwaLV'  (RBMjCxPMY acts alone)
+           RBMjCxPMY: (ready to perform 'hEXjDsfcLwaLV') → (ready to perform 'CKLWZdsCdYVX')
+  Step 10: 'CKLWZdsCdYVX'  (RBMjCxPMY acts alone)
+           RBMjCxPMY: (ready to perform 'CKLWZdsCdYVX') → (ready to perform 'sndlPipJx')
+  Step 11: 'sndlPipJx'  (RBMjCxPMY acts alone)
+           RBMjCxPMY: (ready to perform 'sndlPipJx') → (ready to perform 'UGdHvjlmKWYc')
+  Step 12: 'UGdHvjlmKWYc'  (RBMjCxPMY acts alone)
+           RBMjCxPMY: (ready to perform 'UGdHvjlmKWYc') → (ready to perform 'oOYPTyOtVQrQa')
+  Step 13: 'oOYPTyOtVQrQa'  (RBMjCxPMY acts alone)
+           RBMjCxPMY: (ready to perform 'oOYPTyOtVQrQa') → 'Djye'
+  Step 14: 'τ'  (Djye acts alone)
+           Djye: 'Djye' → 'oFNd(_)'
+  Step 15: 'DlFfUgpFM'  (Djye acts alone)
+           Djye: 'oFNd(_)' → (ready to perform 'aGSNXymHK')
+  Step 16: 'aGSNXymHK'  (Djye acts alone)
+           Djye: (ready to perform 'aGSNXymHK') → (ready to perform 'U')
+  Step 17: 'U'  (Djye acts alone)
+           Djye: (ready to perform 'U') → (ready to perform 'oOYPTyOtVQrQa')
+  Step 18: 'oOYPTyOtVQrQa'  (Djye acts alone)
+           Djye: (ready to perform 'oOYPTyOtVQrQa') → (ready to perform 'rX')
+  Step 19: 'rX'  (Djye acts alone)
+           Djye: (ready to perform 'rX') → (ready to perform 'MyMrO')
+  Step 20: 'MyMrO'  (Djye acts alone)
+           Djye: (ready to perform 'MyMrO') → (ready to perform 'ZDiGymBrFybQS')
+  Step 21: 'ZDiGymBrFybQS'  (Djye acts alone)
+           Djye: (ready to perform 'ZDiGymBrFybQS') → (ready to perform 'ztXmKRVAsovShf')
+  Step 22: 'ztXmKRVAsovShf'  (Djye acts alone)
+           Djye: (ready to perform 'ztXmKRVAsovShf') → (ready to perform 'UGdHvjlmKWYc')
+  Step 23: 'UGdHvjlmKWYc'  (Djye acts alone)
+           Djye: (ready to perform 'UGdHvjlmKWYc') → (ready to perform 'sndlPipJx')
+  Step 24: 'sndlPipJx'  (Djye acts alone)
+           Djye: (ready to perform 'sndlPipJx') → (ready to perform 'CKLWZdsCdYVX')
+  Step 25: 'CKLWZdsCdYVX'  (Djye acts alone)
+           Djye: (ready to perform 'CKLWZdsCdYVX') → (ready to perform 'JeRykrYS')
+  Step 26: 'JeRykrYS'  (Djye acts alone)
+           Djye: (ready to perform 'JeRykrYS') → (ready to perform 'zO')
+  Step 27: 'zO'  (Djye acts alone)
+           Djye: (ready to perform 'zO') → (ready to perform 'hEXjDsfcLwaLV')
+  Step 28: 'hEXjDsfcLwaLV'  (Djye acts alone)
+           Djye: (ready to perform 'hEXjDsfcLwaLV') → 'STOP'","• Djye: in 'STOP', no events available","Every component (Djye) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."
+"channel jEB
+channel YEeKZYtaeVOhM
+channel rsYPQkJpjBlcim
+channel UI
+channel dinIlyQvpXIf
+channel JiyLZa
+channel EloOD
+channel mp
+channel KlQdaipx
+channel TSevpAeQXZEYGz
+channel qzAVYHgIUFbG
+channel Qhogo
+channel pwaaAXvMLIogv
+channel WQZLhmDp
+channel PQSFZhGkoz
+channel jCxCFvg
+channel gpgfv
+channel TCZnYFqjxerg
+channel dbXCa
+channel GMGBgD
+channel mzLaerWFYs
+channel TDHQoFpwR
+channel B
+channel HBGtwrIFZfUKm
+channel YgQNI
+channel CDwQhyuFpzwIyk
+channel CbXWvvUmmxDBU
+channel GEQJezg
+channel fLuwW
+channel kY
+channel awFtrVsNjuR
+channel CssGdMG
+channel CgTGwTyDpSaKO
+channel mOGUe
+channel bs
+channel jisGfYgGNCs
+channel gXNgsGmIVSFOD
+channel MtyOoxcKUPIPLY
+channel GA
+channel SwzLin
+channel QnqjmvEz
+channel ZuAbovYp
+channel iUl
+channel GDQKJRfoPa
+channel KAEsnGtZZ
+channel mFie
+channel IdTXYmdeLaKTd
+channel NJFSHzXRt
+channel hbWzi
+channel RozRfBZawlVfD
+channel uzt
+channel kszSX
+channel RFABvqe
+channel ecO
+channel fbac
+channel CoMeRWZaeW
+channel GyDDPBFym
+channel twRXIzA : {54..56}
+channel ITErpUBDu
+channel OrLdFcKTxd
+channel LMkbdKH
+channel KyCEBO
+channel PMlRrY
+channel LbR
+NjFCPGl = (rsYPQkJpjBlcim -> STOP) [> (bs -> GEQJezg -> CgTGwTyDpSaKO -> gXNgsGmIVSFOD -> iUl -> fLuwW -> WQZLhmDp -> CssGdMG -> RFABvqe -> TCZnYFqjxerg -> ITErpUBDu -> OrLdFcKTxd -> QnqjmvEz -> jCxCFvg -> rsYPQkJpjBlcim -> PQSFZhGkoz -> STOP)
+EvXRqmxuvox = KlQdaipx -> jCxCFvg -> ITErpUBDu -> QnqjmvEz -> WQZLhmDp -> CssGdMG -> RFABvqe -> YgQNI -> LMkbdKH -> TDHQoFpwR -> ZmKMFVrX
+ZmKMFVrX = bs -> WQZLhmDp -> TDHQoFpwR -> CssGdMG -> dinIlyQvpXIf -> PQSFZhGkoz -> rsYPQkJpjBlcim -> YgQNI -> QnqjmvEz -> TCZnYFqjxerg -> iUl -> ITErpUBDu -> uAN
+uAN = jCxCFvg -> GEQJezg -> bs -> WQZLhmDp -> CssGdMG -> QnqjmvEz -> iUl -> fMjGrnmF
+fMjGrnmF = gpgfv -> rHE
+rHE = TCZnYFqjxerg -> dinIlyQvpXIf -> qzAVYHgIUFbG -> KlQdaipx -> fLuwW -> ITErpUBDu -> gpgfv -> rsYPQkJpjBlcim -> gXNgsGmIVSFOD -> WQZLhmDp -> PQSFZhGkoz -> LMkbdKH -> GEQJezg -> NjFCPGl
+VQDF = (qzAVYHgIUFbG -> LMkbdKH -> YEeKZYtaeVOhM -> ITErpUBDu -> CoMeRWZaeW -> YgQNI -> TCZnYFqjxerg -> bs -> B -> CDwQhyuFpzwIyk -> CssGdMG -> mOGUe -> iUl -> QnqjmvEz -> PQSFZhGkoz -> HBGtwrIFZfUKm -> ZmKMFVrX) |~| (HBGtwrIFZfUKm -> STOP)
+ADVLBuuLb = (YgQNI -> GMGBgD -> ITErpUBDu -> CssGdMG -> PMlRrY -> jisGfYgGNCs -> kY -> QnqjmvEz -> GA -> EloOD -> mzLaerWFYs -> CbXWvvUmmxDBU -> KAEsnGtZZ -> qzAVYHgIUFbG -> pwaaAXvMLIogv -> fbac -> gpgfv -> SwzLin -> bs -> UI -> KlQdaipx -> iUl -> MtyOoxcKUPIPLY -> mFie -> GEQJezg -> twRXIzA$55 -> uzt -> RozRfBZawlVfD -> hbWzi -> LbR -> NJFSHzXRt -> TCZnYFqjxerg -> awFtrVsNjuR -> PQSFZhGkoz -> dbXCa -> LMkbdKH -> kszSX -> GDQKJRfoPa -> IdTXYmdeLaKTd -> CgTGwTyDpSaKO -> STOP) [] (uzt -> PMlRrY -> pwaaAXvMLIogv -> EloOD -> SwzLin -> QnqjmvEz -> GDQKJRfoPa -> Qhogo -> MtyOoxcKUPIPLY -> GA -> ITErpUBDu -> kY -> CssGdMG -> GMGBgD -> awFtrVsNjuR -> mFie -> LMkbdKH -> dinIlyQvpXIf -> hbWzi -> UI -> CgTGwTyDpSaKO -> bs -> YgQNI -> fbac -> jisGfYgGNCs -> NJFSHzXRt -> twRXIzA$55 -> dbXCa -> CbXWvvUmmxDBU -> gpgfv -> PQSFZhGkoz -> mzLaerWFYs -> KlQdaipx -> TCZnYFqjxerg -> LbR -> RozRfBZawlVfD -> qzAVYHgIUFbG -> KAEsnGtZZ -> iUl -> SKIP)
+qlEtqx = || qjzqI : {479..486} @ [{mp,KlQdaipx,qzAVYHgIUFbG,jEB,YgQNI,GEQJezg,CssGdMG,CgTGwTyDpSaKO,ecO,gpgfv,bs,GyDDPBFym,TCZnYFqjxerg,dinIlyQvpXIf,ITErpUBDu,LMkbdKH,QnqjmvEz,JiyLZa}] gYIJF(qjzqI)
+VTVXqDDw = gpgfv -> iUl -> dinIlyQvpXIf -> TCZnYFqjxerg -> LMkbdKH -> QnqjmvEz -> bs -> mp -> GEQJezg -> jEB -> TSevpAeQXZEYGz -> YgQNI -> pSuIuMpK
+pSuIuMpK = LMkbdKH -> kKMsrx
+kKMsrx = JiyLZa -> TSevpAeQXZEYGz -> jEB -> mp -> ITErpUBDu -> QnqjmvEz -> dinIlyQvpXIf -> YgQNI -> ZuAbovYp -> PQSFZhGkoz -> CgTGwTyDpSaKO -> GyDDPBFym -> iUl -> wddAWHUVreu
+wddAWHUVreu = (ZuAbovYp -> jEB -> Vfuy)[[KlQdaipx<-dinIlyQvpXIf,gpgfv<-ITErpUBDu,jEB<-TCZnYFqjxerg]]
+Vfuy = qzAVYHgIUFbG -> PQSFZhGkoz -> ITErpUBDu -> dinIlyQvpXIf -> GyDDPBFym -> KlQdaipx -> qlEtqx
+gYIJF(qjzqI) = ITErpUBDu -> jEB -> PQSFZhGkoz -> mp -> KlQdaipx -> ZuAbovYp -> CgTGwTyDpSaKO -> GyDDPBFym -> iUl -> qzAVYHgIUFbG -> CssGdMG -> bs -> gpgfv -> dinIlyQvpXIf -> YgQNI -> QnqjmvEz -> JiyLZa -> TSevpAeQXZEYGz -> STOP
+SG = KlQdaipx -> gpgfv -> CssGdMG -> YgQNI -> GEQJezg -> CgTGwTyDpSaKO -> iUl -> TCZnYFqjxerg -> ITErpUBDu -> QnqjmvEz -> bs -> PQSFZhGkoz -> dinIlyQvpXIf -> LMkbdKH -> qzAVYHgIUFbG -> STOP
+assert NjFCPGl :[deadlock free]
+assert EvXRqmxuvox :[deadlock free]
+assert ZmKMFVrX :[deadlock free]
+assert uAN :[deadlock free]
+assert fMjGrnmF :[deadlock free]
+assert rHE :[deadlock free]
+assert VQDF :[deadlock free]
+assert ADVLBuuLb :[deadlock free]
+assert qlEtqx :[deadlock free]
+assert VTVXqDDw :[deadlock free]
+assert pSuIuMpK :[deadlock free]
+assert kKMsrx :[deadlock free]
+assert wddAWHUVreu :[deadlock free]
+assert Vfuy :[deadlock free]
+assert gYIJF(1748186424) :[deadlock free]
+assert SG :[deadlock free]",gYIJF(1748186424) :[deadlock free],false,"<ITErpUBDu,jEB,PQSFZhGkoz,mp,KlQdaipx,ZuAbovYp,CgTGwTyDpSaKO,GyDDPBFym,iUl,qzAVYHgIUFbG,CssGdMG,bs,gpgfv,dinIlyQvpXIf,YgQNI,QnqjmvEz,JiyLZa,TSevpAeQXZEYGz>",The system reaches a deadlock after the trace: 'ITErpUBDu' → 'jEB' → 'PQSFZhGkoz' → 'mp' → 'KlQdaipx' → 'ZuAbovYp' → 'CgTGwTyDpSaKO' → 'GyDDPBFym' → 'iUl' → 'qzAVYHgIUFbG' → 'CssGdMG' → 'bs' → 'gpgfv' → 'dinIlyQvpXIf' → 'YgQNI' → 'QnqjmvEz' → 'JiyLZa' → 'TSevpAeQXZEYGz'.,"Step 1: 'ITErpUBDu'  (gYIJF(_) acts alone)
+           gYIJF(_): 'gYIJF(_)' → (ready to perform 'jEB')
+  Step 2: 'jEB'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'jEB') → (ready to perform 'PQSFZhGkoz')
+  Step 3: 'PQSFZhGkoz'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'PQSFZhGkoz') → (ready to perform 'mp')
+  Step 4: 'mp'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'mp') → (ready to perform 'KlQdaipx')
+  Step 5: 'KlQdaipx'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'KlQdaipx') → (ready to perform 'ZuAbovYp')
+  Step 6: 'ZuAbovYp'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'ZuAbovYp') → (ready to perform 'CgTGwTyDpSaKO')
+  Step 7: 'CgTGwTyDpSaKO'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'CgTGwTyDpSaKO') → (ready to perform 'GyDDPBFym')
+  Step 8: 'GyDDPBFym'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'GyDDPBFym') → (ready to perform 'iUl')
+  Step 9: 'iUl'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'iUl') → (ready to perform 'qzAVYHgIUFbG')
+  Step 10: 'qzAVYHgIUFbG'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'qzAVYHgIUFbG') → (ready to perform 'CssGdMG')
+  Step 11: 'CssGdMG'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'CssGdMG') → (ready to perform 'bs')
+  Step 12: 'bs'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'bs') → (ready to perform 'gpgfv')
+  Step 13: 'gpgfv'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'gpgfv') → (ready to perform 'dinIlyQvpXIf')
+  Step 14: 'dinIlyQvpXIf'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'dinIlyQvpXIf') → (ready to perform 'YgQNI')
+  Step 15: 'YgQNI'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'YgQNI') → (ready to perform 'QnqjmvEz')
+  Step 16: 'QnqjmvEz'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'QnqjmvEz') → (ready to perform 'JiyLZa')
+  Step 17: 'JiyLZa'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'JiyLZa') → (ready to perform 'TSevpAeQXZEYGz')
+  Step 18: 'TSevpAeQXZEYGz'  (gYIJF(_) acts alone)
+           gYIJF(_): (ready to perform 'TSevpAeQXZEYGz') → 'STOP'","• gYIJF(_): in 'STOP', no events available","Every component (gYIJF(_)) has reached a state with no outgoing events (STOP or equivalent). The composition is permanently stuck because there is nothing left for any process to do.
+
+  This is a termination deadlock."

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a14064ee-980e-4ee3-bb48-515ab9865c4b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/cspm_explain/csv_parser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cspm_explain/csv_writer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/Dataset.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/Larger_Dataset.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cspm_explain/explain.py" beforeDir="false" afterPath="$PROJECT_DIR$/cspm_explain/explain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/drzi.csp" beforeDir="false" afterPath="$PROJECT_DIR$/examples/drzi.csp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DockerExecCommands">
+    <ExecCommand>
+      <option name="command" value="ls" />
+    </ExecCommand>
+    <ExecCommand>
+      <option name="command" value="cd home // ls" />
+    </ExecCommand>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3GD6tSTi2EujEAL0k2MRJ0ZOJ0U" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker..devcontainer/Dockerfile.executor": "Run",
+    "Docker.Docker Image.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.main.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/hrh517/IdeaProjects/cspm-explain",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.38965517",
+    "settings.editor.selected.configurable": "Docker",
+    "uv run.Unnamed.executor": "Run",
+    "uv run.uv run main.executor": "Run",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="cspm-explain" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="cspm-explain" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$USER_HOME$/PycharmProjects/CSPMInspector/examples" />
+      <recent name="$USER_HOME$/PycharmProjects/CSPMInspector" />
+      <recent name="$USER_HOME$/PycharmProjects/PythonProject" />
+      <recent name="$USER_HOME$/PycharmProjects/PythonProject/cspm_inspector" />
+    </key>
+  </component>
+  <component name="RunManager" selected="uv run.uv run main">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="cspm-explain" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (PyCharmMiscProject)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="examples/Dataset.csv -o examples/out.csv" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unnamed" type="UvRunConfigurationType" factoryName="UvRunConfigurationType">
+      <option name="args">
+        <list>
+          <option value="examples/Dataset-small.csv" />
+        </list>
+      </option>
+      <option name="checkSync" value="false" />
+      <option name="debugJustMyCode" value="false" />
+      <option name="env">
+        <map />
+      </option>
+      <option name="runType" value="SCRIPT" />
+      <option name="scriptOrModule" value="$USER_HOME$/PycharmProjects/CSPMInspector/main.py" />
+      <option name="uvArgs">
+        <list />
+      </option>
+      <option name="uvSdkKey" value="uv (CSPMInspector)" />
+      <method v="2" />
+    </configuration>
+    <configuration name="uv run main" type="UvRunConfigurationType" factoryName="UvRunConfigurationType">
+      <option name="args">
+        <list>
+          <option value="examples/missing.csv" />
+          <option value="-o" />
+          <option value="Missing.csv" />
+        </list>
+      </option>
+      <option name="checkSync" value="false" />
+      <option name="debugJustMyCode" value="false" />
+      <option name="env">
+        <map />
+      </option>
+      <option name="runType" value="SCRIPT" />
+      <option name="scriptOrModule" value="main.py" />
+      <option name="uvArgs">
+        <list />
+      </option>
+      <option name="uvSdkKey" value="uv (cspm-explain)" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Docker Image" type="docker-deploy" factoryName="docker-image" temporary="true" server-name="Docker">
+      <deployment type="docker-image">
+        <settings>
+          <option name="imageTag" value="python:3.11" />
+          <option name="containerName" value="" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name=".devcontainer/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value=".devcontainer/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
+      <deployment type="docker-image">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker..devcontainer/Dockerfile" />
+      <item itemvalue="Docker.Docker Image" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="uv run.Unnamed" />
+      <item itemvalue="uv run.uv run main" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker..devcontainer/Dockerfile" />
+        <item itemvalue="Docker.Docker Image" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-50341a9f1f9c-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.26222.68" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a14064ee-980e-4ee3-bb48-515ab9865c4b" name="Changes" comment="" />
+      <created>1783494007288</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1783494007288</updated>
+      <workItem from="1783494008551" duration="2099000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/cspm_explain/cspm_parser.py</url>
+          <line>556</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
